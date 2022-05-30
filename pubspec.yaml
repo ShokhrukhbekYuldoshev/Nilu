@@ -1,0 +1,53 @@
+name: nilu
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  badges: ^2.0.2
+  cached_network_image: ^3.2.1
+  cloud_firestore: ^3.1.12
+  firebase_auth: ^3.3.17
+  firebase_core: ^1.14.1
+  firebase_storage: ^10.2.13
+  flutter:
+    sdk: flutter
+  flutter_barcode_scanner: ^2.0.0
+  flutter_image_compress: ^1.1.0
+  flutter_libphonenumber: ^1.2.4
+  flutter_native_splash: ^2.2.2
+  get: ^4.6.5
+  http: ^0.13.4
+  image_picker: ^0.8.5
+  intl: ^0.17.0
+  path_provider: ^2.0.9
+  pattern_formatter: ^2.0.0
+  pinput: ^2.2.9
+  shared_preferences: ^2.0.13
+  sticky_headers: ^0.3.0+2
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter_native_splash:
+  image: assets/images/splash.png
+  color: "#ffffff"
+  image_dark: assets/images/splash-dark.png
+  color_dark: "#333333"
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/box.png
+    - assets/images/products.png
+    - assets/images/cash_register.png
+    - assets/images/otp.png
