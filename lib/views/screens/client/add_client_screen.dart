@@ -55,7 +55,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                   },
                 ),
           title: Text(
-            'New Client',
+            'new_client'.tr,
             style: TextStyle(
               color: Preferences.getTheme()
                   ? primaryUltraLightColor
@@ -77,14 +77,14 @@ class _AddClientScreenState extends State<AddClientScreen> {
                             showDialog(
                               context: context,
                               builder: (_) => AlertDialog(
-                                title: const Text('Select Image Source'),
+                                title: Text('select_image_source'.tr),
                                 content: SizedBox(
                                   height: 180,
                                   child: Column(
                                     children: [
                                       ListTile(
                                         leading: const Icon(Icons.collections),
-                                        title: const Text('Gallery'),
+                                        title: Text('gallery'.tr),
                                         onTap: () async {
                                           imageFile =
                                               await pickImageFromGallery();
@@ -100,7 +100,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                                       ),
                                       ListTile(
                                         leading: const Icon(Icons.camera),
-                                        title: const Text('Camera'),
+                                        title: Text('camera'.tr),
                                         onTap: () async {
                                           imageFile =
                                               await pickImageFromCamera();
@@ -116,7 +116,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                                       ),
                                       ListTile(
                                         leading: const Icon(Icons.close),
-                                        title: const Text('Delete'),
+                                        title: Text('delete'.tr),
                                         onTap: () {
                                           setState(() {
                                             imageFile = null;
@@ -164,7 +164,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Name*',
+                          labelText: 'name'.tr + '*',
                           counterText: '',
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
@@ -184,7 +184,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Phone',
+                          labelText: 'phone'.tr,
                           counterText: '',
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
@@ -203,7 +203,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Note',
+                          labelText: 'note'.tr,
                           counterText: '',
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
@@ -223,9 +223,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                               onPressed: () async {
                                 try {
                                   if (_nameController.text.isEmpty) {
-                                    errorSnackbar(
-                                      'Client name is required',
-                                    );
+                                    errorSnackbar('fill_required_fields'.tr);
                                   } else {
                                     setState(() {
                                       isUploading = true;
@@ -253,15 +251,15 @@ class _AddClientScreenState extends State<AddClientScreen> {
 
                                     Navigator.pop(context);
                                     successSnackbar(
-                                      'Client added successfully',
+                                      'client_added'.tr,
                                     );
                                   }
                                 } catch (e) {
-                                  errorSnackbar('Something went wrong');
+                                  errorSnackbar('something_went_wrong'.tr);
                                   Navigator.pop(context);
                                 }
                               },
-                              text: 'Save client',
+                              text: 'save'.tr,
                             ),
                           ),
                         ],

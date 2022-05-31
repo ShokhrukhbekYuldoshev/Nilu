@@ -5,6 +5,7 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/utils/constants.dart';
 import '../../../controllers/cart_controller.dart';
 import '../../../utils/preferences.dart';
+import '../../widgets/dialogs/sort_client_dialog.dart';
 import '../../widgets/search_filter_icon.dart';
 
 class SelectClientScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
         backgroundColor: Preferences.getTheme() ? darkGrayColor : gray100Color,
         elevation: 0,
         title: Text(
-          'Select Client',
+          'select_client'.tr,
           style: TextStyle(
             color:
                 Preferences.getTheme() ? primaryUltraLightColor : textDarkColor,
@@ -78,7 +79,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
                             fillColor: Preferences.getTheme()
                                 ? darkGrayColor
                                 : gray100Color,
-                            hintText: 'Search name',
+                            hintText: 'search'.tr,
                             hintStyle: bodyText(textPlaceholderColor),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(4),
@@ -106,73 +107,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
                           showDialog(
                             context: context,
                             builder: (_) {
-                              return AlertDialog(
-                                title: Text(
-                                  'Sort by',
-                                  style: h5(
-                                    Theme.of(context)
-                                        .textTheme
-                                        .bodyText1!
-                                        .color,
-                                  ),
-                                ),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    RadioListTile(
-                                      activeColor: Preferences.getTheme()
-                                          ? primaryLightColor
-                                          : primaryColor,
-                                      contentPadding: const EdgeInsets.all(0),
-                                      title: const Text('Name'),
-                                      value: 'name',
-                                      groupValue:
-                                          _clientController.sortCategory.value,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _clientController
-                                              .sort(value.toString());
-                                          Navigator.pop(context);
-                                        });
-                                      },
-                                    ),
-                                    RadioListTile(
-                                      activeColor: Preferences.getTheme()
-                                          ? primaryLightColor
-                                          : primaryColor,
-                                      contentPadding: const EdgeInsets.all(0),
-                                      title: const Text('Debt'),
-                                      value: 'debt',
-                                      groupValue:
-                                          _clientController.sortCategory.value,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _clientController
-                                              .sort(value.toString());
-                                          Navigator.pop(context);
-                                        });
-                                      },
-                                    ),
-                                    RadioListTile(
-                                      activeColor: Preferences.getTheme()
-                                          ? primaryLightColor
-                                          : primaryColor,
-                                      contentPadding: const EdgeInsets.all(0),
-                                      title: const Text('Date created'),
-                                      value: 'date',
-                                      groupValue:
-                                          _clientController.sortCategory.value,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _clientController
-                                              .sort(value.toString());
-                                          Navigator.pop(context);
-                                        });
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              );
+                              return const SortClientDialog();
                             },
                           );
                         },
@@ -206,7 +141,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
                     ),
                   ),
                   title: Text(
-                    'Unnamed client',
+                    'unnamed_client'.tr,
                     style:
                         bodyText(Theme.of(context).textTheme.bodyText1!.color),
                   ),
@@ -263,7 +198,8 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
                           : null,
                       subtitle: client.debt > 0
                           ? Text(
-                              'Debt: ${formatCurrency(client.debt, _profileController.user['mainCurrency'])}',
+                              'debt'.tr +
+                                  ': ${formatCurrency(client.debt, _profileController.user['mainCurrency'])}',
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: redColor,

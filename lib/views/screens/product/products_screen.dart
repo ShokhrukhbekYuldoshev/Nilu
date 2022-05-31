@@ -61,7 +61,7 @@ class _ProductsScreenState extends State<ProductsScreen>
     String barcodeScanRes;
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+          '#ff6666', 'cancel'.tr, true, ScanMode.BARCODE);
       if (barcodeScanRes != "-1") {
         var product = _productController.getProudctByCode(barcodeScanRes);
         if (product.id != '') {
@@ -79,11 +79,13 @@ class _ProductsScreenState extends State<ProductsScreen>
             ),
           );
         } else {
-          errorSnackbar('Product with code $barcodeScanRes not found');
+          errorSnackbar(
+            'not_found'.tr + ". " + 'code'.tr + ": " + barcodeScanRes,
+          );
         }
       }
     } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
+      barcodeScanRes = 'something_went_wrong'.tr;
     }
     if (!mounted) return;
   }
@@ -93,7 +95,7 @@ class _ProductsScreenState extends State<ProductsScreen>
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Products'),
+        title: Text('products'.tr),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -116,7 +118,7 @@ class _ProductsScreenState extends State<ProductsScreen>
                   child: _productController.filteredProducts.isEmpty
                       ? Center(
                           child: Text(
-                            'No products found',
+                            'not_found'.tr,
                             style: bodyText(
                                 Theme.of(context).textTheme.bodyText2!.color),
                           ),
@@ -166,13 +168,13 @@ class _ProductsScreenState extends State<ProductsScreen>
                                           ),
                                           const SizedBox(height: 20),
                                           Text(
-                                            'You applied filter',
+                                            'you_applied_filter'.tr,
                                             style: bodyText(textMutedColor),
                                           ),
                                           const SizedBox(height: 6),
                                           TextButton(
                                             child: Text(
-                                              'Show all items',
+                                              'show_all'.tr,
                                               style: bodyText(
                                                 Preferences.getTheme()
                                                     ? primaryLightColor
@@ -240,7 +242,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                         _productController.search(value);
                       },
                       decoration: InputDecoration(
-                        hintText: 'Search',
+                        hintText: 'search'.tr,
                         contentPadding: const EdgeInsets.all(0),
                         hintStyle: bodyText(iconGrayColor),
                         prefixIcon: const Icon(
@@ -302,11 +304,11 @@ class _SearchWidgetState extends State<SearchWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Product name',
+                'product_name'.tr,
                 style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
               ),
               Text(
-                'In stock',
+                'in_stock'.tr,
                 style: bodyText(warningColor),
               ),
             ],

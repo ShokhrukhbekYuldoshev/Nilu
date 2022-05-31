@@ -33,7 +33,7 @@ class EditUserBottomSheet extends StatelessWidget {
                   autofocus: true,
                   decoration: InputDecoration(
                     contentPadding: inputPadding,
-                    hintText: 'Enter new $info',
+                    hintText: info,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
@@ -56,10 +56,10 @@ class EditUserBottomSheet extends StatelessWidget {
                       _profileController.updateUserData();
                       Navigator.pop(context);
                     } else {
-                      errorSnackbar('Please enter a new $info');
+                      errorSnackbar('fill_required_fields'.tr);
                     }
                   },
-                  text: 'Save',
+                  text: 'save'.tr,
                 )
               ],
             ),

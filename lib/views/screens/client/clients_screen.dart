@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/utils/preferences.dart';
+import 'package:nilu/views/widgets/dialogs/sort_client_dialog.dart';
 import 'package:nilu/views/widgets/search_filter_icon.dart';
 import '../../widgets/bottomsheets/client_info_bottom_sheet.dart';
 import '../../../controllers/client_controller.dart';
@@ -34,9 +35,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
-          'Clients',
-        ),
+        title: Text('clients'.tr),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -72,7 +71,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                           fillColor: Preferences.getTheme()
                               ? darkGrayColor
                               : gray100Color,
-                          hintText: 'Search name',
+                          hintText: 'search'.tr,
                           hintStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(4),
@@ -100,70 +99,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                         showDialog(
                           context: context,
                           builder: (_) {
-                            return AlertDialog(
-                              title: Text(
-                                'Sort by',
-                                style: h5(
-                                  Theme.of(context).textTheme.bodyText1!.color,
-                                ),
-                              ),
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  RadioListTile(
-                                    activeColor: Preferences.getTheme()
-                                        ? primaryLightColor
-                                        : primaryColor,
-                                    contentPadding: const EdgeInsets.all(0),
-                                    title: const Text('Name'),
-                                    value: 'name',
-                                    groupValue:
-                                        _clientController.sortCategory.value,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _clientController
-                                            .sort(value.toString());
-                                        Navigator.pop(context);
-                                      });
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    activeColor: Preferences.getTheme()
-                                        ? primaryLightColor
-                                        : primaryColor,
-                                    contentPadding: const EdgeInsets.all(0),
-                                    title: const Text('Debt'),
-                                    value: 'debt',
-                                    groupValue:
-                                        _clientController.sortCategory.value,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _clientController
-                                            .sort(value.toString());
-                                        Navigator.pop(context);
-                                      });
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    activeColor: Preferences.getTheme()
-                                        ? primaryLightColor
-                                        : primaryColor,
-                                    contentPadding: const EdgeInsets.all(0),
-                                    title: const Text('Date created'),
-                                    value: 'date',
-                                    groupValue:
-                                        _clientController.sortCategory.value,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _clientController
-                                            .sort(value.toString());
-                                        Navigator.pop(context);
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                            );
+                            return const SortClientDialog();
                           },
                         );
                       },
@@ -175,7 +111,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                 child: _clientController.clients.isEmpty
                     ? Center(
                         child: Text(
-                          'No clients',
+                          'not_found'.tr,
                           style: bodyText(
                             Theme.of(context).textTheme.bodyText2!.color,
                           ),
@@ -259,7 +195,8 @@ class _ClientsScreenState extends State<ClientsScreen> {
                             ),
                             subtitle: client.debt > 0
                                 ? Text(
-                                    'Debt: ${formatCurrency(client.debt, _profileController.user['mainCurrency'])}',
+                                    'debt'.tr +
+                                        ': ${formatCurrency(client.debt, _profileController.user['mainCurrency'])}',
                                     style: const TextStyle(
                                         fontSize: 14, color: redColor),
                                   )

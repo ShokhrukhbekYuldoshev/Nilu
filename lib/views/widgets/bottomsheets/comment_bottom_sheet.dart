@@ -22,7 +22,7 @@ class CommentBottomSheet extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Comment',
+                Text('comment'.tr,
                     style: h5(
                       Theme.of(context).textTheme.bodyText1!.color,
                     )),
@@ -32,7 +32,7 @@ class CommentBottomSheet extends StatelessWidget {
                   autofocus: true,
                   decoration: InputDecoration(
                     contentPadding: inputPadding,
-                    hintText: 'Enter your comment',
+                    hintText: 'enter_comment'.tr,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
@@ -48,7 +48,7 @@ class CommentBottomSheet extends StatelessWidget {
                     _cartController.setComment(_commentController.text.trim());
                     Navigator.pop(context);
                   },
-                  text: 'Save',
+                  text: 'save'.tr,
                 )
               ],
             ),

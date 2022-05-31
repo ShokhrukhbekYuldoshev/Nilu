@@ -40,7 +40,7 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
             ),
           ),
           Text(
-            'Stock in/out',
+            'stock_in_out'.tr,
             style: h6(
               Theme.of(context).textTheme.bodyText1!.color,
             ),
@@ -174,7 +174,7 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
                   color: iconGrayColor,
                   size: 18,
                 ),
-                labelText: 'Total stock',
+                labelText: 'total_stock'.tr,
                 labelStyle: TextStyle(
                   fontSize: 14,
                   color: Theme.of(context).textTheme.bodyText2!.color,
@@ -191,7 +191,7 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
           children: [
             Expanded(
               child: SecondaryButton(
-                text: 'Cancel',
+                text: 'cancel'.tr,
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -200,7 +200,7 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
             const SizedBox(width: 8),
             Expanded(
               child: PrimaryButton(
-                text: 'Save',
+                text: 'save'.tr,
                 onPressed: () {
                   _productController.updateProductCount(
                     widget.product,

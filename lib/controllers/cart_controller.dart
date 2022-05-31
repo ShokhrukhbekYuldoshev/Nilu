@@ -16,30 +16,31 @@ class CartController extends GetxController {
 
   final productsPriceMap = [].obs;
 
-  double getPrice(String id) {
-    try {
-      return productsPriceMap
-          .firstWhere((element) => element['id'] == id)['price'];
-    } catch (e) {
-      return 0;
-    }
+  double getPrice(String productId) {
+    return productsPriceMap
+        .firstWhere((element) => element['id'] == productId)['price'];
   }
 
   setProducts(List<Product> products, List<dynamic> productsMap) {
-    var uniqueProduct = products.toSet().toList();
-    for (var product in uniqueProduct) {
+    for (var product in products) {
       for (int i = 0; i < productsPriceMap.length; i++) {
         if (productsPriceMap[i]['id'] == product.id) {
           productsPriceMap.remove(productsPriceMap[i]);
         }
       }
-      productsPriceMap.add({
-        'id': product.id,
-        'price': productsMap
-            .firstWhere((element) => element['id'] == product.id)['price'],
-      });
+      try {
+        productsPriceMap.add({
+          'id': product.id,
+          'price': productsMap
+              .firstWhere((element) => element['id'] == product.id)['price'],
+        });
+      } catch (e) {
+        productsPriceMap.add({
+          'id': product.id,
+          'price': product.price,
+        });
+      }
     }
-
     _products.value = products;
   }
 

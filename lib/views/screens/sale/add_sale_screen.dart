@@ -64,7 +64,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
     String barcodeScanRes;
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+          '#ff6666', 'cancel'.tr, true, ScanMode.BARCODE);
 
       if (barcodeScanRes != "-1") {
         Product product = _productController.getProudctByCode(barcodeScanRes);
@@ -79,14 +79,16 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                   : _cartController.getPrice(product.id),
             );
           } else {
-            errorSnackbar('You can not sell more than ${product.quantity}');
+            errorSnackbar('not_enough'.tr);
           }
         } else {
-          errorSnackbar('Product with code $barcodeScanRes not found');
+          errorSnackbar(
+            'not_found'.tr + ". " + 'code'.tr + ": " + barcodeScanRes,
+          );
         }
       }
     } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
+      barcodeScanRes = 'something_went_wrong'.tr;
     }
     if (!mounted) return;
   }
@@ -104,8 +106,8 @@ class _AddSaleScreenState extends State<AddSaleScreen>
           foregroundColor:
               Preferences.getTheme() ? primaryUltraLightColor : textDarkColor,
           elevation: 0,
-          title: const Text(
-            'Select items',
+          title: Text(
+            'select_items'.tr,
           ),
         ),
         bottomNavigationBar: BottomAppBar(
@@ -129,7 +131,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                       ),
                     ),
                     Text(
-                      ' selected',
+                      ' ' + 'selected'.tr,
                       style: bodyText(const Color(0xFFA9A9A9)),
                     ),
                   ],
@@ -146,10 +148,10 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                         : () {
                             Navigator.pushNamed(context, '/cart');
                           },
-                    child: const Text(
-                      'Done',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    child: Text(
+                      'done'.tr,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -185,7 +187,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                                   },
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(0),
-                                    hintText: 'Search name',
+                                    hintText: 'search'.tr,
                                     hintStyle: bodyText(iconGrayColor),
                                     prefixIcon: const Icon(
                                       Icons.search,
@@ -248,7 +250,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
               child: _productController.filteredProducts.isEmpty
                   ? Center(
                       child: Text(
-                        'No products found',
+                        'not_found'.tr,
                         style: bodyText(
                             Theme.of(context).textTheme.bodyText2!.color),
                       ),
@@ -298,13 +300,13 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                                       ),
                                       const SizedBox(height: 20),
                                       Text(
-                                        'You applied filter',
+                                        'you_applied_filter'.tr,
                                         style: bodyText(textMutedColor),
                                       ),
                                       const SizedBox(height: 6),
                                       TextButton(
                                         child: Text(
-                                          'Show all items',
+                                          'show_all'.tr,
                                           style: bodyText(
                                             Preferences.getTheme()
                                                 ? primaryLightColor

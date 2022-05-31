@@ -86,7 +86,7 @@ class ProductInfoBottomSheet extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'Category: ' + product.category!,
+                          'category'.tr + ': ' + product.category!,
                           style: bodyText(
                               Theme.of(context).textTheme.bodyText2!.color),
                         ),
@@ -96,8 +96,8 @@ class ProductInfoBottomSheet extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                'Code:',
+                              Text(
+                                'code'.tr + ':',
                               ),
                               const SizedBox(width: 4),
                               Flexible(
@@ -120,8 +120,8 @@ class ProductInfoBottomSheet extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                'Stock:',
+                              Text(
+                                'in_stock'.tr + ':',
                               ),
                               const SizedBox(width: 4),
                               Flexible(
@@ -141,8 +141,8 @@ class ProductInfoBottomSheet extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                'Price:',
+                              Text(
+                                'price'.tr + ':',
                               ),
                               const SizedBox(width: 4),
                               Flexible(
@@ -170,7 +170,7 @@ class ProductInfoBottomSheet extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SecondaryButton(
-                      text: 'Stock in/out',
+                      text: 'stock_in_out'.tr,
                       onPressed: () {
                         Navigator.pop(context);
                         showDialog(
@@ -188,7 +188,7 @@ class ProductInfoBottomSheet extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SecondaryButton(
-                      text: 'Edit product',
+                      text: 'edit_product'.tr,
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
@@ -210,11 +210,10 @@ class ProductInfoBottomSheet extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (context) => DoubleActionDialog(
-                        title: 'Delete product',
-                        content:
-                            'Are you sure you want to delete this product?',
-                        confirm: 'Delete',
-                        cancel: 'Cancel',
+                        title: 'delete_product'.tr,
+                        content: 'delete_product_confirmation'.tr,
+                        confirm: 'delete'.tr,
+                        cancel: 'cancel'.tr,
                         onConfirm: () {
                           _productController.deleteProduct(product);
                           Navigator.pop(context);
@@ -235,10 +234,10 @@ class ProductInfoBottomSheet extends StatelessWidget {
                       _cartController.updateCart(product, 1, product.price);
                       Navigator.pushNamed(context, '/cart');
                     } else {
-                      errorSnackbar('Quantity is zero');
+                      errorSnackbar('not_enough'.tr);
                     }
                   },
-                  text: 'Make Sale',
+                  text: 'make_sale'.tr,
                 ),
               ),
             ],

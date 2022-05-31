@@ -48,10 +48,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
     String barcodeScanRes;
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+          '#ff6666', 'cancel'.tr, true, ScanMode.BARCODE);
       _codeController.text = barcodeScanRes;
     } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
+      barcodeScanRes = 'something_went_wrong'.tr;
     }
     if (!mounted) return;
   }
@@ -100,7 +100,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   },
                 ),
           title: Text(
-            'Edit Product',
+            'edit_product'.tr,
             style: TextStyle(
               color: Preferences.getTheme()
                   ? primaryUltraLightColor
@@ -121,14 +121,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             showDialog(
                               context: context,
                               builder: (_) => AlertDialog(
-                                title: const Text('Select Image Source'),
+                                title: Text('select_image_source'.tr),
                                 content: SizedBox(
                                   height: 180,
                                   child: Column(
                                     children: [
                                       ListTile(
                                         leading: const Icon(Icons.collections),
-                                        title: const Text('Gallery'),
+                                        title: Text('gallery'.tr),
                                         onTap: () async {
                                           imageFile =
                                               await pickImageFromGallery();
@@ -144,7 +144,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       ),
                                       ListTile(
                                         leading: const Icon(Icons.camera),
-                                        title: const Text('Camera'),
+                                        title: Text('camera'.tr),
                                         onTap: () async {
                                           imageFile =
                                               await pickImageFromCamera();
@@ -160,7 +160,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       ),
                                       ListTile(
                                         leading: const Icon(Icons.close),
-                                        title: const Text('Delete'),
+                                        title: Text('delete'.tr),
                                         onTap: () {
                                           setState(() {
                                             imageFile = null;
@@ -238,7 +238,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 10,
                             ),
-                            labelText: 'Name*',
+                            labelText: 'name'.tr + '*',
                             labelStyle: bodyText(textPlaceholderColor),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(4),
@@ -266,7 +266,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                   contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 10,
                                   ),
-                                  labelText: 'Code',
+                                  labelText: 'code'.tr,
                                   labelStyle: bodyText(textPlaceholderColor),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(4),
@@ -319,7 +319,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 10,
                             ),
-                            labelText: 'Category (optional)',
+                            labelText: 'category'.tr,
                             suffixIcon: const Icon(Icons.arrow_drop_down),
                             labelStyle: bodyText(textPlaceholderColor),
                             border: OutlineInputBorder(
@@ -340,11 +340,12 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       const SizedBox(height: 24),
                       Row(
                         children: [
-                          Text('Price:',
-                              style: bodyText(Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .color)),
+                          Text(
+                            'price'.tr + ':',
+                            style: bodyText(
+                              Theme.of(context).textTheme.bodyText1!.color,
+                            ),
+                          ),
                           const Spacer(),
                           Container(
                             constraints: const BoxConstraints(
@@ -382,7 +383,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SimpleDialog(
-                                        title: const Text('Currency'),
+                                        title: Text('currency'.tr),
                                         children: [
                                           Column(
                                             children: [
@@ -443,7 +444,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       Row(
                         children: [
                           Text(
-                            'Total stock:',
+                            'total_stock'.tr + ':',
                             style: bodyText(warningColor),
                           ),
                           const Spacer(),
@@ -486,30 +487,28 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             child: SizedBox(
                               height: 44,
                               child: PrimaryButton(
-                                text: 'Save product',
+                                text: 'save'.tr,
                                 onPressed: () async {
                                   try {
                                     if (_nameController.text.isEmpty) {
-                                      errorSnackbar('Product name is required');
+                                      errorSnackbar('product_name_required'.tr);
                                     } else if (_priceController.text.isEmpty) {
                                       errorSnackbar(
-                                          'Product price is required');
+                                          'product_price_required'.tr);
                                     } else if (_quantityController
                                         .text.isEmpty) {
                                       errorSnackbar(
-                                          'Product quantity is required');
+                                          'product_quantity_required'.tr);
                                     } else if (double.parse(_priceController
                                             .text
                                             .replaceAll(',', '')) <
                                         0) {
-                                      errorSnackbar(
-                                          'Product price cannot be negative');
+                                      errorSnackbar('price_negative'.tr);
                                     } else if (int.parse(_quantityController
                                             .text
                                             .replaceAll(',', '')) <
                                         0) {
-                                      errorSnackbar(
-                                          'Product quantity cannot be negative');
+                                      errorSnackbar('quantity_negative'.tr);
                                     } else {
                                       setState(() {
                                         isUploading = true;
@@ -553,11 +552,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       });
 
                                       Navigator.pop(context);
-                                      successSnackbar(
-                                          'Product updated successfully');
+                                      successSnackbar('product_updated'.tr);
                                     }
                                   } catch (e) {
-                                    errorSnackbar('Something went wrong');
+                                    errorSnackbar('something_went_wrong'.tr);
                                   }
                                 },
                               ),

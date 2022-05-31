@@ -34,7 +34,7 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Discount',
+                  'discount'.tr,
                   style: h5(
                     Theme.of(context).textTheme.bodyText1!.color,
                   ),
@@ -47,7 +47,7 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                   autofocus: true,
                   decoration: InputDecoration(
                     contentPadding: inputPadding,
-                    hintText: 'Enter your discount',
+                    hintText: 'enter_discount'.tr,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
@@ -108,7 +108,7 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                     }
                     Navigator.pop(context);
                   },
-                  text: 'Save',
+                  text: 'save'.tr,
                 )
               ],
             ),

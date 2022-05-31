@@ -59,7 +59,7 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
                 });
               },
               decoration: InputDecoration(
-                hintText: 'Search',
+                hintText: 'search'.tr,
                 contentPadding: const EdgeInsets.all(0),
                 hintStyle: bodyText(iconGrayColor),
                 prefixIcon: const Icon(
@@ -139,7 +139,7 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
                             );
                             await _profileController.updateUserData();
                             var url = Uri.parse(
-                              'https://v6.exchangerate-api.com/v6/$apiKey/pair/${_profileController.user['secondaryCurrency']}/${_profileController.user['mainCurrency']}',
+                              'https://v6.exchangerate-api.com/v6/$exchangeApiKey/pair/${_profileController.user['secondaryCurrency']}/${_profileController.user['mainCurrency']}',
                             );
                             var response = await http.get(url);
                             if (response.statusCode == 200) {

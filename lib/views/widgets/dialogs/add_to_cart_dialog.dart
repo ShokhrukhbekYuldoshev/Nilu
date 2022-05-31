@@ -50,7 +50,7 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
     return AlertDialog(
       title: Column(
         children: [
-          Text('How many do you want to sell?',
+          Text('select_quantity'.tr,
               style: h6(
                 Theme.of(context).textTheme.bodyText1!.color,
               )),
@@ -142,30 +142,56 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
           const SizedBox(height: 36),
           SizedBox(
             height: 44,
-            child: TextField(
-              inputFormatters: [ThousandsFormatter(allowFraction: true)],
-              controller: _priceController,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                setState(() {
-                  try {
-                    secondaryCurrencyValue =
-                        double.parse(value.replaceAll(',', '')) /
-                            Preferences.getExchangeRateResult();
-                  } catch (e) {
-                    secondaryCurrencyValue = 0;
-                  }
-                });
-              },
-              decoration: InputDecoration(
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                labelText: 'Price per item',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color:
+                        Preferences.getTheme() ? lightGrayColor : gray200Color,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4),
+                      bottomLeft: Radius.circular(4),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '1x = ',
+                      style: bodyText(
+                          Theme.of(context).textTheme.bodyText2!.color),
+                    ),
+                  ),
                 ),
-                suffixText: _profileController.user['mainCurrency'],
-              ),
+                Expanded(
+                  child: TextField(
+                    inputFormatters: [ThousandsFormatter(allowFraction: true)],
+                    controller: _priceController,
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        try {
+                          secondaryCurrencyValue =
+                              double.parse(value.replaceAll(',', '')) /
+                                  Preferences.getExchangeRateResult();
+                        } catch (e) {
+                          secondaryCurrencyValue = 0;
+                        }
+                      });
+                    },
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 0),
+                      border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(4),
+                        bottomRight: Radius.circular(4),
+                      )),
+                      suffixText: _profileController.user['mainCurrency'],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 10),
@@ -180,7 +206,7 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
           children: [
             Expanded(
               child: SecondaryButton(
-                text: 'Cancel',
+                text: 'cancel'.tr,
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -202,11 +228,10 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
 
                     Navigator.of(context).pop();
                   } else {
-                    errorSnackbar(
-                        'You can not sell more than ${widget.product.quantity! + widget.addition} items');
+                    errorSnackbar('not_enough'.tr);
                   }
                 },
-                text: 'Confirm',
+                text: 'confirm'.tr,
               ),
             ),
           ],

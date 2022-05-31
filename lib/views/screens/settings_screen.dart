@@ -49,7 +49,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: const Text('Settings'),
+          title: Text('settings'.tr),
           leading: isUploading
               ? Container()
               : IconButton(
@@ -69,10 +69,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       showDialog(
                         context: context,
                         builder: (_) => DoubleActionDialog(
-                          title: 'Logout',
-                          content: 'Are you sure you want to logout?',
-                          confirm: 'Logout',
-                          cancel: 'Cancel',
+                          title: 'logout'.tr,
+                          content: 'logout_confirmation'.tr,
+                          confirm: 'logout'.tr,
+                          cancel: 'cancel'.tr,
                           onConfirm: () {
                             setState(() {
                               Preferences.setTheme(false);
@@ -113,7 +113,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 showDialog(
                                   context: context,
                                   builder: (_) => AlertDialog(
-                                    title: const Text('Select Image Source'),
+                                    title: Text('select_image_source'.tr),
                                     content: SizedBox(
                                       height: 180,
                                       child: Column(
@@ -121,7 +121,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                           ListTile(
                                             leading:
                                                 const Icon(Icons.collections),
-                                            title: const Text('Gallery'),
+                                            title: Text('gallery'.tr),
                                             onTap: () async {
                                               setState(() {
                                                 isUploading = true;
@@ -158,7 +158,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                           ),
                                           ListTile(
                                             leading: const Icon(Icons.camera),
-                                            title: const Text('Camera'),
+                                            title: Text('camera'.tr),
                                             onTap: () async {
                                               setState(() {
                                                 isUploading = true;
@@ -195,7 +195,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                           ),
                                           ListTile(
                                             leading: const Icon(Icons.close),
-                                            title: const Text('Delete'),
+                                            title: Text('delete'.tr),
                                             onTap: () {
                                               setState(() {
                                                 isUploading = true;
@@ -286,8 +286,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           onTap: () {
                             showModalBottomSheet(
                               context: context,
-                              builder: (_) => const EditUserBottomSheet(
-                                info: 'name',
+                              builder: (_) => EditUserBottomSheet(
+                                info: 'name'.tr,
                               ),
                             );
                           },
@@ -295,7 +295,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Name',
+                                'name'.tr,
                                 style: bodyText(
                                   Theme.of(context).textTheme.bodyText2!.color,
                                 ),
@@ -332,8 +332,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           onTap: () {
                             showModalBottomSheet(
                               context: context,
-                              builder: (_) => const EditUserBottomSheet(
-                                info: 'business',
+                              builder: (_) => EditUserBottomSheet(
+                                info: 'business_name'.tr,
                               ),
                             );
                           },
@@ -342,7 +342,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Business',
+                                'business_name'.tr,
                                 style: bodyText(Theme.of(context)
                                     .textTheme
                                     .bodyText2!
@@ -380,7 +380,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Phone',
+                              'phone'.tr,
                               style: bodyText(
                                   Theme.of(context).textTheme.bodyText2!.color),
                             ),
@@ -409,7 +409,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Main currency',
+                              'main_currency'.tr,
                               style: bodyText(
                                   Theme.of(context).textTheme.bodyText2!.color),
                             ),
@@ -462,7 +462,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Secondary currency',
+                                'secondary_currency'.tr,
                                 style: bodyText(Theme.of(context)
                                     .textTheme
                                     .bodyText2!
@@ -504,7 +504,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Notifications',
+                              'notifications'.tr,
                               style: bodyText(
                                   Theme.of(context).textTheme.bodyText2!.color),
                             ),
@@ -530,7 +530,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Dark mode',
+                              'dark_mode'.tr,
                               style: bodyText(
                                 Theme.of(context).textTheme.bodyText2!.color,
                               ),
@@ -562,34 +562,121 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Language',
-                              style: bodyText(
-                                  Theme.of(context).textTheme.bodyText2!.color),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'English',
-                                  style: bodyText(
-                                    Theme.of(context)
-                                        .textTheme
-                                        .bodyText1!
-                                        .color,
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (_) => SimpleDialog(
+                                title: Text(
+                                  'select_language'.tr,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                const SizedBox(width: 18),
-                                const Icon(
-                                  Icons.unfold_more,
-                                  size: 20,
-                                  color: gray400Color,
-                                ),
-                              ],
-                            )
-                          ],
+                                children: [
+                                  SimpleDialogOption(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                      vertical: 12,
+                                    ),
+                                    onPressed: () {
+                                      Preferences.setLanguage('english');
+                                      Get.updateLocale(
+                                        const Locale('en', 'US'),
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'English',
+                                      style: bodyText(
+                                        Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .color,
+                                      ),
+                                    ),
+                                  ),
+                                  SimpleDialogOption(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                      vertical: 12,
+                                    ),
+                                    onPressed: () {
+                                      Preferences.setLanguage('russian');
+                                      Get.updateLocale(
+                                        const Locale('ru', 'RU'),
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'Русский',
+                                      style: bodyText(
+                                        Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .color,
+                                      ),
+                                    ),
+                                  ),
+                                  SimpleDialogOption(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                      vertical: 12,
+                                    ),
+                                    onPressed: () {
+                                      Preferences.setLanguage('uzbek');
+                                      Get.updateLocale(
+                                        const Locale('uz', 'UZ'),
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'O\'zbekcha',
+                                      style: bodyText(
+                                        Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .color,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'language'.tr,
+                                style: bodyText(Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .color),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '${Preferences.getLanguage()}'.tr,
+                                    style: bodyText(
+                                      Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .color,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 18),
+                                  const Icon(
+                                    Icons.unfold_more,
+                                    size: 20,
+                                    color: gray400Color,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],

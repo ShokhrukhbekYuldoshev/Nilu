@@ -34,8 +34,8 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
           {
             'amount': payment.amount,
             'currency': payment.currency,
-            'controller':
-                TextEditingController(text: payment.amount.toString()),
+            'controller': TextEditingController(
+                text: formatCurrencyWithoutSymbol(payment.amount)),
           },
         );
       }
@@ -65,7 +65,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Payment',
+                      'payment'.tr,
                       style: h5(
                         Theme.of(context).textTheme.bodyText1!.color,
                       ),
@@ -92,7 +92,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Remaining: ',
+                        'remaining'.tr + ': ',
                         style: bodyText(
                           _cartController.remaining > 0
                               ? warningColor
@@ -187,7 +187,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                               showDialog<String>(
                                 context: context,
                                 builder: (BuildContext context) => SimpleDialog(
-                                  title: const Text('Currency'),
+                                  title: Text('currency'.tr),
                                   children: [
                                     Column(
                                       children: [
@@ -297,7 +297,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                           ),
                         ),
                         child: Text(
-                          'Add another',
+                          'add_another'.tr,
                           style: h6(
                             Preferences.getTheme()
                                 ? whiteColor
@@ -342,7 +342,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
 
                     Navigator.pop(context);
                   },
-                  text: "Save payment",
+                  text: "save".tr,
                 )
               ],
             ),

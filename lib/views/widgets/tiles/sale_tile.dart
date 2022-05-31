@@ -111,9 +111,9 @@ class SaleTile extends StatelessWidget {
                           warningColor,
                         ),
                       ),
-                      const Text(
-                        'In stock',
-                        style: TextStyle(
+                      Text(
+                        'in_stock'.tr,
+                        style: const TextStyle(
                           fontSize: 14,
                           color: warningColor,
                         ),

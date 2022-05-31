@@ -82,7 +82,7 @@ const inputPadding = EdgeInsets.symmetric(vertical: 8, horizontal: 10);
 //* Snackbar
 SnackbarController errorSnackbar(String message) {
   return Get.snackbar(
-    'Error',
+    'error'.tr,
     message,
     icon: const Icon(
       Icons.error,
@@ -97,7 +97,7 @@ SnackbarController errorSnackbar(String message) {
 
 SnackbarController successSnackbar(String message) {
   return Get.snackbar(
-    'Success',
+    'success'.tr,
     message,
     icon: const Icon(
       Icons.check,

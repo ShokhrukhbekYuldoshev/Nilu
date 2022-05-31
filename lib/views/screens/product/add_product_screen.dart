@@ -43,10 +43,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
     String barcodeScanRes;
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+          '#ff6666', 'cancel'.tr, true, ScanMode.BARCODE);
       _codeController.text = barcodeScanRes;
     } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
+      barcodeScanRes = 'something_went_wrong'.tr;
     }
     if (!mounted) return;
   }
@@ -81,7 +81,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   },
                 ),
           title: Text(
-            'New Product',
+            'new_product'.tr,
             style: TextStyle(
               color: Preferences.getTheme()
                   ? primaryUltraLightColor
@@ -102,7 +102,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                               showDialog(
                                 context: context,
                                 builder: (_) => AlertDialog(
-                                  title: const Text('Select Image Source'),
+                                  title: Text('select_image_source'.tr),
                                   content: SizedBox(
                                     height: 180,
                                     child: Column(
@@ -110,7 +110,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                         ListTile(
                                           leading:
                                               const Icon(Icons.collections),
-                                          title: const Text('Gallery'),
+                                          title: Text('gallery'.tr),
                                           onTap: () async {
                                             imageFile =
                                                 await pickImageFromGallery();
@@ -126,7 +126,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                         ),
                                         ListTile(
                                           leading: const Icon(Icons.camera),
-                                          title: const Text('Camera'),
+                                          title: Text('camera'.tr),
                                           onTap: () async {
                                             imageFile =
                                                 await pickImageFromCamera();
@@ -142,7 +142,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                         ),
                                         ListTile(
                                           leading: const Icon(Icons.close),
-                                          title: const Text('Delete'),
+                                          title: Text('delete'.tr),
                                           onTap: () {
                                             setState(() {
                                               imageFile = null;
@@ -188,7 +188,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 10,
                             ),
-                            labelText: 'Name*',
+                            labelText: 'name'.tr + '*',
                             labelStyle: bodyText(textPlaceholderColor),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(4),
@@ -216,7 +216,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 10,
                                   ),
-                                  labelText: 'Code',
+                                  labelText: 'code'.tr,
                                   labelStyle: bodyText(textPlaceholderColor),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(4),
@@ -269,7 +269,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 10,
                             ),
-                            labelText: 'Category',
+                            labelText: 'category'.tr,
                             suffixIcon: const Icon(Icons.arrow_drop_down),
                             labelStyle: bodyText(textPlaceholderColor),
                             border: OutlineInputBorder(
@@ -291,7 +291,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       Row(
                         children: [
                           Text(
-                            'Price:',
+                            'price'.tr + ':',
                             style: bodyText(
                               Theme.of(context).textTheme.bodyText1!.color,
                             ),
@@ -333,7 +333,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SimpleDialog(
-                                        title: const Text('Currency'),
+                                        title: Text('currency'.tr),
                                         children: [
                                           Column(
                                             children: [
@@ -394,7 +394,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       Row(
                         children: [
                           Text(
-                            'Total stock:',
+                            'total_stock'.tr + ':',
                             style: bodyText(warningColor),
                           ),
                           const Spacer(),
@@ -437,30 +437,28 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             child: SizedBox(
                               height: 44,
                               child: PrimaryButton(
-                                text: 'Save product',
+                                text: 'save'.tr,
                                 onPressed: () async {
                                   try {
                                     if (_nameController.text.isEmpty) {
-                                      errorSnackbar('Product name is required');
+                                      errorSnackbar('product_name_required'.tr);
                                     } else if (_priceController.text.isEmpty) {
                                       errorSnackbar(
-                                          'Product price is required');
+                                          'product_price_required'.tr);
                                     } else if (_quantityController
                                         .text.isEmpty) {
                                       errorSnackbar(
-                                          'Product quantity is required');
+                                          'product_quantity_required'.tr);
                                     } else if (double.parse(_priceController
                                             .text
                                             .replaceAll(',', '')) <
                                         0) {
-                                      errorSnackbar(
-                                          'Product price cannot be negative');
+                                      errorSnackbar('price_negative'.tr);
                                     } else if (int.parse(_quantityController
                                             .text
                                             .replaceAll(',', '')) <
                                         0) {
-                                      errorSnackbar(
-                                          'Product quantity cannot be negative');
+                                      errorSnackbar('quantity_negative'.tr);
                                     } else {
                                       setState(() {
                                         isUploading = true;
@@ -511,8 +509,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                       });
                                       Navigator.pop(context);
 
-                                      successSnackbar(
-                                          'Product added successfully');
+                                      successSnackbar('product_added'.tr);
                                     }
                                   } catch (e) {
                                     errorSnackbar(e.toString());

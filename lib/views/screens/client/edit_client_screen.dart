@@ -69,7 +69,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                   },
                 ),
           title: Text(
-            'Edit Client',
+            'edit_client'.tr,
             style: TextStyle(
               color: Preferences.getTheme()
                   ? primaryUltraLightColor
@@ -91,14 +91,14 @@ class _EditClientScreenState extends State<EditClientScreen> {
                             showDialog(
                               context: context,
                               builder: (_) => AlertDialog(
-                                title: const Text('Select Image Source'),
+                                title: Text('select_image_source'.tr),
                                 content: SizedBox(
                                   height: 180,
                                   child: Column(
                                     children: [
                                       ListTile(
                                         leading: const Icon(Icons.collections),
-                                        title: const Text('Gallery'),
+                                        title: Text('gallery'.tr),
                                         onTap: () async {
                                           imageFile =
                                               await pickImageFromGallery();
@@ -114,7 +114,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                       ),
                                       ListTile(
                                         leading: const Icon(Icons.camera),
-                                        title: const Text('Camera'),
+                                        title: Text('camera'.tr),
                                         onTap: () async {
                                           imageFile =
                                               await pickImageFromCamera();
@@ -130,7 +130,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                       ),
                                       ListTile(
                                         leading: const Icon(Icons.close),
-                                        title: const Text('Delete'),
+                                        title: Text('delete'.tr),
                                         onTap: () {
                                           setState(() {
                                             imageFile = null;
@@ -210,7 +210,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Name*',
+                          labelText: 'name'.tr + '*',
                           counterText: '',
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
@@ -230,7 +230,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Phone',
+                          labelText: 'phone'.tr,
                           counterText: '',
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
@@ -249,7 +249,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Note',
+                          labelText: 'note'.tr,
                           counterText: '',
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
@@ -269,7 +269,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                               onPressed: () async {
                                 try {
                                   if (_nameController.text.isEmpty) {
-                                    errorSnackbar('Client name is required');
+                                    errorSnackbar('fill_required_fields'.tr);
                                   } else {
                                     setState(() {
                                       isUploading = true;
@@ -302,11 +302,11 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                     Navigator.pop(context);
                                     Navigator.pop(context);
                                     successSnackbar(
-                                      'Client updated successfully',
+                                      'client_updated'.tr,
                                     );
                                   }
                                 } catch (e) {
-                                  errorSnackbar('Something went wrong');
+                                  errorSnackbar('something_went_wrong'.tr);
                                   Navigator.pop(context);
                                 }
                               },
@@ -317,7 +317,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 14),
                                 child: Text(
-                                  'Update client',
+                                  'save'.tr,
                                   style: bodyText(
                                     whiteColor,
                                   ),

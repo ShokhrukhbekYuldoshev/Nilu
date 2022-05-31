@@ -55,9 +55,9 @@ class RegisterScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      const Text(
-                        'Account info',
-                        style: TextStyle(
+                      Text(
+                        'account_info'.tr,
+                        style: const TextStyle(
                           color: textDarkColor,
                           fontSize: 24,
                           fontWeight: FontWeight.w600,
@@ -97,7 +97,7 @@ class RegisterScreen extends StatelessWidget {
                   autofocus: true,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                    labelText: 'Your name*',
+                    labelText: 'name'.tr + '*',
                     counterText: '',
                     hintStyle: bodyText(
                       textPlaceholderColor,
@@ -120,7 +120,7 @@ class RegisterScreen extends StatelessWidget {
                   controller: _businessController,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                    labelText: 'Business name*',
+                    labelText: 'business_name'.tr + '*',
                     counterText: '',
                     hintStyle: bodyText(
                       textPlaceholderColor,
@@ -165,7 +165,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     hintText: _authController.mainCurrency.value == ""
-                        ? 'Main currency*'
+                        ? 'main_currency'.tr + '*'
                         : _authController.mainCurrency.value,
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
@@ -208,7 +208,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     hintText: _authController.secondaryCurrency.value == ""
-                        ? 'Secondary currency'
+                        ? 'secondary_currency'.tr
                         : _authController.secondaryCurrency.value,
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
@@ -229,7 +229,7 @@ class RegisterScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: PrimaryButton(
-                  text: 'Save and continue',
+                  text: 'save_and_continue'.tr,
                   onPressed: () {
                     if (_nameController.text != '' &&
                         _businessController.text != '' &&
@@ -244,7 +244,7 @@ class RegisterScreen extends StatelessWidget {
                       );
                       _authController.mainCurrency.value = '';
                     } else {
-                      errorSnackbar('Please fill all fields');
+                      errorSnackbar('fill_required_fields'.tr);
                     }
                   },
                 ),

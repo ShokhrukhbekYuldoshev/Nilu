@@ -66,7 +66,7 @@ class _SalesScreenState extends State<SalesScreen> {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: const Text('All sales'),
+        title: Text('all_sales'.tr),
         elevation: 0,
       ),
       body: Obx(
@@ -157,10 +157,12 @@ class _SalesScreenState extends State<SalesScreen> {
                             _saleController.filterClients.length ==
                                         _clientController.clients.length ||
                                     _saleController.filterClients.isEmpty
-                                ? 'All clients'
+                                ? 'all_clients'.tr
                                 : _saleController.filterClients.length == 1
-                                    ? '${_saleController.filterClients.length} client'
-                                    : '${_saleController.filterClients.length} clients',
+                                    ? '${_saleController.filterClients.length} ' +
+                                        'client'.tr.toLowerCase()
+                                    : '${_saleController.filterClients.length} ' +
+                                        'clients'.tr.toLowerCase(),
                             style: bodyText(
                               Theme.of(context).textTheme.bodyText2!.color,
                             ),
@@ -194,7 +196,7 @@ class _SalesScreenState extends State<SalesScreen> {
 
                             final String range =
                                 '${DateFormat('dd/MM/yyyy').format(_fromRange.start)} - ${DateFormat('dd/MM/yyyy').format(_fromRange.end)}';
-                            successSnackbar("Date: $range");
+                            successSnackbar('date'.tr + ": $range");
                           }
                         },
                       );
@@ -217,7 +219,7 @@ class _SalesScreenState extends State<SalesScreen> {
                           Text(
                             _saleController.selectedDateRange != null
                                 ? '${DateFormat('dd/MM/yyyy').format(_saleController.selectedDateRange!.start)} - ${DateFormat('dd/MM/yyyy').format(_saleController.selectedDateRange!.end)}'
-                                : 'Any date',
+                                : 'any_date'.tr,
                             style: bodyText(
                               Theme.of(context).textTheme.bodyText2!.color,
                             ),
@@ -236,7 +238,7 @@ class _SalesScreenState extends State<SalesScreen> {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: const Text('Payment amount'),
+                          title: Text('payment'.tr),
                           contentPadding: const EdgeInsets.all(16),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -245,7 +247,7 @@ class _SalesScreenState extends State<SalesScreen> {
                               RadioListTile(
                                 contentPadding: EdgeInsets.zero,
                                 value: 'All',
-                                title: const Text("All"),
+                                title: Text("all".tr),
                                 groupValue: _saleController.saleType.value,
                                 activeColor: Preferences.getTheme()
                                     ? primaryLightColor
@@ -258,7 +260,7 @@ class _SalesScreenState extends State<SalesScreen> {
                               RadioListTile(
                                 contentPadding: EdgeInsets.zero,
                                 value: 'Debt',
-                                title: const Text("Debt"),
+                                title: Text("debt".tr),
                                 groupValue: _saleController.saleType.value,
                                 activeColor: Preferences.getTheme()
                                     ? primaryLightColor
@@ -290,8 +292,8 @@ class _SalesScreenState extends State<SalesScreen> {
                         children: [
                           Text(
                             _saleController.saleType.value == 'All'
-                                ? 'All sales'
-                                : 'Debt',
+                                ? 'all_sales'.tr
+                                : 'debt'.tr,
                             style: bodyText(
                               Theme.of(context).textTheme.bodyText2!.color,
                             ),
@@ -317,7 +319,7 @@ class _SalesScreenState extends State<SalesScreen> {
               child: _saleController.getDatesCount() == 0
                   ? Center(
                       child: Text(
-                        'No sales found',
+                        'not_found'.tr,
                         style: bodyText(textPlaceholderColor),
                       ),
                     )
@@ -352,7 +354,8 @@ class _SalesScreenState extends State<SalesScreen> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'Total: ' +
+                                  'total'.tr +
+                                      ': ' +
                                       formatCurrency(
                                           _saleController.getTotalSalesByDate(
                                             _salesByDate[index]['date'],
@@ -377,11 +380,6 @@ class _SalesScreenState extends State<SalesScreen> {
                                     final _client = _clientController
                                         .getClient(_sale.client);
                                     final _time = _sale.date.toDate();
-                                    // final _products = [];
-                                    // for (final _product in _sale.products) {
-                                    //   _products.add(_productController
-                                    //       .getProduct(_product['id']));
-                                    // }
 
                                     return Container(
                                       color: Preferences.getTheme()
@@ -396,7 +394,8 @@ class _SalesScreenState extends State<SalesScreen> {
                                           Row(
                                             children: [
                                               Text(
-                                                'Reciept: ' +
+                                                'reciept'.tr +
+                                                    ': ' +
                                                     DateFormat(
                                                             "hh:mm a", 'en_US')
                                                         .format(_time),
@@ -426,11 +425,13 @@ class _SalesScreenState extends State<SalesScreen> {
                                                       context: context,
                                                       builder: (context) {
                                                         return DoubleActionDialog(
-                                                          title: 'Delete sale',
+                                                          title:
+                                                              'delete_sale'.tr,
                                                           content:
-                                                              'Are you sure you want to delete this sale?',
-                                                          confirm: 'Delete',
-                                                          cancel: 'Cancel',
+                                                              'delete_sale_confirmation'
+                                                                  .tr,
+                                                          confirm: 'delete'.tr,
+                                                          cancel: 'cancel'.tr,
                                                           onConfirm: () {
                                                             _saleController
                                                                 .deleteSale(
@@ -457,7 +458,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                   PopupMenuItem<String>(
                                                     value: 'Edit',
                                                     child: Text(
-                                                      'Edit',
+                                                      'edit'.tr,
                                                       style: bodyText(
                                                         Theme.of(context)
                                                             .textTheme
@@ -469,7 +470,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                   PopupMenuItem<String>(
                                                     value: 'Delete',
                                                     child: Text(
-                                                      'Delete',
+                                                      'delete'.tr,
                                                       style: bodyText(redColor),
                                                     ),
                                                   ),
@@ -488,13 +489,13 @@ class _SalesScreenState extends State<SalesScreen> {
                                               const SizedBox(width: 8),
                                               Text(
                                                 _sale.client == ''
-                                                    ? 'Unnamed client'
+                                                    ? 'unnamed_client'.tr
                                                     : _clientController
                                                                 .getClient(_sale
                                                                     .client)
                                                                 .id ==
                                                             ''
-                                                        ? "Deleted client"
+                                                        ? 'unnamed_client'.tr
                                                         : _client.name,
                                                 style: bodyText(
                                                     Theme.of(context)
@@ -524,25 +525,14 @@ class _SalesScreenState extends State<SalesScreen> {
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          _productController
-                                                                      .getProduct(
-                                                                          _sale.products[i][
-                                                                              'id'])
-                                                                      .name ==
-                                                                  ''
-                                                              ? 'Deleted product'
-                                                              : _productController
-                                                                  .getProduct(
-                                                                      _sale.products[
-                                                                              i]
-                                                                          [
-                                                                          'id'])
-                                                                  .name,
+                                                          _sale.products[i]
+                                                              ['name'],
                                                           style: bodyText(
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyText1!
-                                                                  .color),
+                                                            Theme.of(context)
+                                                                .textTheme
+                                                                .bodyText1!
+                                                                .color,
+                                                          ),
                                                         ),
                                                         const SizedBox(
                                                             height: 4),
@@ -618,7 +608,8 @@ class _SalesScreenState extends State<SalesScreen> {
                                                   CrossAxisAlignment.end,
                                               children: [
                                                 Text(
-                                                  'Total: ${formatCurrency(_sale.price, _profileController.user['mainCurrency'])}',
+                                                  'total'.tr +
+                                                      ': ${formatCurrency(_sale.price, _profileController.user['mainCurrency'])}',
                                                   style: h6(Theme.of(context)
                                                       .textTheme
                                                       .bodyText1!
@@ -626,7 +617,8 @@ class _SalesScreenState extends State<SalesScreen> {
                                                 ),
                                                 _sale.discount > 0
                                                     ? Text(
-                                                        'Discount: ${formatCurrency(_sale.discount, _profileController.user['mainCurrency'])}',
+                                                        'discount'.tr +
+                                                            ': ${formatCurrency(_sale.discount, _profileController.user['mainCurrency'])}',
                                                         style: bodyText(
                                                           Theme.of(context)
                                                               .textTheme
@@ -637,14 +629,15 @@ class _SalesScreenState extends State<SalesScreen> {
                                                     : const SizedBox(),
                                                 _sale.payment == _sale.price
                                                     ? Text(
-                                                        'Paid',
+                                                        'paid'.tr,
                                                         style: bodyText(
                                                           greenColor,
                                                         ),
                                                       )
                                                     : _sale.payment > 0
                                                         ? Text(
-                                                            'Paid: ${formatCurrency(_sale.payment, _profileController.user['mainCurrency'])}',
+                                                            'paid'.tr +
+                                                                ': ${formatCurrency(_sale.payment, _profileController.user['mainCurrency'])}',
                                                             style: bodyText(
                                                               greenColor,
                                                             ),
@@ -652,7 +645,8 @@ class _SalesScreenState extends State<SalesScreen> {
                                                         : const SizedBox(),
                                                 _sale.debt > 0
                                                     ? Text(
-                                                        'Debt: ${formatCurrency(_sale.debt, _profileController.user['mainCurrency'])}',
+                                                        'debt'.tr +
+                                                            ': ${formatCurrency(_sale.debt, _profileController.user['mainCurrency'])}',
                                                         style: bodyText(
                                                           redColor,
                                                         ),
@@ -691,6 +685,7 @@ class _SalesScreenState extends State<SalesScreen> {
     }
     _cartController.client = _client;
 
+    _cartController.setDiscount(_sale.discount);
     if (_sale.payment > 0) {
       _cartController.addPayment(
         _sale.payment,
@@ -702,13 +697,13 @@ class _SalesScreenState extends State<SalesScreen> {
     _cartController.setProducts(
         _productController.getProductsByIds(_productsById), _sale.products);
 
-    _cartController.setDiscount(_sale.discount);
     Navigator.push(
       context,
       CupertinoPageRoute(
         builder: (context) => EditSaleScreen(
           sale: _sale,
-          title: ('Sale ' +
+          title: ('sale'.tr +
+              ' ' +
               DateFormat("dd.MM.yyyy", 'en_US').format(_time) +
               ' ' +
               DateFormat("hh:mm a", 'en_US').format(_time)),
@@ -748,7 +743,7 @@ class _SelectClientsBottomSheetState extends State<SelectClientsBottomSheet> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Clients',
+                  'clients'.tr,
                   style: h5(Theme.of(context).textTheme.bodyText1!.color),
                 ),
                 GestureDetector(
@@ -839,13 +834,13 @@ class _SelectClientsBottomSheetState extends State<SelectClientsBottomSheet> {
                       _saleController.filterSales();
                       Navigator.pop(context);
                     },
-                    text: 'Reset',
+                    text: 'reset'.tr,
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: PrimaryButton(
-                    text: 'Apply',
+                    text: 'apply'.tr,
                     onPressed: () {
                       _saleController.setFilterClients(localFilterClients);
                       Navigator.pop(context);

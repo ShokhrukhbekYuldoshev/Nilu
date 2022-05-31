@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             DateTime.parse(Preferences.getExchangeRateDate())
                 .isBefore(DateTime.now().subtract(const Duration(days: 1)))) {
           var url = Uri.parse(
-            'https://v6.exchangerate-api.com/v6/$apiKey/pair/${_profileController.user['secondaryCurrency']}/${_profileController.user['mainCurrency']}',
+            'https://v6.exchangerate-api.com/v6/$exchangeApiKey/pair/${_profileController.user['secondaryCurrency']}/${_profileController.user['mainCurrency']}',
           );
           var response = await http.get(url);
           if (response.statusCode == 200) {
@@ -81,10 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Something went wrong'),
+                        Text('something_went_wrong'.tr),
                         TextButton(
                           child: Text(
-                            'Login',
+                            'login'.tr,
                             style: h5(
                               Theme.of(context).textTheme.bodyText1!.color,
                             ),
@@ -159,28 +159,28 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                     ),
-                    const DrawerTile(
-                      title: 'New sale',
+                    DrawerTile(
+                      title: 'new_sale'.tr,
                       icon: Icons.shopping_basket,
                       route: 'sale/add',
                     ),
-                    const DrawerTile(
-                      title: 'Add product',
+                    DrawerTile(
+                      title: 'add_product'.tr,
                       icon: Icons.add,
                       route: 'product/add',
                     ),
-                    const DrawerTile(
-                      title: 'All sales',
+                    DrawerTile(
+                      title: 'all_sales'.tr,
                       icon: Icons.receipt,
                       route: 'sales',
                     ),
-                    const DrawerTile(
-                      title: 'Statistics',
+                    DrawerTile(
+                      title: 'statistics'.tr,
                       icon: Icons.bar_chart,
                       route: 'statistics',
                     ),
-                    const DrawerTile(
-                      title: 'Clients',
+                    DrawerTile(
+                      title: 'clients'.tr,
                       icon: Icons.people,
                       route: 'clients',
                     ),
@@ -188,18 +188,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: Divider(),
                     ),
-                    const DrawerTile(
-                      title: 'Exchange rate',
+                    DrawerTile(
+                      title: 'exchange_rate'.tr,
                       icon: Icons.currency_exchange,
                       route: 'exchange-rate',
                     ),
-                    const DrawerTile(
-                      title: 'Categories',
+                    DrawerTile(
+                      title: 'categories'.tr,
                       icon: Icons.category,
                       route: 'categories',
                     ),
-                    const DrawerTile(
-                      title: 'Settings',
+                    DrawerTile(
+                      title: 'settings'.tr,
                       icon: Icons.settings,
                       route: 'settings',
                     ),
@@ -229,14 +229,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 25),
                         InfoTile(
                           route: '/exchange-rate',
-                          title: 'Exchange rate',
+                          title: 'exchange_rate'.tr,
                           trailing:
                               '1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
                         ),
                         const SizedBox(height: 16),
                         InfoTile(
                           route: '/sales',
-                          title: "Today's sales",
+                          title: "todays_sales".tr,
                           trailing: formatCurrency(
                               _saleController.getTodaySales(),
                               _profileController.user['mainCurrency']),
@@ -251,18 +251,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Row(
                           children: [
-                            const ScreensCard(
-                              title: 'All sales',
-                              child: Icon(
+                            ScreensCard(
+                              title: 'all_sales'.tr,
+                              child: const Icon(
                                 Icons.receipt,
                                 color: Color(0xFFE49639),
                               ),
-                              backgroundColor: Color(0xFFFDF0D6),
+                              backgroundColor: const Color(0xFFFDF0D6),
                               route: '/sales',
                             ),
                             const SizedBox(width: 16),
                             ScreensCard(
-                              title: 'Products',
+                              title: 'products'.tr,
                               child: Image.asset(
                                 'assets/images/products.png',
                                 width: 24,
@@ -275,24 +275,24 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 16),
                         Row(
-                          children: const [
+                          children: [
                             ScreensCard(
-                              title: 'Clients',
-                              child: Icon(
+                              title: 'clients'.tr,
+                              child: const Icon(
                                 Icons.people,
                                 color: Color(0xFF00C2FF),
                               ),
-                              backgroundColor: Color(0xFFDFF7FF),
+                              backgroundColor: const Color(0xFFDFF7FF),
                               route: '/clients',
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             ScreensCard(
-                              title: 'New Sale',
-                              child: Icon(
+                              title: 'new_sale'.tr,
+                              child: const Icon(
                                 Icons.shopping_basket,
                                 color: Color(0xFF64BE62),
                               ),
-                              backgroundColor: Color(0xFFDAF9DA),
+                              backgroundColor: const Color(0xFFDAF9DA),
                               route: '/sale/add',
                             ),
                           ],

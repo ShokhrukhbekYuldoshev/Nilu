@@ -140,7 +140,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   const EdgeInsets.symmetric(horizontal: 10),
                               hintText: _cartController.client!.name != ''
                                   ? _cartController.client!.name
-                                  : 'Unnamed client',
+                                  : 'unnamed_client'.tr,
                               hintStyle: bodyText(
                                   Theme.of(context).textTheme.bodyText1!.color),
                               enabledBorder: OutlineInputBorder(
@@ -194,15 +194,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              _productController
-                                                          .getProduct(
-                                                              product['id'])
-                                                          .name ==
-                                                      ''
-                                                  ? 'Deleted product'
-                                                  : _productController
-                                                      .getProduct(product['id'])
-                                                      .name,
+                                              product['name'],
                                               style: bodyText(
                                                 Theme.of(context)
                                                     .textTheme
@@ -220,7 +212,8 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                   ? product['price'].toString()
                                                   : formatCurrency(
                                                       _cartController.getPrice(
-                                                          product['id']),
+                                                        product['id'],
+                                                      ),
                                                       _profileController
                                                           .user['mainCurrency'],
                                                     ),
@@ -250,19 +243,26 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          showDialog(
-                                            barrierDismissible: false,
-                                            context: context,
-                                            builder: (context) =>
-                                                AddToCartDialog(
-                                              product: _productController
-                                                  .getProduct(product['id']),
-                                              itemCounter: _cartController
-                                                  .singleProductQuantity(
-                                                      product['id']),
-                                              addition: product['quantity'],
-                                            ),
-                                          );
+                                          _productController
+                                                      .getProduct(product['id'])
+                                                      .id ==
+                                                  ''
+                                              ? errorSnackbar('not_found'.tr)
+                                              : showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      AddToCartDialog(
+                                                    product: _productController
+                                                        .getProduct(
+                                                            product['id']),
+                                                    itemCounter: _cartController
+                                                        .singleProductQuantity(
+                                                            product['id']),
+                                                    addition:
+                                                        product['quantity'],
+                                                  ),
+                                                );
                                         },
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
@@ -280,10 +280,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                 BorderRadius.circular(4),
                                           ),
                                           child: Text(
-                                            _cartController
-                                                    .singleProductQuantity(
-                                                        product['id'])
-                                                    .toString() +
+                                            product['quantity'].toString() +
                                                 'x',
                                             style: h6(
                                               Preferences.getTheme()
@@ -305,7 +302,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Total:',
+                                  'total'.tr + ':',
                                   style: bodyText(
                                     Theme.of(context)
                                         .textTheme
@@ -347,7 +344,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Discounted price:',
+                                            'discounted_price'.tr + ':',
                                             style: bodyText(
                                               Theme.of(context)
                                                   .textTheme
@@ -420,7 +417,8 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   },
                                   child: Text(
                                     _cartController.discount > 0
-                                        ? 'Discount: ' +
+                                        ? 'discount'.tr +
+                                            ': ' +
                                             (chosenCurrency ==
                                                     _profileController
                                                         .user['mainCurrency']
@@ -434,7 +432,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                         Preferences
                                                             .getExchangeRateResult(),
                                                     chosenCurrency))
-                                        : "Add discount",
+                                        : "add_discount".tr,
                                     style: bodyText(textMutedColor),
                                   ),
                                 ),
@@ -483,7 +481,8 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Paying: ' +
+                                      'paid'.tr +
+                                          ': ' +
                                           (chosenCurrency ==
                                                   _profileController
                                                       .user['mainCurrency']
@@ -502,7 +501,8 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                       ),
                                     ),
                                     Text(
-                                      "Remaining: " +
+                                      'remaining'.tr +
+                                          ": " +
                                           (chosenCurrency ==
                                                   _profileController
                                                       .user['mainCurrency']
@@ -551,7 +551,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                     contentPadding: inputPadding,
                                     hintText: _cartController.payment > 0
                                         ? "${formatCurrency(_cartController.payment, chosenCurrency)} paid"
-                                        : 'Add payment',
+                                        : 'add_payment'.tr,
                                     hintStyle: TextStyle(
                                       color: Preferences.getTheme()
                                           ? primaryLightColor
@@ -597,7 +597,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                               contentPadding: inputPadding,
                               hintText: _cartController.comment != ''
                                   ? _cartController.comment
-                                  : 'Add comment',
+                                  : 'add_comment'.tr,
                               hintStyle: bodyText(
                                 _cartController.comment != ''
                                     ? Theme.of(context)
@@ -648,11 +648,11 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                         context: context,
                                         builder: (context) {
                                           return TripleActionDialog(
-                                            title: 'Unpaid amount',
+                                            title: 'unpaid_amount'.tr,
                                             content:
-                                                'How do you want to save the remaining amount?',
-                                            middle: 'Discount',
-                                            begin: 'Cancel',
+                                                'unpaid_amount_description'.tr,
+                                            middle: 'discount'.tr,
+                                            begin: 'cancel'.tr,
                                             onMiddle: () {
                                               setState(() {
                                                 _isLoading = true;
@@ -688,7 +688,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                         (route) => false);
                                                 // show success snackbar
                                                 successSnackbar(
-                                                  'Order created successfully',
+                                                  'order_updated'.tr,
                                                 );
                                               } catch (e) {
                                                 errorSnackbar(e.toString());
@@ -700,7 +700,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                             onBegin: () {
                                               Navigator.pop(context);
                                             },
-                                            end: 'Debt',
+                                            end: 'debt'.tr,
                                             onEnd: () {
                                               setState(() {
                                                 _isLoading = true;
@@ -733,7 +733,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                         (route) => false);
                                                 // show success snackbar
                                                 successSnackbar(
-                                                  'Order updated successfully',
+                                                  'order_updated'.tr,
                                                 );
                                               } catch (e) {
                                                 errorSnackbar(e.toString());
@@ -750,11 +750,23 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                           _profileController
                                               .user['mainCurrency']) {
                                         errorSnackbar(
-                                          'You have to pay ${formatCurrency(-_cartController.remaining, chosenCurrency)} back',
+                                          'overpaid'.tr +
+                                              ": " +
+                                              formatCurrency(
+                                                -_cartController.remaining,
+                                                chosenCurrency,
+                                              ),
                                         );
                                       } else {
                                         errorSnackbar(
-                                          'You have to pay ${formatCurrency(-_cartController.remaining / Preferences.getExchangeRateResult(), chosenCurrency)} back',
+                                          'overpaid'.tr +
+                                              ": " +
+                                              formatCurrency(
+                                                -_cartController.remaining /
+                                                    Preferences
+                                                        .getExchangeRateResult(),
+                                                chosenCurrency,
+                                              ),
                                         );
                                       }
                                     } else {
@@ -781,7 +793,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                             context, '/home', (route) => false);
                                         // show success snackbar
                                         successSnackbar(
-                                          'Order created successfully',
+                                          'order_updated'.tr,
                                         );
                                       } catch (e) {
                                         errorSnackbar(e.toString());
@@ -791,7 +803,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                       });
                                     }
                                   },
-                                  text: 'Confirm',
+                                  text: 'confirm'.tr,
                                 ),
                               ),
                             ),

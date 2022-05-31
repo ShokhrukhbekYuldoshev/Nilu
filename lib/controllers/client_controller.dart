@@ -43,7 +43,7 @@ class ClientController extends GetxController {
   void deleteClient(String clientId) async {
     try {
       await firestore.collection('clients').doc(clientId).delete();
-      successSnackbar('Client deleted');
+      successSnackbar('client'.tr + ' ' + 'deleted'.tr);
     } catch (e) {
       errorSnackbar(e.toString());
     }

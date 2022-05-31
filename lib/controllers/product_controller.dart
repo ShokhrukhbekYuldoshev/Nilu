@@ -33,9 +33,9 @@ class ProductController extends GetxController {
   void deleteProduct(Product product) async {
     try {
       await firestore.collection('products').doc(product.id).delete();
-      successSnackbar('${product.name} deleted');
+      successSnackbar('${product.name} ' 'deleted'.tr);
     } catch (e) {
-      errorSnackbar('Error deleting product');
+      errorSnackbar('error'.tr);
     }
   }
 

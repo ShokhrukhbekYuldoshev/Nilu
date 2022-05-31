@@ -31,14 +31,14 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
             Container(
               width: double.maxFinite,
               color: primaryColor,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 32,
                 ),
                 child: Text(
-                  'Exchange Rate',
-                  style: TextStyle(
+                  'exchange_rate'.tr,
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
                     color: whiteColor,
@@ -75,7 +75,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                           ? primaryLightColor
                           : primaryColor,
                       contentPadding: const EdgeInsets.all(0),
-                      title: Text('Auto-update from central bank',
+                      title: Text('auto_update'.tr,
                           style: bodyText(
                               Theme.of(context).textTheme.bodyText1!.color)),
                       value: 'auto',
@@ -93,7 +93,8 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                   const Divider(),
                                   const SizedBox(height: 20),
                                   Text(
-                                    'Bank rate: 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), _profileController.user['mainCurrency'])}',
+                                    'bank_rate'.tr +
+                                        ': 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), _profileController.user['mainCurrency'])}',
                                     style: h5(
                                       Preferences.getExchangeRateAdjustment() !=
                                               0
@@ -109,7 +110,8 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                   ),
                                   Preferences.getExchangeRateAdjustment() != 0
                                       ? Text(
-                                          'New rate: 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
+                                          'new_rate'.tr +
+                                              ': 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
                                           style: h5(
                                             Theme.of(context)
                                                 .textTheme
@@ -146,7 +148,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                       });
                                     },
                                     child: Text(
-                                      '+/- Auto adjust',
+                                      '+/- ' + 'auto_adjust'.tr,
                                       style: bodyText(
                                         Preferences.getTheme()
                                             ? whiteColor
@@ -191,7 +193,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                         ? primaryLightColor
                         : primaryColor,
                     title: Text(
-                      'Manual input',
+                      'manual_input'.tr,
                       style: bodyText(
                         Theme.of(context).textTheme.bodyText1!.color,
                       ),
@@ -246,7 +248,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                           horizontal: 10,
                                         ),
                                         border: const OutlineInputBorder(),
-                                        hintText: 'Enter amount',
+                                        hintText: 'enter_amount'.tr,
                                         hintStyle: bodyText(Theme.of(context)
                                             .textTheme
                                             .bodyText1!
@@ -256,7 +258,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                   ),
                                   const SizedBox(width: 6),
                                   PrimaryButton(
-                                    text: "Save",
+                                    text: "save".tr,
                                     onPressed: () {
                                       try {
                                         Preferences.setExchangeRate(
@@ -268,7 +270,8 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                         Preferences.setExchangeRateAdjustment(
                                             0);
                                         FocusScope.of(context).unfocus();
-                                        successSnackbar('Exchange rate saved');
+                                        successSnackbar(
+                                            'exchange_rate_saved'.tr);
                                       } catch (_) {}
                                     },
                                   ),
@@ -328,14 +331,15 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Auto adjustment',
+                  'auto_adjust'.tr,
                   style: h5(
                     Theme.of(context).textTheme.bodyText1!.color,
                   ),
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  'Bank rate: 1 ${widget._profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), widget._profileController.user['mainCurrency'])}',
+                  'bank_rate'.tr +
+                      ': 1 ${widget._profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), widget._profileController.user['mainCurrency'])}',
                   style: bodyText(
                     Theme.of(context).textTheme.bodyText2!.color,
                   ),
@@ -359,7 +363,7 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
-                          '+/- adjust by',
+                          '+/- ' + 'adjust_by'.tr,
                           style: bodyText(
                             Preferences.getTheme()
                                 ? primaryLightColor
@@ -379,7 +383,7 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                           ),
                           decoration: InputDecoration(
                             contentPadding: inputPadding,
-                            hintText: 'Enter rate',
+                            hintText: 'enter_amount'.tr,
                             hintStyle: bodyText(
                               Theme.of(context).textTheme.bodyText1!.color,
                             ),
@@ -407,7 +411,8 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'New rate: 1 ${widget._profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate() + (isDouble(_adjustmentController.text) ? double.parse(_adjustmentController.text) : 0), widget._profileController.user['mainCurrency'])}',
+                  'new_rate'.tr +
+                      ': 1 ${widget._profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate() + (isDouble(_adjustmentController.text) ? double.parse(_adjustmentController.text) : 0), widget._profileController.user['mainCurrency'])}',
                   style: bodyText(
                     Theme.of(context).textTheme.bodyText2!.color,
                   ),
@@ -428,10 +433,10 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                               : 0,
                         );
                         Navigator.pop(context);
-                        successSnackbar('Exchange rate saved');
+                        successSnackbar('exchange_rate_saved'.tr);
                       } catch (_) {}
                     },
-                    text: 'Save'),
+                    text: 'save'.tr),
               ],
             ),
           ),

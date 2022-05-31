@@ -20,7 +20,7 @@ class CategoriesScreen extends StatelessWidget {
         backgroundColor: Preferences.getTheme() ? darkGrayColor : gray100Color,
         elevation: 0,
         title: Text(
-          'Categories',
+          'categories'.tr,
           style: TextStyle(
             color:
                 Preferences.getTheme() ? primaryUltraLightColor : textDarkColor,
@@ -50,10 +50,12 @@ class CategoriesScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("New category",
-                              style: h5(
-                                Theme.of(context).textTheme.bodyText1!.color,
-                              )),
+                          Text(
+                            "new_category".tr,
+                            style: h5(
+                              Theme.of(context).textTheme.bodyText1!.color,
+                            ),
+                          ),
                           const SizedBox(height: 20),
                           SizedBox(
                             height: 44,
@@ -63,7 +65,7 @@ class CategoriesScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 contentPadding:
                                     const EdgeInsets.symmetric(horizontal: 10),
-                                labelText: 'Category name',
+                                labelText: 'category_name'.tr,
                                 labelStyle: bodyText(textPlaceholderColor),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(4),
@@ -83,7 +85,7 @@ class CategoriesScreen extends StatelessWidget {
                                 child: SizedBox(
                                   height: 44,
                                   child: PrimaryButton(
-                                    text: 'Save category',
+                                    text: 'save'.tr,
                                     onPressed: () {
                                       firestore
                                           .collection('users')
@@ -116,13 +118,14 @@ class CategoriesScreen extends StatelessWidget {
         () => _profileController.user['categories'].isEmpty
             ? Center(
                 child: Text(
-                  'No categories found',
+                  'not_found'.tr,
                   style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
                 ),
               )
             : ListView.builder(
                 shrinkWrap: true,
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.only(
+                    bottom: 80, top: 20, left: 20, right: 20),
                 itemCount: _profileController.user['categories'].length,
                 itemBuilder: (context, index) {
                   final String category =
@@ -183,10 +186,10 @@ class CategoryTile extends StatelessWidget {
                   context: context,
                   builder: (context) {
                     return DoubleActionDialog(
-                      title: 'Delete category',
-                      content: 'Are you sure you want to delete this sale?',
-                      confirm: "Delete",
-                      cancel: 'Cancel',
+                      title: 'delete_category'.tr,
+                      content: 'delete_category_confirmation'.tr,
+                      confirm: "delete".tr,
+                      cancel: 'cancel'.tr,
                       onConfirm: () {
                         try {
                           firestore
@@ -197,11 +200,11 @@ class CategoryTile extends StatelessWidget {
                           });
                           _profileController.updateUserData();
                           successSnackbar(
-                            'Category deleted',
+                            'category_deleted'.tr,
                           );
                         } catch (e) {
                           errorSnackbar(
-                            'Error deleting category',
+                            'error_deleting_category'.tr,
                           );
                         }
                         Navigator.pop(context);
@@ -218,14 +221,14 @@ class CategoryTile extends StatelessWidget {
               PopupMenuItem<String>(
                 value: 'Edit',
                 child: Text(
-                  'Edit',
+                  'edit'.tr,
                   style: bodyText(Theme.of(context).textTheme.bodyText1!.color),
                 ),
               ),
               PopupMenuItem<String>(
                 value: 'Delete',
                 child: Text(
-                  'Delete',
+                  'delete'.tr,
                   style: bodyText(redColor),
                 ),
               ),
@@ -257,7 +260,7 @@ class CategoryTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Edit category",
+                      "edit_category".tr,
                       style: h5(
                         Theme.of(context).textTheme.bodyText1!.color,
                       ),
@@ -271,7 +274,7 @@ class CategoryTile extends StatelessWidget {
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Category name',
+                          labelText: 'category_name'.tr,
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(4),
@@ -290,7 +293,7 @@ class CategoryTile extends StatelessWidget {
                           child: SizedBox(
                             height: 44,
                             child: PrimaryButton(
-                              text: 'Save category',
+                              text: 'save'.tr,
                               onPressed: () async {
                                 List updatedCategories = _profileController
                                     .user['categories']
@@ -299,9 +302,7 @@ class CategoryTile extends StatelessWidget {
                                 updatedCategories
                                     .add(_newCategoryController.text.trim());
                                 if (_newCategoryController.text.trim() == '') {
-                                  errorSnackbar(
-                                    'Category name cannot be empty',
-                                  );
+                                  errorSnackbar('fill_required_fields'.tr);
                                   return;
                                 }
                                 try {
@@ -311,9 +312,7 @@ class CategoryTile extends StatelessWidget {
                                       .update({
                                     'categories': updatedCategories,
                                   });
-                                  successSnackbar(
-                                    'Category updated successfully',
-                                  );
+                                  successSnackbar('category_updated'.tr);
                                   _profileController.updateUserData();
                                 } catch (e) {
                                   errorSnackbar(e.toString());

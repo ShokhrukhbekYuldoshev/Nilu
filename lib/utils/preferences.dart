@@ -78,4 +78,10 @@ class Preferences {
   }
 
   static getNotification() => _prefs?.getBool('isNotificationEnabled') ?? false;
+  // * Language
+  static Future setLanguage(value) async {
+    await _prefs?.setString('language', value);
+  }
+
+  static getLanguage() => _prefs?.getString('language') ?? 'english';
 }

@@ -37,9 +37,9 @@ class ActionsBottomSheet extends StatelessWidget {
                             itemCounter: _cartController
                                 .singleProductQuantity(product.id)));
                   },
-                  child: const Text(
-                    'Change',
-                    style: TextStyle(
+                  child: Text(
+                    'change'.tr,
+                    style: const TextStyle(
                         color: primaryColor, fontWeight: FontWeight.w500),
                   ),
                 ),
@@ -55,9 +55,9 @@ class ActionsBottomSheet extends StatelessWidget {
                     _cartController.clearSingleProduct(product);
                     Navigator.pop(context);
                   },
-                  child: const Text(
-                    'Delete',
-                    style: TextStyle(
+                  child: Text(
+                    'delete'.tr,
+                    style: const TextStyle(
                         color: Color(0xFFEB5757), fontWeight: FontWeight.w500),
                   ),
                 ),
@@ -84,9 +84,9 @@ class ActionsBottomSheet extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text(
-                'Cancel',
-                style: TextStyle(fontWeight: FontWeight.w500),
+              child: Text(
+                'cancel'.tr,
+                style: const TextStyle(fontWeight: FontWeight.w500),
               ),
             ),
           ),

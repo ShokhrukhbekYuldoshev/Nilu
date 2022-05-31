@@ -49,7 +49,7 @@ class _CartScreenState extends State<CartScreen> {
       onWillPop: () async => _isLoading ? false : true,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('New sale'),
+          title: Text('new_sale'.tr),
           elevation: 0,
           actions: [
             PopupMenuButton(
@@ -139,7 +139,7 @@ class _CartScreenState extends State<CartScreen> {
                               contentPadding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               hintText: _cartController.client?.name ??
-                                  'Unnamed client',
+                                  'unnamed_client'.tr,
                               hintStyle: bodyText(
                                   Theme.of(context).textTheme.bodyText1!.color),
                               enabledBorder: OutlineInputBorder(
@@ -300,7 +300,7 @@ class _CartScreenState extends State<CartScreen> {
                                   Navigator.pop(context);
                                 },
                                 child: Text(
-                                  "Add product",
+                                  "add_product".tr,
                                   style: bodyText(textMutedColor),
                                 ),
                               ),
@@ -313,7 +313,7 @@ class _CartScreenState extends State<CartScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Total:',
+                                  'total'.tr + ':',
                                   style: bodyText(
                                     Theme.of(context)
                                         .textTheme
@@ -355,7 +355,7 @@ class _CartScreenState extends State<CartScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Discounted price:',
+                                            'discounted_price'.tr + ':',
                                             style: bodyText(
                                               Theme.of(context)
                                                   .textTheme
@@ -428,7 +428,8 @@ class _CartScreenState extends State<CartScreen> {
                                   },
                                   child: Text(
                                     _cartController.discount > 0
-                                        ? 'Discount: ' +
+                                        ? 'discount'.tr +
+                                            ': ' +
                                             (chosenCurrency ==
                                                     _profileController
                                                         .user['mainCurrency']
@@ -442,7 +443,7 @@ class _CartScreenState extends State<CartScreen> {
                                                         Preferences
                                                             .getExchangeRateResult(),
                                                     chosenCurrency))
-                                        : "Add discount",
+                                        : "add_discount".tr,
                                     style: bodyText(textMutedColor),
                                   ),
                                 ),
@@ -491,7 +492,8 @@ class _CartScreenState extends State<CartScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Paying: ' +
+                                      'paid'.tr +
+                                          ': ' +
                                           (chosenCurrency ==
                                                   _profileController
                                                       .user['mainCurrency']
@@ -510,7 +512,8 @@ class _CartScreenState extends State<CartScreen> {
                                       ),
                                     ),
                                     Text(
-                                      "Remaining: " +
+                                      'remaining'.tr +
+                                          ': ' +
                                           (chosenCurrency ==
                                                   _profileController
                                                       .user['mainCurrency']
@@ -558,8 +561,9 @@ class _CartScreenState extends State<CartScreen> {
                                   decoration: InputDecoration(
                                     contentPadding: inputPadding,
                                     hintText: _cartController.payment > 0
-                                        ? "${formatCurrency(_cartController.payment, chosenCurrency)} paid"
-                                        : 'Add payment',
+                                        ? "${formatCurrency(_cartController.payment, chosenCurrency)} " +
+                                            'paid'.tr
+                                        : 'add_payment'.tr,
                                     hintStyle: TextStyle(
                                       color: Preferences.getTheme()
                                           ? primaryLightColor
@@ -605,7 +609,7 @@ class _CartScreenState extends State<CartScreen> {
                               contentPadding: inputPadding,
                               hintText: _cartController.comment != ''
                                   ? _cartController.comment
-                                  : 'Add comment',
+                                  : 'add_comment'.tr,
                               hintStyle: bodyText(
                                 _cartController.comment != ''
                                     ? Theme.of(context)
@@ -649,6 +653,7 @@ class _CartScreenState extends State<CartScreen> {
                                             .singleProductQuantity(item.id),
                                         'price':
                                             _cartController.getPrice(item.id),
+                                        'name': item.name,
                                       });
                                     }
                                     if (_cartController.remaining > 0) {
@@ -656,11 +661,11 @@ class _CartScreenState extends State<CartScreen> {
                                         context: context,
                                         builder: (context) {
                                           return TripleActionDialog(
-                                            title: 'Unpaid amount',
+                                            title: 'unpaid_amount'.tr,
                                             content:
-                                                'How do you want to save the remaining amount?',
-                                            middle: 'Discount',
-                                            begin: 'Cancel',
+                                                'unpaid_amount_description'.tr,
+                                            middle: 'discount'.tr,
+                                            begin: 'cancel'.tr,
                                             onMiddle: () {
                                               setState(() {
                                                 _isLoading = true;
@@ -687,7 +692,7 @@ class _CartScreenState extends State<CartScreen> {
                                                         (route) => false);
                                                 // show success snackbar
                                                 successSnackbar(
-                                                  'Order created successfully',
+                                                  'order_created'.tr,
                                                 );
                                               } catch (e) {
                                                 errorSnackbar(e.toString());
@@ -699,7 +704,7 @@ class _CartScreenState extends State<CartScreen> {
                                             onBegin: () {
                                               Navigator.pop(context);
                                             },
-                                            end: 'Debt',
+                                            end: 'debt'.tr,
                                             onEnd: () {
                                               setState(() {
                                                 _isLoading = true;
@@ -730,7 +735,7 @@ class _CartScreenState extends State<CartScreen> {
                                                         (route) => false);
                                                 // show success snackbar
                                                 successSnackbar(
-                                                  'Order created successfully',
+                                                  'order_created'.tr,
                                                 );
                                               } catch (e) {
                                                 errorSnackbar(e.toString());
@@ -747,11 +752,23 @@ class _CartScreenState extends State<CartScreen> {
                                           _profileController
                                               .user['mainCurrency']) {
                                         errorSnackbar(
-                                          'You have to pay ${formatCurrency(-_cartController.remaining, chosenCurrency)} back',
+                                          'overpaid'.tr +
+                                              ": " +
+                                              formatCurrency(
+                                                -_cartController.remaining,
+                                                chosenCurrency,
+                                              ),
                                         );
                                       } else {
                                         errorSnackbar(
-                                          'You have to pay ${formatCurrency(-_cartController.remaining / Preferences.getExchangeRateResult(), chosenCurrency)} back',
+                                          'overpaid'.tr +
+                                              ": " +
+                                              formatCurrency(
+                                                -_cartController.remaining /
+                                                    Preferences
+                                                        .getExchangeRateResult(),
+                                                chosenCurrency,
+                                              ),
                                         );
                                       }
                                     } else {
@@ -770,7 +787,7 @@ class _CartScreenState extends State<CartScreen> {
                                             context, '/home', (route) => false);
                                         // show success snackbar
                                         successSnackbar(
-                                          'Order created successfully',
+                                          'order_created'.tr,
                                         );
                                       } catch (e) {
                                         errorSnackbar(e.toString());
@@ -780,7 +797,7 @@ class _CartScreenState extends State<CartScreen> {
                                       });
                                     }
                                   },
-                                  text: 'Confirm',
+                                  text: 'confirm'.tr,
                                 ),
                               ),
                             ),

@@ -76,7 +76,7 @@ class ClientInfoBottomSheet extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                client.phone != "" ? client.phone : "No phone",
+                client.phone != "" ? client.phone : "no_phone".tr,
                 style: bodyText(
                   Theme.of(context).textTheme.bodyText2!.color,
                 ),
@@ -85,15 +85,16 @@ class ClientInfoBottomSheet extends StatelessWidget {
               Text(
                   client.note != null && client.note != ''
                       ? client.note!
-                      : 'No note',
+                      : 'no_note'.tr,
                   style: bodyText(
                     Theme.of(context).textTheme.bodyText2!.color,
                   )),
               const SizedBox(height: 12),
               Text(
                 client.debt > 0
-                    ? "Debt: ${formatCurrency(client.debt, _profileController.user['mainCurrency'])}"
-                    : 'No debt',
+                    ? 'debt'.tr +
+                        ": ${formatCurrency(client.debt, _profileController.user['mainCurrency'])}"
+                    : 'no_debt'.tr,
                 style: TextStyle(
                   fontSize: 14,
                   color: client.debt > 0
@@ -120,11 +121,10 @@ class ClientInfoBottomSheet extends StatelessWidget {
                             context: context,
                             builder: (_) {
                               return DoubleActionDialog(
-                                title: 'Delete client',
-                                content:
-                                    'Are you sure you want to delete this client?',
-                                confirm: 'Delete',
-                                cancel: 'Cancel',
+                                title: 'delete_client'.tr,
+                                content: 'delete_client_confirmation'.tr,
+                                confirm: 'delete'.tr,
+                                cancel: 'cancel'.tr,
                                 onConfirm: () {
                                   _clientController.deleteClient(client.id);
                                   Navigator.pop(context);
@@ -145,7 +145,7 @@ class ClientInfoBottomSheet extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     SecondaryButton(
-                      text: 'Edit',
+                      text: 'edit'.tr,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -160,7 +160,7 @@ class ClientInfoBottomSheet extends StatelessWidget {
                     const SizedBox(width: 8),
                     Expanded(
                       child: PrimaryButton(
-                        text: 'View orders',
+                        text: 'view_orders'.tr,
                         onPressed: () {
                           _saleController.filterClients([client.id]);
                           _saleController.filterSales();

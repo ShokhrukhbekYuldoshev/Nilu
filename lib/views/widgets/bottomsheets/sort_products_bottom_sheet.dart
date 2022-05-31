@@ -36,7 +36,7 @@ class _SortProductsBottomSheetState extends State<SortProductsBottomSheet> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Categories',
+                  'categories'.tr,
                   style: h5(Theme.of(context).textTheme.bodyText1!.color),
                 ),
                 GestureDetector(
@@ -127,13 +127,13 @@ class _SortProductsBottomSheetState extends State<SortProductsBottomSheet> {
                       _productController.filterProducts();
                       Navigator.pop(context);
                     },
-                    text: 'Reset',
+                    text: 'reset'.tr,
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: PrimaryButton(
-                    text: 'Apply',
+                    text: 'apply'.tr,
                     onPressed: () {
                       _productController
                           .setFilterCategories(localFilterCategories);

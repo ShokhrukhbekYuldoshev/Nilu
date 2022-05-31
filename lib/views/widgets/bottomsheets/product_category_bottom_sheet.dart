@@ -41,7 +41,7 @@ class _ProductCategoryBottomSheetState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Categories",
+                      "categories".tr,
                       style: h5(
                         Theme.of(context).textTheme.bodyText1!.color,
                       ),
@@ -138,7 +138,7 @@ class _ProductCategoryBottomSheetState
                                 Navigator.pop(context);
                                 addCategory(context, _newCategoryController);
                               },
-                              label: Text('Add new category',
+                              label: Text('add_new_category'.tr,
                                   style: h6(primaryColor)),
                             ),
                           ),
@@ -174,7 +174,7 @@ class _ProductCategoryBottomSheetState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "New category",
+                      "new_category".tr,
                       style: h5(
                         Theme.of(context).textTheme.bodyText1!.color,
                       ),
@@ -188,7 +188,7 @@ class _ProductCategoryBottomSheetState
                         decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          labelText: 'Category name',
+                          labelText: 'category_name'.tr,
                           labelStyle: bodyText(textPlaceholderColor),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(4),
@@ -207,7 +207,7 @@ class _ProductCategoryBottomSheetState
                           child: SizedBox(
                             height: 44,
                             child: PrimaryButton(
-                              text: 'Save category',
+                              text: 'save'.tr,
                               onPressed: () async {
                                 await firestore
                                     .collection('users')

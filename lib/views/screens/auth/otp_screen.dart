@@ -49,9 +49,9 @@ class _OtpScreenState extends State<OtpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 20),
-                    const Text(
-                      'Verification',
-                      style: TextStyle(
+                    Text(
+                      'verification'.tr,
+                      style: const TextStyle(
                         fontSize: 24,
                         color: textDarkColor,
                         fontWeight: FontWeight.w700,
@@ -65,7 +65,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      'Enter the code sent to the number',
+                      'otp_description'.tr,
                       style: bodyText(
                           Theme.of(context).textTheme.bodyText1!.color),
                     ),
@@ -104,7 +104,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       ),
                     ),
                     Text(
-                      'Resend',
+                      'resend_code'.tr,
                       style: bodyText(primaryColor),
                     )
                   ],

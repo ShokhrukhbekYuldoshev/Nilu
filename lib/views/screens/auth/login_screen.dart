@@ -44,17 +44,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (globalPhoneType == PhoneNumberType.mobile) {
       if (globalPhoneFormat == PhoneNumberFormat.international) {
-        newPlaceholder =
-            currentSelectedCountry.exampleNumberMobileInternational;
+        newPlaceholder = currentSelectedCountry.phoneMaskMobileInternational;
       } else {
-        newPlaceholder = currentSelectedCountry.exampleNumberMobileNational;
+        newPlaceholder = currentSelectedCountry.phoneMaskMobileNational;
       }
     } else {
       if (globalPhoneFormat == PhoneNumberFormat.international) {
-        newPlaceholder =
-            currentSelectedCountry.exampleNumberFixedLineInternational;
+        newPlaceholder = currentSelectedCountry.phoneMaskFixedLineInternational;
       } else {
-        newPlaceholder = currentSelectedCountry.exampleNumberFixedLineNational;
+        newPlaceholder = currentSelectedCountry.phoneMaskFixedLineNational;
       }
     }
 
@@ -86,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          'Restore account',
+                          'restore_account'.tr,
                           style: bodyText(primaryColor),
                         ),
                       ],
@@ -109,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.65,
                       child: Text(
-                        'Easily manage your sales, income, and products stock.',
+                        'app_description'.tr,
                         style: bodyText(textMutedColor),
                       ),
                     ),
@@ -119,8 +117,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.2,
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            constraints: const BoxConstraints(minWidth: 80),
                             child: TextField(
                               onChanged: (v) {
                                 final sortedCountries = CountryManager()
@@ -149,11 +148,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .color,
                                   ),
                                 ),
-                                border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(4),
-                                    bottomLeft: Radius.circular(4),
-                                  ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
                               maxLength: 3,
@@ -161,6 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               textAlign: TextAlign.center,
                             ),
                           ),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: TextField(
                               inputFormatters: [
@@ -174,11 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 0),
                                 hintText: placeholderHint,
-                                border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(4),
-                                    bottomRight: Radius.circular(4),
-                                  ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
                               keyboardType: TextInputType.phone,
@@ -211,11 +205,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               context,
                             );
                           } else {
-                            errorSnackbar('Please enter a valid phone number');
+                            errorSnackbar('not_phone_number'.tr);
                             _authController.isLoading.value = false;
                           }
                         },
-                        text: 'Continue',
+                        text: 'continue'.tr,
                       ),
                     ),
                   ],
