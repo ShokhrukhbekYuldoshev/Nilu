@@ -78,6 +78,7 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                         discount =
                             discount * Preferences.getExchangeRateResult();
                       }
+
                       if (_cartController.productsPrice ==
                           _cartController.payment) {
                         _cartController.payments.value.clear();
@@ -103,8 +104,10 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                         discount = _cartController.productsPrice -
                             _cartController.payment;
                       }
-
-                      _cartController.setDiscount(discount);
+                      if (discount > 0 &&
+                          discount <= _cartController.productsPrice) {
+                        _cartController.setDiscount(discount);
+                      }
                     }
                     Navigator.pop(context);
                   },

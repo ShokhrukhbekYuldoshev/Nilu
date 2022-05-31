@@ -43,6 +43,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
       _cartController.clearCart();
       _cartController.productsPriceMap.value = [];
       _animationController.dispose();
+      _cartController.clearPayments();
     });
 
     super.dispose();

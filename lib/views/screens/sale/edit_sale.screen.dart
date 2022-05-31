@@ -6,6 +6,7 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/views/widgets/dashed_seperator.dart';
 import '../../../controllers/cart_controller.dart';
 import '../../../controllers/product_controller.dart';
+import '../../../controllers/sale_controller.dart';
 import '../../../models/sale_model.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/preferences.dart';
@@ -29,6 +30,7 @@ class EditSaleScreen extends StatefulWidget {
 class _EditSaleScreenState extends State<EditSaleScreen> {
   final CartController _cartController = Get.find();
   final ProductController _productController = Get.find();
+  final SaleController _saleController = Get.find();
   final ClientController _clientController = Get.put(ClientController());
   static final ProfileController _profileController = Get.find();
 
@@ -209,7 +211,11 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                               product['id'])
                                                           .name ==
                                                       ''
-                                                  ? product['price'].toString()
+                                                  ? formatCurrency(
+                                                      product['price'],
+                                                      _profileController
+                                                          .user['mainCurrency'],
+                                                    )
                                                   : formatCurrency(
                                                       _cartController.getPrice(
                                                         product['id'],
@@ -280,8 +286,20 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                                 BorderRadius.circular(4),
                                           ),
                                           child: Text(
-                                            product['quantity'].toString() +
-                                                'x',
+                                            _productController
+                                                        .getProduct(
+                                                            product['id'])
+                                                        .name ==
+                                                    ''
+                                                ? product['quantity']
+                                                        .toString() +
+                                                    'x'
+                                                : _cartController
+                                                        .singleProductQuantity(
+                                                          product['id'],
+                                                        )
+                                                        .toString() +
+                                                    'x',
                                             style: h6(
                                               Preferences.getTheme()
                                                   ? primaryLightColor
@@ -633,6 +651,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   color: greenColor,
                                   onPressed: () async {
                                     List products = [];
+
                                     for (var item in _cartController
                                         .getUniqueProducts()) {
                                       products.add({
@@ -641,6 +660,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                             .singleProductQuantity(item.id),
                                         'price':
                                             _cartController.getPrice(item.id),
+                                        'name': item.name,
                                       });
                                     }
                                     if (_cartController.remaining > 0) {

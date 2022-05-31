@@ -33,7 +33,6 @@ class _CartScreenState extends State<CartScreen> {
   void dispose() {
     Timer.run(() {
       _cartController.clearClient();
-      _cartController.clearPayments();
       _cartController.clearComment();
       _cartController.clearDiscount();
     });
@@ -644,6 +643,10 @@ class _CartScreenState extends State<CartScreen> {
                                 child: PrimaryButton(
                                   color: greenColor,
                                   onPressed: () async {
+                                    if (_cartController.products.length == 0) {
+                                      errorSnackbar('no_products_in_cart'.tr);
+                                      return;
+                                    }
                                     List products = [];
                                     for (var item in _cartController
                                         .getUniqueProducts()) {

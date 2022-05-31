@@ -105,7 +105,9 @@ class Languages extends Translations {
           'overpaid': 'Overpaid',
           'enter_discount': 'Enter discount',
           'enter_comment': 'Enter comment',
+          'no_products_in_cart': 'No products in cart',
           // ! edit sale
+          'order_updated': 'Order updated',
           // ! clients
           'no_phone': 'No phone',
           'no_note': 'No note',
@@ -280,7 +282,9 @@ class Languages extends Translations {
           'overpaid': 'Переплачено',
           'enter_discount': 'Введите скидку',
           'enter_comment': 'Введите комментарий',
+          'no_products_in_cart': 'В корзине нет товаров',
           // ! edit sale
+          'order_updated': 'Заказ обновлен',
           // ! clients
           'no_phone': 'Нет телефона',
           'no_note': 'Нет заметки',
@@ -356,7 +360,7 @@ class Languages extends Translations {
         'uz_UZ': {
           // ! generic
           'ok': 'Ok',
-          'cancel': 'Bekor qilish',
+          'cancel': 'Orqaga',
           'yes': 'Ha',
           'no': 'Yo\'q',
           'back': 'Orqaga',
@@ -454,7 +458,9 @@ class Languages extends Translations {
           'overpaid': 'Ortiqcha to\'lov',
           'enter_discount': 'Chegirma qo\'shish',
           'enter_comment': 'Izoh qo\'shish',
+          'no_products_in_cart': 'Sotuvda hech narsa yo\'q',
           // ! edit sale
+          'order_updated': 'Sotuv o\'zgartirildi',
           // ! clients
           'no_phone': 'Telefon raqami yo\'q',
           'no_note': 'Izoh yo\'q',

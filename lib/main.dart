@@ -27,8 +27,6 @@ import 'views/screens/product/products_screen.dart';
 import 'views/screens/settings_screen.dart';
 
 // TODO edit sale price
-// TODO cart discount
-// TODO loginscreen get ip address for phonecode
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

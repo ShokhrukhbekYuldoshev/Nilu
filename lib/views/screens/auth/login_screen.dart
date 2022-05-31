@@ -1,9 +1,24 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 import 'package:get/get.dart';
 import '../../../controllers/auth_controller.dart';
+import '../../../secret.dart';
 import '../../widgets/buttons/primary_button.dart';
 import '../../../utils/constants.dart';
+
+import 'package:http/http.dart' as http;
+
+Future<String> lookupUserCountry() async {
+  final response = await http.get(
+      Uri.parse('https://api.ipregistry.co/178.218.201.191?key=$ipApiKey'));
+
+  if (response.statusCode == 200) {
+    return json.decode(response.body)['location']['country']['calling_code'];
+  }
+  return '1';
+}
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -14,17 +29,31 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final AuthController _authController = Get.put(AuthController());
+  static String countryCode = '1';
 
   String verificationID = "";
   @override
   void initState() {
     super.initState();
     updatePlaceholderHint();
+    getCountryCode();
     _authController.isLoading.value = false;
   }
 
+  void getCountryCode() async {
+    countryCode = await lookupUserCountry();
+    countryController.text = countryCode;
+    final sortedCountries = CountryManager().countries
+      ..sort((a, b) => (a.countryName ?? '').compareTo(b.countryName ?? ''));
+
+    currentSelectedCountry = sortedCountries
+        .firstWhere((country) => country.phoneCode == countryCode);
+
+    updatePlaceholderHint();
+  }
+
   final phoneController = TextEditingController();
-  final countryController = TextEditingController(text: '1');
+  final countryController = TextEditingController(text: countryCode);
 
   /// Used to format numbers as mobile or land line
   var globalPhoneType = PhoneNumberType.mobile;
