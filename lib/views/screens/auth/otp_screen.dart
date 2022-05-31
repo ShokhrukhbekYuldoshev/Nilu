@@ -16,9 +16,11 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
+  int time = 60;
   @override
   void initState() {
     super.initState();
+    startTimer();
   }
 
   @override
@@ -27,6 +29,25 @@ class _OtpScreenState extends State<OtpScreen> {
       _authController.isLoading.value = false;
     });
     super.dispose();
+  }
+
+  void startTimer() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (time <= 0) {
+        timer.cancel();
+        return;
+      }
+      setState(() {
+        time--;
+      });
+    });
+  }
+
+  void stopTimer() {
+    if (!mounted) return;
+    setState(() {
+      time = 0;
+    });
   }
 
   final AuthController _authController = Get.put(AuthController());
@@ -103,9 +124,19 @@ class _OtpScreenState extends State<OtpScreen> {
                         },
                       ),
                     ),
-                    Text(
-                      'resend_code'.tr,
-                      style: bodyText(primaryColor),
+                    TextButton(
+                      onPressed: () {
+                        if (time <= 0) {
+                          // print('yes');
+                          _authController.resendOTP(
+                            context,
+                          );
+                        }
+                      },
+                      child: Text(
+                        'resend_code'.tr + (time > 0 ? ' $time' : ''),
+                        style: bodyText(primaryColor),
+                      ),
                     )
                   ],
                 ),

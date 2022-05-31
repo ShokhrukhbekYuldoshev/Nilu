@@ -15,6 +15,7 @@ import 'package:nilu/views/widgets/dashed_seperator.dart';
 import 'package:nilu/views/widgets/dialogs/double_action_dialog.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import '../../../controllers/sale_controller.dart';
+import '../../../models/product_model.dart';
 import '../../../utils/constants.dart';
 import '../../widgets/buttons/primary_button.dart';
 import '../../widgets/buttons/secondary_button.dart';
@@ -675,12 +676,10 @@ class _SalesScreenState extends State<SalesScreen> {
   }
 
   void editSale(_sale, Client _client, BuildContext context, _time) {
-    List<String> _productsById = [];
+    List<Product> _products = [];
     for (final _product in _sale.products) {
       for (int quantity = 0; quantity < _product['quantity']; quantity++) {
-        _productsById.add(
-          _product['id'],
-        );
+        _products.add(_productController.getProduct(_product['id']));
       }
     }
     _cartController.client = _client;
@@ -694,8 +693,7 @@ class _SalesScreenState extends State<SalesScreen> {
     }
 
     _cartController.setComment(_sale.comment);
-    _cartController.setProducts(
-        _productController.getProductsByIds(_productsById), _sale.products);
+    _cartController.setProducts(_products, _sale.products);
 
     Navigator.push(
       context,

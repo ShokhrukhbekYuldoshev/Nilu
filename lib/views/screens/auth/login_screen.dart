@@ -90,6 +90,10 @@ class _LoginScreenState extends State<LoginScreen> {
           newPlaceholder.substring(currentSelectedCountry.phoneCode.length + 2);
     }
 
+    if (!mounted) {
+      return;
+    }
+
     setState(() => placeholderHint = newPlaceholder);
   }
 

@@ -131,6 +131,51 @@ class AuthController extends GetxController {
     }
   }
 
+  void resendOTP(BuildContext context) async {
+    try {
+      await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber.value,
+        timeout: const Duration(seconds: 60),
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          try {
+            await _auth.signInWithCredential(credential).then(
+              (value) {
+                var snapshot = firestore
+                    .collection('users')
+                    .where('phone', isEqualTo: phoneNumber.value)
+                    .get();
+
+                snapshot.then((value) async {
+                  if (value.docs.isEmpty) {
+                    Navigator.pushNamed(context, '/register');
+                  } else {
+                    await _profileController.updateUserData();
+                    await Preferences.setPhone(phoneNumber.value);
+                    await Preferences.setLoggedIn(true);
+                    Get.offAllNamed('/home');
+                  }
+                });
+              },
+            );
+          } on FirebaseAuthException catch (e) {
+            errorSnackbar(e.message!);
+          }
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          errorSnackbar(e.message!);
+          isLoading.value = false;
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          verificationID = verificationId;
+          isLoading.value = false;
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {},
+      );
+    } on FirebaseAuthException catch (e) {
+      errorSnackbar(e.message!);
+    }
+  }
+
   void register(
     String name,
     String phone,

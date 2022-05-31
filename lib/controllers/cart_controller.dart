@@ -11,33 +11,40 @@ class CartController extends GetxController {
   final _products = <Product>[].obs;
   get products => _products;
   getUniqueProducts() {
-    return _products.toSet().toList();
+    var products = <Product>[];
+    for (var product in _products) {
+      if (!products.contains(product)) {
+        if (product.owner != '') {
+          products.add(product);
+        }
+      }
+    }
+    return products;
   }
 
   final productsPriceMap = [].obs;
 
   double getPrice(String productId) {
-    return productsPriceMap
-        .firstWhere((element) => element['id'] == productId)['price'];
+    try {
+      return productsPriceMap
+          .firstWhere((element) => element['id'] == productId)['price'];
+    } catch (e) {
+      return 0;
+    }
   }
 
   setProducts(List<Product> products, List<dynamic> productsMap) {
-    for (var product in products) {
+    productsPriceMap.value = [];
+    for (var product in productsMap) {
       for (int i = 0; i < productsPriceMap.length; i++) {
-        if (productsPriceMap[i]['id'] == product.id) {
+        if (productsPriceMap[i]['id'] == product['id']) {
           productsPriceMap.remove(productsPriceMap[i]);
         }
       }
-      try {
+      for (int i = 0; i < product['quantity']; i++) {
         productsPriceMap.add({
-          'id': product.id,
-          'price': productsMap
-              .firstWhere((element) => element['id'] == product.id)['price'],
-        });
-      } catch (e) {
-        productsPriceMap.add({
-          'id': product.id,
-          'price': product.price,
+          'id': product['id'],
+          'price': product['price'],
         });
       }
     }
@@ -72,7 +79,12 @@ class CartController extends GetxController {
   }
 
   double get productsPrice {
-    return _products.fold(0, (sum, product) => sum + (getPrice(product.id)));
+    double price = 0;
+    for (var product in productsPriceMap) {
+      price += product['price'];
+    }
+
+    return price;
   }
 
   int singleProductQuantity(String productId) {

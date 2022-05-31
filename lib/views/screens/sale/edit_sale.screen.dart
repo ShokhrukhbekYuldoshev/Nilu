@@ -6,7 +6,6 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/views/widgets/dashed_seperator.dart';
 import '../../../controllers/cart_controller.dart';
 import '../../../controllers/product_controller.dart';
-import '../../../controllers/sale_controller.dart';
 import '../../../models/sale_model.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/preferences.dart';
@@ -30,7 +29,6 @@ class EditSaleScreen extends StatefulWidget {
 class _EditSaleScreenState extends State<EditSaleScreen> {
   final CartController _cartController = Get.find();
   final ProductController _productController = Get.find();
-  final SaleController _saleController = Get.find();
   final ClientController _clientController = Get.put(ClientController());
   static final ProfileController _profileController = Get.find();
 

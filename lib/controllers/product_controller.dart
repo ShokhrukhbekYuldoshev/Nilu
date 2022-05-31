@@ -33,19 +33,10 @@ class ProductController extends GetxController {
   void deleteProduct(Product product) async {
     try {
       await firestore.collection('products').doc(product.id).delete();
-      successSnackbar('${product.name} ' 'deleted'.tr);
+      successSnackbar('${product.name} ' + 'deleted'.tr);
     } catch (e) {
       errorSnackbar('error'.tr);
     }
-  }
-
-  List<Product> getProductsByIds(List<dynamic> ids) {
-    List<Product> products = [];
-    for (var i = 0; i < ids.length; i++) {
-      var product = getProduct(ids[i]);
-      products.add(product);
-    }
-    return products;
   }
 
   int getProductQuantity(Product product) {
