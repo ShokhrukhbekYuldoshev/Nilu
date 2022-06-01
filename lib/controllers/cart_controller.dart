@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nilu/controllers/product_controller.dart';
 import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/models/payment_model.dart';
 import 'package:nilu/models/product_model.dart';
@@ -8,6 +9,7 @@ import '../models/client_model.dart';
 
 class CartController extends GetxController {
   // * PRODUCTS
+  final ProductController _productController = Get.find();
   final _products = <Product>[].obs;
   get products => _products;
   getUniqueProducts() {
@@ -36,17 +38,10 @@ class CartController extends GetxController {
   setProducts(List<Product> products, List<dynamic> productsMap) {
     productsPriceMap.value = [];
     for (var product in productsMap) {
-      for (int i = 0; i < productsPriceMap.length; i++) {
-        if (productsPriceMap[i]['id'] == product['id']) {
-          productsPriceMap.remove(productsPriceMap[i]);
-        }
-      }
-      for (int i = 0; i < product['quantity']; i++) {
-        productsPriceMap.add({
-          'id': product['id'],
-          'price': product['price'],
-        });
-      }
+      productsPriceMap.add({
+        'id': product['id'],
+        'price': product['price'],
+      });
     }
     _products.value = products;
   }
@@ -79,12 +74,7 @@ class CartController extends GetxController {
   }
 
   double get productsPrice {
-    double price = 0;
-    for (var product in productsPriceMap) {
-      price += product['price'];
-    }
-
-    return price;
+    return _products.fold(0, (sum, product) => sum + (getPrice(product.id)));
   }
 
   int singleProductQuantity(String productId) {

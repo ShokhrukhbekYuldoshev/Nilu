@@ -545,12 +545,15 @@ class _SalesScreenState extends State<SalesScreen> {
                                                             Expanded(
                                                               child: Text(
                                                                 '${_sale.products[i]['quantity']} * ' +
-                                                                    (_sale.products[i]['price'] ==
-                                                                            0
-                                                                        ? 'N/A'
-                                                                        : formatCurrency(
-                                                                            _sale.products[i]['price'],
-                                                                            _profileController.user['mainCurrency'])),
+                                                                    formatCurrency(
+                                                                      _sale.products[
+                                                                              i]
+                                                                          [
+                                                                          'price'],
+                                                                      _profileController
+                                                                              .user[
+                                                                          'mainCurrency'],
+                                                                    ),
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize: 14,
@@ -566,20 +569,17 @@ class _SalesScreenState extends State<SalesScreen> {
                                                               ),
                                                             ),
                                                             Text(
-                                                              _sale.products[i][
-                                                                          'price'] ==
-                                                                      0
-                                                                  ? 'N/A'
-                                                                  : formatCurrency(
-                                                                      _sale.products[i]
-                                                                              [
-                                                                              'quantity'] *
-                                                                          _sale.products[i]
-                                                                              [
-                                                                              'price'],
-                                                                      _profileController
-                                                                              .user[
-                                                                          'mainCurrency']),
+                                                              formatCurrency(
+                                                                _sale.products[
+                                                                            i][
+                                                                        'quantity'] *
+                                                                    _sale.products[
+                                                                            i][
+                                                                        'price'],
+                                                                _profileController
+                                                                        .user[
+                                                                    'mainCurrency'],
+                                                              ),
                                                               style: TextStyle(
                                                                 fontSize: 14,
                                                                 fontWeight:
@@ -679,7 +679,20 @@ class _SalesScreenState extends State<SalesScreen> {
     List<Product> _products = [];
     for (final _product in _sale.products) {
       for (int quantity = 0; quantity < _product['quantity']; quantity++) {
-        _products.add(_productController.getProduct(_product['id']));
+        if (_productController.getProduct(_product['id']).id == '') {
+          _products.add(
+            Product(
+              id: _product['id'],
+              name: _product['name'],
+              price: _product['price'],
+              quantity: 1,
+              code: '',
+              owner: '',
+            ),
+          );
+        } else {
+          _products.add(_productController.getProduct(_product['id']));
+        }
       }
     }
     _cartController.client = _client;

@@ -104,6 +104,7 @@ class Languages extends Translations {
           'order_created': 'Order created',
           'overpaid': 'Overpaid',
           'enter_discount': 'Enter discount',
+          'comment': 'Comment',
           'enter_comment': 'Enter comment',
           'no_products_in_cart': 'No products in cart',
           // ! edit sale
@@ -281,6 +282,7 @@ class Languages extends Translations {
           'order_created': 'Заказ создан',
           'overpaid': 'Переплачено',
           'enter_discount': 'Введите скидку',
+          'comment': 'Комментарий',
           'enter_comment': 'Введите комментарий',
           'no_products_in_cart': 'В корзине нет товаров',
           // ! edit sale
@@ -457,6 +459,7 @@ class Languages extends Translations {
           'order_created': 'Sotuv yaratildi',
           'overpaid': 'Ortiqcha to\'lov',
           'enter_discount': 'Chegirma qo\'shish',
+          'comment': 'Izoh',
           'enter_comment': 'Izoh qo\'shish',
           'no_products_in_cart': 'Sotuvda hech narsa yo\'q',
           // ! edit sale
