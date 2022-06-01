@@ -26,8 +26,6 @@ import 'views/screens/sale/add_sale_screen.dart';
 import 'views/screens/product/products_screen.dart';
 import 'views/screens/settings_screen.dart';
 
-// TODO edit sale price
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FlutterLibphonenumber().init();

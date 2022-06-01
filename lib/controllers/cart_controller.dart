@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:nilu/controllers/product_controller.dart';
 import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/models/payment_model.dart';
 import 'package:nilu/models/product_model.dart';
@@ -9,14 +8,15 @@ import '../models/client_model.dart';
 
 class CartController extends GetxController {
   // * PRODUCTS
-  final ProductController _productController = Get.find();
   final _products = <Product>[].obs;
   get products => _products;
   getUniqueProducts() {
     var products = <Product>[];
+    var productsId = <String>[];
     for (var product in _products) {
-      if (!products.contains(product)) {
-        if (product.owner != '') {
+      if (!productsId.contains(product.id)) {
+        if (product.id != '') {
+          productsId.add(product.id);
           products.add(product);
         }
       }
