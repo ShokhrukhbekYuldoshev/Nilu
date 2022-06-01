@@ -113,15 +113,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          'restore_account'.tr,
-                          style: bodyText(primaryColor),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.end,
+                    //   children: [
+                    //     Text(
+                    //       'restore_account'.tr,
+                    //       style: bodyText(primaryColor),
+                    //     ),
+                    //   ],
+                    // ),
                     Image.asset(
                       "assets/images/cash_register.png",
                       height: 90,

@@ -127,6 +127,14 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
                             _authController.secondaryCurrency.value =
                                 searchCurrencies[index];
                           } else {
+                            showDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                });
                             final ProfileController _profileController =
                                 Get.find();
                             await firestore
@@ -150,6 +158,9 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
                               Preferences.setExchangeRateDate(
                                   DateTime.now().toString());
                             }
+                            try {
+                              Navigator.pop(context);
+                            } catch (_) {}
                           }
                         }
                         Navigator.pop(context);

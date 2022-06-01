@@ -43,7 +43,9 @@ getLocale() {
   } else if (Preferences.getLanguage() == 'russian') {
     locale = const Locale('ru', 'RU');
   } else if (Preferences.getLanguage() == 'uzbek') {
-    locale = const Locale('uz', 'UZS');
+    locale = const Locale('uz', 'UZ');
+  } else if (Preferences.getLanguage() == 'spanish') {
+    locale = const Locale('es', 'ES');
   }
 }
 

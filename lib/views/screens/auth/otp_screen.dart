@@ -37,16 +37,11 @@ class _OtpScreenState extends State<OtpScreen> {
         timer.cancel();
         return;
       }
-      setState(() {
-        time--;
-      });
-    });
-  }
-
-  void stopTimer() {
-    if (!mounted) return;
-    setState(() {
-      time = 0;
+      if (mounted) {
+        setState(() {
+          time--;
+        });
+      }
     });
   }
 

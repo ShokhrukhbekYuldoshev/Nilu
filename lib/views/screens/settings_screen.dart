@@ -604,6 +604,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       vertical: 12,
                                     ),
                                     onPressed: () {
+                                      Preferences.setLanguage('spanish');
+                                      Get.updateLocale(
+                                        const Locale('es', 'ES'),
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'Español',
+                                      style: bodyText(
+                                        Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .color,
+                                      ),
+                                    ),
+                                  ),
+                                  SimpleDialogOption(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                      vertical: 12,
+                                    ),
+                                    onPressed: () {
                                       Preferences.setLanguage('russian');
                                       Get.updateLocale(
                                         const Locale('ru', 'RU'),
@@ -633,7 +655,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       Navigator.pop(context);
                                     },
                                     child: Text(
-                                      'O\'zbekcha',
+                                      'O\'zbek',
                                       style: bodyText(
                                         Theme.of(context)
                                             .textTheme
