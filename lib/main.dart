@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
           case '/settings':
             return CupertinoPageRoute(builder: (_) => const SettingsScreen());
           case '/support':
-            return MaterialPageRoute(builder: (_) => const SupportScreen());
+            return CupertinoPageRoute(builder: (_) => const SupportScreen());
           default:
             return MaterialPageRoute(
               builder: (_) => const Scaffold(
