@@ -8,6 +8,7 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/controllers/theme_controller.dart';
 import 'package:nilu/models/themes_model.dart';
 import 'package:nilu/utils/languages.dart';
+import 'package:nilu/views/screens/support_screen.dart';
 import 'utils/preferences.dart';
 import 'views/screens/auth/login_screen.dart';
 import 'views/screens/categories_screen.dart';
@@ -102,7 +103,8 @@ class MyApp extends StatelessWidget {
             return CupertinoPageRoute(builder: (_) => const CategoriesScreen());
           case '/settings':
             return CupertinoPageRoute(builder: (_) => const SettingsScreen());
-
+          case '/support':
+            return MaterialPageRoute(builder: (_) => const SupportScreen());
           default:
             return MaterialPageRoute(
               builder: (_) => const Scaffold(

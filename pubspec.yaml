@@ -25,11 +25,13 @@ dependencies:
   http: ^0.13.4
   image_picker: ^0.8.5
   intl: ^0.17.0
+  package_info_plus: ^1.4.2
   path_provider: ^2.0.9
   pattern_formatter: ^2.0.0
   pinput: ^2.2.9
   shared_preferences: ^2.0.13
   sticky_headers: ^0.3.0+2
+  url_launcher: ^6.1.2
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -51,3 +53,5 @@ flutter:
     - assets/images/products.png
     - assets/images/cash_register.png
     - assets/images/otp.png
+    - assets/images/splash.png
+    - assets/images/telegram.png

@@ -204,6 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 0),
                                 hintText: placeholderHint,
+                                hintStyle: bodyText(gray400Color),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(4),
                                 ),

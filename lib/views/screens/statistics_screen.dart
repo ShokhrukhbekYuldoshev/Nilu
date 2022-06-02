@@ -128,7 +128,17 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               ),
               const SizedBox(height: 20),
               topProducts.isEmpty
-                  ? Center(child: Text('no_products_sold'.tr))
+                  ? SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text('no_products_sold'.tr),
+                          ),
+                        ],
+                      ),
+                    )
                   : ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,

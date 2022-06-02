@@ -11,6 +11,7 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/utils/preferences.dart';
 import 'package:nilu/views/widgets/bottomsheets/currency_picker_bottom_sheet.dart';
 import 'package:nilu/views/widgets/dialogs/double_action_dialog.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../models/themes_model.dart';
 import '../../utils/constants.dart';
@@ -40,6 +41,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final snapshot = await uploadTask!.whenComplete(() => {});
     final url = await snapshot.ref.getDownloadURL();
     return url;
+  }
+
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+    buildSignature: 'Unknown',
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    _initPackageInfo();
+  }
+
+  Future<void> _initPackageInfo() async {
+    final info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
   }
 
   @override
@@ -107,7 +129,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             color: primaryColor,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15.0, top: 15),
+                            padding: const EdgeInsets.only(left: 20.0, top: 20),
                             child: GestureDetector(
                               onTap: () {
                                 showDialog(
@@ -233,8 +255,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                           borderRadius:
                                               BorderRadius.circular(100),
                                         ),
-                                        width: 92,
-                                        height: 92,
+                                        width: 80,
+                                        height: 80,
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(100),
@@ -251,8 +273,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                               borderRadius:
                                                   BorderRadius.circular(100),
                                             ),
-                                            width: 92,
-                                            height: 92,
+                                            width: 80,
+                                            height: 80,
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(100),
@@ -266,7 +288,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                             ),
                                           )
                                         : const CircleAvatar(
-                                            radius: 46,
+                                            radius: 40,
                                             backgroundColor: gray100Color,
                                             child: Icon(
                                               Icons.person,
@@ -700,6 +722,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ],
                           ),
                         ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        '${_packageInfo.appName} for ${Platform.operatingSystem} v${_packageInfo.version} (${_packageInfo.buildNumber})',
                       ),
                     ],
                   ),

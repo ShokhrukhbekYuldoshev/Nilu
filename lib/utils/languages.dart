@@ -73,6 +73,7 @@ class Languages extends Translations {
           'statistics': 'Statistics',
           'categories': 'Categories',
           'settings': 'Settings',
+          'support': 'Support',
           // ! sales
           'all_clients': 'All clients',
           'client': 'Client',
@@ -188,6 +189,8 @@ class Languages extends Translations {
           'dark_mode': 'Dark mode',
           'language': 'Language',
           'select_language': 'Select language',
+          // ! support
+          'support_description': 'Need any assistance? Feel free to contact us',
         },
         'es_ES': {
           // ! generic
@@ -261,6 +264,7 @@ class Languages extends Translations {
           'statistics': 'Estadísticas',
           'categories': 'Categorías',
           'settings': 'Configuración',
+          'support': 'Soporte',
           // ! sales
           'all_clients': 'Todos los clientes',
           'client': 'Cliente',
@@ -376,6 +380,9 @@ class Languages extends Translations {
           'dark_mode': 'Modo oscuro',
           'language': 'Idioma',
           'select_language': 'Seleccionar idioma',
+          // ! support
+          'support_description':
+              '¿Necesitas ayuda? Siéntete libre de contactarnos.',
         },
         'ru_RU': {
           // ! generic
@@ -448,6 +455,7 @@ class Languages extends Translations {
           'statistics': 'Статистика',
           'categories': 'Категории',
           'settings': 'Настройки',
+          'support': 'Поддержка',
           // ! sales
           'all_clients': 'Все клиенты',
           'client': 'Клиент',
@@ -563,6 +571,9 @@ class Languages extends Translations {
           'dark_mode': 'Темный режим',
           'language': 'Язык',
           'select_language': 'Выберите язык',
+          // ! support
+          'support_description':
+              'Нужна помощь? Не стесняйтесь связаться с нами.'
         },
         'uz_UZ': {
           // ! generic
@@ -645,7 +656,7 @@ class Languages extends Translations {
           'sale': 'Sotuv',
           // ! add sale
           'select_items': 'Tovarlarni tanlang',
-          'in_stock': 'Boshqa tovarlar',
+          'in_stock': 'Mavjud',
           'selected': 'tanlangan',
           'select_quantity': 'Miqdorni tanlang',
           'not_enough': 'Miqdori yetarli emas',
@@ -747,6 +758,8 @@ class Languages extends Translations {
           'dark_mode': 'Tungi rejim',
           'language': 'Til',
           'select_language': 'Tilni tanlang',
+          // ! support
+          'support_description': 'Yordam kerakmi? Biz bilan bog\'laning.',
         },
       };
 }

@@ -203,6 +203,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: Icons.settings,
                       route: 'settings',
                     ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Divider(),
+                    ),
+                    DrawerTile(
+                      title: 'support'.tr,
+                      icon: Icons.help_outline,
+                      route: 'support',
+                    ),
                   ],
                 ),
               ),
