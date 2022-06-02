@@ -117,6 +117,7 @@ class Languages extends Translations {
           'total_sales': 'Total sales',
           'products_sold': 'Products sold',
           'no_products_sold': 'No products sold',
+          'sold': 'Sold',
           // ! clients
           'no_phone': 'No phone',
           'no_note': 'No note',
@@ -304,6 +305,7 @@ class Languages extends Translations {
           'total_sales': 'Ventas totales',
           'products_sold': 'Productos vendidos',
           'no_products_sold': 'No hay productos vendidos',
+          'sold': 'Vendido',
           // ! clients
           'no_phone': 'Sin teléfono',
           'no_notes': 'Sin notas',
@@ -490,6 +492,7 @@ class Languages extends Translations {
           'total_sales': 'Всего продаж',
           'products_sold': 'Товаров продано',
           'no_products_sold': 'Нет товаров проданных',
+          'sold': 'Продано',
           // ! clients
           'no_phone': 'Нет телефона',
           'no_note': 'Нет заметки',
@@ -675,6 +678,7 @@ class Languages extends Translations {
           'total_sales': 'Jami sotuvlar',
           'products_sold': 'Sotilgan tovarlar',
           'no_products_sold': 'Tovar sotilmagan',
+          'sold': 'Sotilgan',
           // ! clients
           'no_phone': 'Telefon raqami yo\'q',
           'no_note': 'Izoh yo\'q',

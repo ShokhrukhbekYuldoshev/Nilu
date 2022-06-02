@@ -193,6 +193,10 @@ class SaleController extends GetxController {
           } else {
             for (var i = 0; i < products.length; i++) {
               if (products[i]['id'] == product['id']) {
+                products[i]['price'] =
+                    ((product['price'] * product['quantity']) +
+                            (products[i]['price'] * products[i]['quantity'])) /
+                        (products[i]['quantity'] + product['quantity']);
                 products[i]['quantity'] += product['quantity'];
               }
             }

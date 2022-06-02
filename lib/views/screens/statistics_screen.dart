@@ -31,6 +31,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   @override
   Widget build(BuildContext context) {
     List topProducts = _saleController.getTopProducts(time);
+    // print(topProducts);
     final List<String> items = [
       'today'.tr,
       'last_week'.tr,
@@ -209,13 +210,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                     Row(
                                       children: [
                                         Text(
-                                          'Sold: ' +
+                                          'sold'.tr +
+                                              ': ' +
                                               product['quantity'].toString(),
                                           style: bodyText(greenColor),
                                         ),
                                         const SizedBox(width: 14),
                                         Text(
-                                          'Total: ' +
+                                          'total'.tr +
+                                              ': ' +
                                               formatCurrency(
                                                   product['quantity'] *
                                                       product['price'],
