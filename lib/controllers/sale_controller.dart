@@ -75,7 +75,7 @@ class SaleController extends GetxController {
     var firstDayOfWeek = date.subtract(Duration(days: weekDay - 1));
 
     for (var i = 0; i < sales.length; i++) {
-      DateTime saleDate = DateUtils.dateOnly(sales[i].date.toDate());
+      DateTime saleDate = sales[i].date.toDate();
       if (saleDate.isAfter(firstDayOfWeek) &&
           saleDate.isBefore(firstDayOfWeek.add(const Duration(days: 7)))) {
         lastWeekSales += sales[i].price;
@@ -89,11 +89,12 @@ class SaleController extends GetxController {
 
     var date = DateUtils.dateOnly(DateTime.now());
     var days = date.day;
-    var firstDayOfMonth = DateTime(date.year, date.month - 1, date.day - days);
+    var firstDayOfMonth =
+        DateTime(date.year, date.month - 1, date.day - days + 1);
     var lastDayOfMonth = DateTime(date.year, date.month, 1);
 
     for (var i = 0; i < sales.length; i++) {
-      DateTime saleDate = DateUtils.dateOnly(sales[i].date.toDate());
+      DateTime saleDate = sales[i].date.toDate();
       if (saleDate.isAfter(firstDayOfMonth) &&
           saleDate.isBefore(lastDayOfMonth)) {
         lastMonthSales += sales[i].price;
@@ -112,7 +113,7 @@ class SaleController extends GetxController {
     var lastDayOfYear = DateTime(date.year, date.month - months + 1, 1);
 
     for (var i = 0; i < sales.length; i++) {
-      DateTime saleDate = DateUtils.dateOnly(sales[i].date.toDate());
+      DateTime saleDate = sales[i].date.toDate();
       if (saleDate.isAfter(firstDayOfYear) &&
           saleDate.isBefore(lastDayOfYear)) {
         lastYearSales += sales[i].price;
@@ -163,7 +164,7 @@ class SaleController extends GetxController {
     else if (value == 'last_month'.tr) {
       var date = DateUtils.dateOnly(DateTime.now());
       var days = date.day;
-      dateStart = DateTime(date.year, date.month - 1, date.day - days);
+      dateStart = DateTime(date.year, date.month - 1, date.day - days + 1);
       dateEnd = DateTime(date.year, date.month, 1);
     }
     // * last year

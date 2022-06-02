@@ -46,16 +46,30 @@ class ProductController extends GetxController {
   Product getProduct(String productId) {
     return products.firstWhere(
       (product) => product.id == productId,
-      orElse: () =>
-          Product(owner: '', id: '', name: '', price: 0, quantity: 0, code: ''),
+      orElse: () => Product(
+        owner: '',
+        id: '',
+        name: '',
+        price: 0,
+        quantity: 0,
+        code: '',
+        image: '',
+      ),
     );
   }
 
   Product getProudctByCode(String code) {
     return products.firstWhere(
       (product) => product.code == code,
-      orElse: () =>
-          Product(owner: '', id: '', name: '', price: 0, quantity: 0, code: ''),
+      orElse: () => Product(
+        owner: '',
+        id: '',
+        name: '',
+        price: 0,
+        quantity: 0,
+        code: '',
+        image: '',
+      ),
     );
   }
 
