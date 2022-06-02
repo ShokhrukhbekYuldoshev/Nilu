@@ -1,3 +1,3 @@
 # Nilu
 
-Easily manage your sales, income and products stock
+Easily manage your sales, income and products

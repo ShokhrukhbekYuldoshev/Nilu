@@ -73,7 +73,6 @@ class Languages extends Translations {
           'statistics': 'Statistics',
           'categories': 'Categories',
           'settings': 'Settings',
-          // ! statistics
           // ! sales
           'all_clients': 'All clients',
           'client': 'Client',
@@ -109,6 +108,15 @@ class Languages extends Translations {
           'no_products_in_cart': 'No products in cart',
           // ! edit sale
           'order_updated': 'Order updated',
+          // ! statistics
+          'today': 'Today',
+          'last_week': 'Last week',
+          'last_month': 'Last month',
+          'last_year': 'Last year',
+          'all_time': 'All time',
+          'total_sales': 'Total sales',
+          'products_sold': 'Products sold',
+          'no_products_sold': 'No products sold',
           // ! clients
           'no_phone': 'No phone',
           'no_note': 'No note',
@@ -153,7 +161,6 @@ class Languages extends Translations {
           'product_added': 'Product added',
           // ! edit product
           'product_updated': 'Product updated',
-          // ! statistics
           // ! exchange rate
           'auto_update': 'Auto update',
           'bank_rate': 'Bank rate',
@@ -253,7 +260,6 @@ class Languages extends Translations {
           'statistics': 'Estadísticas',
           'categories': 'Categorías',
           'settings': 'Configuración',
-          // ! statistics
           // ! sales
           'all_clients': 'Todos los clientes',
           'client': 'Cliente',
@@ -289,6 +295,15 @@ class Languages extends Translations {
           'no_products_in_cart': 'No hay productos en el carrito',
           // ! edit sale
           'order_updated': 'Orden actualizada',
+          // ! statistics
+          'today': 'Hoy',
+          'last_week': 'Última semana',
+          'last_month': 'Último mes',
+          'last_year': 'Último año',
+          'all_time': 'Todo el tiempo',
+          'total_sales': 'Ventas totales',
+          'products_sold': 'Productos vendidos',
+          'no_products_sold': 'No hay productos vendidos',
           // ! clients
           'no_phone': 'Sin teléfono',
           'no_notes': 'Sin notas',
@@ -333,7 +348,6 @@ class Languages extends Translations {
           'product_added': 'Producto agregado',
           // ! edit product
           'product_updated': 'Producto actualizado',
-          // ! statistics
           // ! exchange rate
           'auto_update': 'Auto actualizar',
           'bank_rate': 'Tasa bancaria',
@@ -432,7 +446,6 @@ class Languages extends Translations {
           'statistics': 'Статистика',
           'categories': 'Категории',
           'settings': 'Настройки',
-          // ! statistics
           // ! sales
           'all_clients': 'Все клиенты',
           'client': 'Клиент',
@@ -468,6 +481,15 @@ class Languages extends Translations {
           'no_products_in_cart': 'В корзине нет товаров',
           // ! edit sale
           'order_updated': 'Заказ обновлен',
+          // ! statistics
+          'today': 'Сегодня',
+          'last_week': 'Последняя неделя',
+          'last_month': 'Последний месяц',
+          'last_year': 'Последний год',
+          'all_time': 'Все время',
+          'total_sales': 'Всего продаж',
+          'products_sold': 'Товаров продано',
+          'no_products_sold': 'Нет товаров проданных',
           // ! clients
           'no_phone': 'Нет телефона',
           'no_note': 'Нет заметки',
@@ -512,7 +534,6 @@ class Languages extends Translations {
           'product_added': 'Товар добавлен',
           // ! edit product
           'product_updated': 'Товар обновлен',
-          // ! statistics
           // ! exchange rate
           'auto_update': 'Автообновление',
           'bank_rate': 'Курс банка',
@@ -611,7 +632,6 @@ class Languages extends Translations {
           'statistics': 'Statistika',
           'categories': 'Kategoriyalar',
           'settings': 'Sozlamalar',
-          // ! statistics
           // ! sales
           'all_clients': 'Barcha mijozlar',
           'client': 'Mijoz',
@@ -646,6 +666,15 @@ class Languages extends Translations {
           'no_products_in_cart': 'Sotuvda hech narsa yo\'q',
           // ! edit sale
           'order_updated': 'Sotuv o\'zgartirildi',
+          // ! statistics
+          'today': 'Bugun',
+          'last_week': 'O\'tgan hafta',
+          'last_month': 'O\'tgan oy',
+          'last_year': 'O\'tgan yil',
+          'all_time': 'Barcha vaqt',
+          'total_sales': 'Jami sotuvlar',
+          'products_sold': 'Sotilgan tovarlar',
+          'no_products_sold': 'Tovar sotilmagan',
           // ! clients
           'no_phone': 'Telefon raqami yo\'q',
           'no_note': 'Izoh yo\'q',
@@ -688,7 +717,6 @@ class Languages extends Translations {
           'product_added': 'Tovar qo\'shildi',
           // ! edit product
           'product_updated': 'Tovar o\'zgartirildi',
-          // ! statistics
           // ! exchange rate
           'auto_update': 'Avto yangilash',
           'bank_rate': 'Bank kursi',

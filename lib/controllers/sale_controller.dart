@@ -59,6 +59,68 @@ class SaleController extends GetxController {
     return todaysSales;
   }
 
+  double getTotalSales() {
+    double totalSales = 0;
+    for (var i = 0; i < sales.length; i++) {
+      totalSales += sales[i].price;
+    }
+    return totalSales;
+  }
+
+  double getLastWeekSales() {
+    double lastWeekSales = 0;
+    var date =
+        DateUtils.dateOnly(DateTime.now()).subtract(const Duration(days: 7));
+    var weekDay = date.weekday;
+    var firstDayOfWeek = date.subtract(Duration(days: weekDay - 1));
+
+    for (var i = 0; i < sales.length; i++) {
+      DateTime saleDate = DateUtils.dateOnly(sales[i].date.toDate());
+      if (saleDate.isAfter(firstDayOfWeek) &&
+          saleDate.isBefore(firstDayOfWeek.add(const Duration(days: 7)))) {
+        lastWeekSales += sales[i].price;
+      }
+    }
+    return lastWeekSales;
+  }
+
+  double getLastMonthSales() {
+    double lastMonthSales = 0;
+
+    var date = DateUtils.dateOnly(DateTime.now());
+    var days = date.day;
+    var firstDayOfMonth = DateTime(date.year, date.month - 1, date.day - days);
+    var lastDayOfMonth = DateTime(date.year, date.month, 1);
+
+    for (var i = 0; i < sales.length; i++) {
+      DateTime saleDate = DateUtils.dateOnly(sales[i].date.toDate());
+      if (saleDate.isAfter(firstDayOfMonth) &&
+          saleDate.isBefore(lastDayOfMonth)) {
+        lastMonthSales += sales[i].price;
+      }
+    }
+    return lastMonthSales;
+  }
+
+  double getLastYearSales() {
+    double lastYearSales = 0;
+
+    var date = DateUtils.dateOnly(DateTime.now());
+    var months = date.month;
+    var firstDayOfYear =
+        DateTime(date.year - 1, date.month - months + 1, date.day - 1);
+    var lastDayOfYear = DateTime(date.year, date.month - months + 1, 1);
+
+    for (var i = 0; i < sales.length; i++) {
+      DateTime saleDate = DateUtils.dateOnly(sales[i].date.toDate());
+      if (saleDate.isAfter(firstDayOfYear) &&
+          saleDate.isBefore(lastDayOfYear)) {
+        lastYearSales += sales[i].price;
+      }
+    }
+    return lastYearSales;
+  }
+
   List<Sale> getSalesByDate(DateTime date) {
     List<Sale> salesByDate = [];
     date = DateUtils.dateOnly(date);
@@ -82,6 +144,63 @@ class SaleController extends GetxController {
       }
     }
     return totalSalesByDate;
+  }
+
+  getTopProducts(String value) {
+    var dateStart = DateUtils.dateOnly(DateTime.now());
+    var dateEnd =
+        DateUtils.dateOnly(DateTime.now()).add(const Duration(days: 1));
+
+    // * last week
+    if (value == 'last_week'.tr) {
+      var date =
+          DateUtils.dateOnly(DateTime.now()).subtract(const Duration(days: 7));
+      var weekDay = date.weekday;
+      dateStart = date.subtract(Duration(days: weekDay - 1));
+      dateEnd = dateStart.add(const Duration(days: 7));
+    }
+    // * last month
+    else if (value == 'last_month'.tr) {
+      var date = DateUtils.dateOnly(DateTime.now());
+      var days = date.day;
+      dateStart = DateTime(date.year, date.month - 1, date.day - days);
+      dateEnd = DateTime(date.year, date.month, 1);
+    }
+    // * last year
+    else if (value == 'last_year'.tr) {
+      var date = DateUtils.dateOnly(DateTime.now());
+      var months = date.month;
+      dateStart =
+          DateTime(date.year - 1, date.month - months + 1, date.day - 1);
+      dateEnd = DateTime(date.year, date.month - months + 1, 1);
+    }
+    // * all time
+    else if (value == 'all_time'.tr) {
+      dateStart = DateTime(0, 0, 0);
+      dateEnd = DateTime(3000, 0, 0);
+    }
+
+    List products = [];
+    List productIds = [];
+    for (var sale in sales) {
+      if (sale.date.toDate().isAfter(dateStart) &&
+          sale.date.toDate().isBefore(dateEnd)) {
+        for (var product in sale.products) {
+          if (!productIds.contains(product['id'])) {
+            productIds.add(product['id']);
+            products.add(Map.from(product));
+          } else {
+            for (var i = 0; i < products.length; i++) {
+              if (products[i]['id'] == product['id']) {
+                products[i]['quantity'] += product['quantity'];
+              }
+            }
+          }
+        }
+      }
+    }
+    products.sort((a, b) => b['quantity']!.compareTo(a['quantity']!));
+    return products;
   }
 
   // * FILTERING

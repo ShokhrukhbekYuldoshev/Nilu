@@ -8,7 +8,6 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/controllers/theme_controller.dart';
 import 'package:nilu/models/themes_model.dart';
 import 'package:nilu/utils/languages.dart';
-
 import 'utils/preferences.dart';
 import 'views/screens/auth/login_screen.dart';
 import 'views/screens/categories_screen.dart';
