@@ -78,31 +78,29 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                         discount =
                             discount * Preferences.getExchangeRateResult();
                       }
-
-                      if (_cartController.productsPrice ==
-                          _cartController.payment) {
-                        _cartController.payments.value.clear();
+                      if (discount >= 0 &&
+                          discount <= _cartController.productsPrice) {
+                        _cartController.payments.clear();
+                        _cartController.setDiscount(discount);
                         _cartController.addPayment(
-                            _cartController.productsPrice - discount,
-                            widget.chosenCurrency);
+                          _cartController.productsPrice - discount,
+                          widget.chosenCurrency,
+                        );
                       } else if (widget.chosenCurrency ==
                               _profileController.user['mainCurrency'] &&
                           double.parse(_discountController.text
                                   .replaceAll(',', '')) >
-                              _cartController.productsPrice -
-                                  _cartController.payment) {
-                        discount = _cartController.productsPrice -
-                            _cartController.payment;
+                              _cartController.productsPrice) {
+                        _cartController.clearPayments();
+                        discount = _cartController.productsPrice;
                       } else if (widget.chosenCurrency ==
                               _profileController.user['secondaryCurrency'] &&
                           double.parse(_discountController.text
                                   .replaceAll(',', '')) >
                               _cartController.productsPrice /
-                                      Preferences.getExchangeRateResult() -
-                                  _cartController.payment /
-                                      Preferences.getExchangeRateResult()) {
-                        discount = _cartController.productsPrice -
-                            _cartController.payment;
+                                  Preferences.getExchangeRateResult()) {
+                        _cartController.payments.clear();
+                        discount = _cartController.productsPrice;
                       }
                       if (discount > 0 &&
                           discount <= _cartController.productsPrice) {
