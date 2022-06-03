@@ -239,14 +239,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 25),
                         InfoTile(
-                          route: '/exchange-rate',
+                          onTap: () {
+                            Navigator.pushNamed(context, '/exchange-rate');
+                          },
                           title: 'exchange_rate'.tr,
                           trailing:
                               '1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
                         ),
                         const SizedBox(height: 16),
                         InfoTile(
-                          route: '/sales',
+                          onTap: () {
+                            DateTimeRange range = DateTimeRange(
+                              start: DateUtils.dateOnly(DateTime.now()),
+                              end: DateTime.now(),
+                            );
+                            _saleController.setSelectedDateRange(range);
+                            Navigator.pushNamed(context, '/sales');
+                          },
                           title: "todays_sales".tr,
                           trailing: formatCurrency(
                               _saleController.getTodaySales(),

@@ -3,20 +3,19 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 
 class InfoTile extends StatelessWidget {
-  final String title, trailing, route;
+  final String title, trailing;
+  final VoidCallback onTap;
   const InfoTile({
     Key? key,
     required this.title,
     required this.trailing,
-    required this.route,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, route);
-      },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
