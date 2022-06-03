@@ -22,7 +22,7 @@ class SaleController extends GetxController {
     try {
       sales.remove(sale);
       firestore.collection('sales').doc(sale.id).delete();
-      successSnackbar('Sale deleted');
+      successSnackbar('Sale ' + 'deleted'.tr);
     } catch (e) {
       errorSnackbar(e.toString());
     }
@@ -109,7 +109,7 @@ class SaleController extends GetxController {
     var date = DateUtils.dateOnly(DateTime.now());
     var months = date.month;
     var firstDayOfYear =
-        DateTime(date.year - 1, date.month - months + 1, date.day - 1);
+        DateTime(date.year - 1, date.month - months + 1, date.day - 2);
     var lastDayOfYear = DateTime(date.year, date.month - months + 1, 1);
 
     for (var i = 0; i < sales.length; i++) {
@@ -172,7 +172,7 @@ class SaleController extends GetxController {
       var date = DateUtils.dateOnly(DateTime.now());
       var months = date.month;
       dateStart =
-          DateTime(date.year - 1, date.month - months + 1, date.day - 1);
+          DateTime(date.year - 1, date.month - months + 1, date.day - 2);
       dateEnd = DateTime(date.year, date.month - months + 1, 1);
     }
     // * all time

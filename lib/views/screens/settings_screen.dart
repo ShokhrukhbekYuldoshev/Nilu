@@ -725,7 +725,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        '${_packageInfo.appName} for ${Platform.operatingSystem} v${_packageInfo.version} (${_packageInfo.buildNumber})',
+                        '${_packageInfo.appName} for ${Platform.operatingSystem} v${_packageInfo.version}',
                       ),
                     ],
                   ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:get/get.dart';
 import 'package:nilu/utils/constants.dart';
 import 'package:url_launcher/link.dart';
@@ -76,10 +75,10 @@ class SupportScreen extends StatelessWidget {
                           style: bodyText(textDarkColor),
                         ),
                         Link(
-                          uri: Uri.parse('https://t.me/niluapp'),
+                          uri: Uri.parse('https://t.me/therealfreedom'),
                           builder: (context, followLink) => GestureDetector(
                             child: Text(
-                              '@niluapp',
+                              '@therealfreedom',
                               style: bodyText(primaryColor),
                             ),
                             onTap: followLink,

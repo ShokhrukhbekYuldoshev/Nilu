@@ -108,6 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
         final CartController _cartController = Get.put(CartController());
         _profileController.user['categories'].sort();
         return Scaffold(
+          backgroundColor:
+              Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
           appBar: AppBar(
             elevation: 0,
           ),
