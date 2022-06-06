@@ -86,11 +86,8 @@ class SaleController extends GetxController {
 
   double getLastMonthSales() {
     double lastMonthSales = 0;
-
     var date = DateUtils.dateOnly(DateTime.now());
-    var days = date.day;
-    var firstDayOfMonth =
-        DateTime(date.year, date.month - 1, date.day - days + 1);
+    var firstDayOfMonth = DateTime(date.year, date.month - 1, 1);
     var lastDayOfMonth = DateTime(date.year, date.month, 1);
 
     for (var i = 0; i < sales.length; i++) {
@@ -107,10 +104,8 @@ class SaleController extends GetxController {
     double lastYearSales = 0;
 
     var date = DateUtils.dateOnly(DateTime.now());
-    var months = date.month;
-    var firstDayOfYear =
-        DateTime(date.year - 1, date.month - months + 1, date.day - 2);
-    var lastDayOfYear = DateTime(date.year, date.month - months + 1, 1);
+    var firstDayOfYear = DateTime(date.year - 1, 1, 1);
+    var lastDayOfYear = DateTime(date.year, 1, 1);
 
     for (var i = 0; i < sales.length; i++) {
       DateTime saleDate = sales[i].date.toDate();
@@ -163,17 +158,14 @@ class SaleController extends GetxController {
     // * last month
     else if (value == 'last_month'.tr) {
       var date = DateUtils.dateOnly(DateTime.now());
-      var days = date.day;
-      dateStart = DateTime(date.year, date.month - 1, date.day - days + 1);
+      dateStart = DateTime(date.year, date.month - 1, 1);
       dateEnd = DateTime(date.year, date.month, 1);
     }
     // * last year
     else if (value == 'last_year'.tr) {
       var date = DateUtils.dateOnly(DateTime.now());
-      var months = date.month;
-      dateStart =
-          DateTime(date.year - 1, date.month - months + 1, date.day - 2);
-      dateEnd = DateTime(date.year, date.month - months + 1, 1);
+      dateStart = DateTime(date.year - 1, 1, 1);
+      dateEnd = DateTime(date.year, 1, 1);
     }
     // * all time
     else if (value == 'all_time'.tr) {
