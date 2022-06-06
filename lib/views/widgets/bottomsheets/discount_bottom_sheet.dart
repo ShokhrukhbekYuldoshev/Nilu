@@ -81,10 +81,9 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                       if (discount >= 0 &&
                           discount <= _cartController.productsPrice) {
                         _cartController.payments.clear();
-                        _cartController.setDiscount(discount);
                         _cartController.addPayment(
                           _cartController.productsPrice - discount,
-                          widget.chosenCurrency,
+                          _profileController.user['mainCurrency'],
                         );
                       } else if (widget.chosenCurrency ==
                               _profileController.user['mainCurrency'] &&

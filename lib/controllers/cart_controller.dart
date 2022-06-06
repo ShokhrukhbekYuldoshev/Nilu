@@ -110,23 +110,19 @@ class CartController extends GetxController {
 
   double get payment {
     double sum = 0;
-    sum += _payments
-        .where((payment) =>
-            payment.currency == _profileController.user['mainCurrency'])
-        .fold(0, (sum, payment) => sum + payment.amount);
-
-    sum += _payments
-        .where((payment) =>
-            payment.currency == _profileController.user['secondaryCurrency'])
-        .fold(
-            0,
-            (sum, payment) =>
-                sum + payment.amount * Preferences.getExchangeRate());
+    for (var payment in _payments) {
+      if (payment.currency == _profileController.user['mainCurrency']) {
+        sum += payment.amount;
+      } else {
+        sum += payment.amount * Preferences.getExchangeRateResult();
+      }
+    }
     return sum;
   }
 
   double get remaining {
-    return productsPrice - payment - discount.value;
+    double result = productsPrice - payment - discount.value;
+    return result < 0.01 ? 0 : result;
   }
 
   void clearPayments() {
