@@ -10,6 +10,7 @@ import 'package:nilu/models/themes_model.dart';
 import 'package:nilu/utils/languages.dart';
 import 'package:nilu/views/screens/loading_screen.dart';
 import 'package:nilu/views/screens/support_screen.dart';
+import 'firebase_options.dart';
 import 'utils/preferences.dart';
 import 'views/screens/auth/login_screen.dart';
 import 'views/screens/categories_screen.dart';
@@ -31,7 +32,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FlutterLibphonenumber().init();
   await Preferences.init().then((value) => Get.put(ProfileController()));
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((value) => Get.put(AuthController()));
   getLocale();
   runApp(const MyApp());
 }
