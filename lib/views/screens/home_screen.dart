@@ -49,7 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
     await Future.delayed(
       const Duration(seconds: 1),
       () async {
-        if (Preferences.getExchangeRateType() == 'auto' &&
+        if (_profileController.user['secondaryCurrency'] == '') {
+          return;
+        } else if (Preferences.getExchangeRateType() == 'auto' &&
                 Preferences.getExchangeRateDate() == '' ||
             DateTime.parse(Preferences.getExchangeRateDate())
                 .isBefore(DateTime.now().subtract(const Duration(days: 1)))) {
@@ -243,8 +245,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.pushNamed(context, '/exchange-rate');
                           },
                           title: 'exchange_rate'.tr,
-                          trailing:
-                              '1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
+                          trailing: hasSecondaryCurrency()
+                              ? '1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}'
+                              : 'no_secondary_currency'.tr,
                         ),
                         const SizedBox(height: 16),
                         InfoTile(

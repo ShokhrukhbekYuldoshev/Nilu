@@ -24,269 +24,273 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: double.maxFinite,
-              color: primaryColor,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 32,
-                ),
-                child: Text(
-                  'exchange_rate'.tr,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                    color: whiteColor,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                color: Preferences.getTheme() ? darkGrayColor : whiteColor,
-                borderRadius: BorderRadius.circular(4),
-                border: Border.all(
-                  color: Preferences.getExchangeRateType() == 'auto'
-                      ? primaryColor
-                      : Colors.transparent,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    offset: const Offset(0, 4),
-                    blurRadius: 10,
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RadioListTile(
-                      enableFeedback: mounted,
-                      activeColor: Preferences.getTheme()
-                          ? primaryLightColor
-                          : primaryColor,
-                      contentPadding: const EdgeInsets.all(0),
-                      title: Text('auto_update'.tr,
-                          style: bodyText(
-                              Theme.of(context).textTheme.bodyText1!.color)),
-                      value: 'auto',
-                      groupValue: Preferences.getExchangeRateType(),
-                      onChanged: (value) {
-                        setState(() {
-                          Preferences.setExchangeRateType('auto');
-                        });
-                      }),
-                  Preferences.getExchangeRateType() == 'auto'
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: Preferences.getExchangeRateDate() != ""
-                              ? [
-                                  const Divider(),
-                                  const SizedBox(height: 20),
-                                  Text(
-                                    'bank_rate'.tr +
-                                        ': 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), _profileController.user['mainCurrency'])}',
-                                    style: h5(
-                                      Preferences.getExchangeRateAdjustment() !=
-                                              0
-                                          ? Theme.of(context)
-                                              .textTheme
-                                              .bodyText2!
-                                              .color
-                                          : Theme.of(context)
-                                              .textTheme
-                                              .bodyText1!
-                                              .color,
-                                    ),
-                                  ),
-                                  Preferences.getExchangeRateAdjustment() != 0
-                                      ? Text(
-                                          'new_rate'.tr +
-                                              ': 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
-                                          style: h5(
-                                            Theme.of(context)
-                                                .textTheme
-                                                .bodyText1!
-                                                .color,
-                                          ),
-                                        )
-                                      : Container(),
-                                  const SizedBox(height: 24),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        elevation: 0,
-                                        primary: Preferences.getTheme()
-                                            ? lightGrayColor
-                                            : primaryUltraLightColor,
-                                        textStyle: bodyText(whiteColor)),
-                                    onPressed: () {
-                                      showModalBottomSheet(
-                                        context: context,
-                                        isScrollControlled: true,
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(4),
-                                            topRight: Radius.circular(4),
-                                          ),
-                                        ),
-                                        builder: (_) => AutoAdjustBottomSheet(
-                                          profileController: _profileController,
-                                          exchangeRateController:
-                                              _exchangeRateController,
-                                        ),
-                                      ).then((_) {
-                                        setState(() => {});
-                                      });
-                                    },
-                                    child: Text(
-                                      '+/- ' + 'auto_adjust'.tr,
-                                      style: bodyText(
-                                        Preferences.getTheme()
-                                            ? whiteColor
-                                            : primaryColor,
-                                      ),
-                                    ),
-                                  ),
-                                ]
-                              : [],
-                        )
-                      : Container(),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                color: Preferences.getTheme() ? darkGrayColor : whiteColor,
-                borderRadius: BorderRadius.circular(4),
-                border: Border.all(
-                  color: Preferences.getExchangeRateType() == 'manual'
-                      ? primaryColor
-                      : Colors.transparent,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    offset: const Offset(0, 4),
-                    blurRadius: 10,
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RadioListTile(
-                    dense: true,
-                    contentPadding: const EdgeInsets.all(0),
-                    activeColor: Preferences.getTheme()
-                        ? primaryLightColor
-                        : primaryColor,
-                    title: Text(
-                      'manual_input'.tr,
-                      style: bodyText(
-                        Theme.of(context).textTheme.bodyText1!.color,
-                      ),
-                    ),
-                    value: 'manual',
-                    groupValue: Preferences.getExchangeRateType(),
-                    onChanged: (value) {
-                      setState(() {
-                        Preferences.setExchangeRateType('manual');
-                      });
-                    },
-                  ),
-                  Preferences.getExchangeRateType() == 'manual'
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Divider(),
-                            const SizedBox(height: 24),
-                            SizedBox(
-                              height: 44,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.all(12),
-                                    decoration: BoxDecoration(
-                                      color: Preferences.getTheme()
-                                          ? mediumGrayColor
-                                          : const Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Text(
-                                        '1 ${_profileController.user['secondaryCurrency']} = ',
-                                        style: bodyText(Theme.of(context)
-                                            .textTheme
-                                            .bodyText1!
-                                            .color)),
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Expanded(
-                                    child: TextField(
-                                      controller: _exchangeRateController,
-                                      autofocus: true,
-                                      keyboardType: TextInputType.number,
-                                      style: bodyText(Theme.of(context)
-                                          .textTheme
-                                          .bodyText1!
-                                          .color),
-                                      decoration: InputDecoration(
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                        ),
-                                        border: const OutlineInputBorder(),
-                                        hintText: 'enter_amount'.tr,
-                                        hintStyle: bodyText(Theme.of(context)
-                                            .textTheme
-                                            .bodyText1!
-                                            .color),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 6),
-                                  PrimaryButton(
-                                    text: "save".tr,
-                                    onPressed: () {
-                                      try {
-                                        Preferences.setExchangeRate(
-                                          double.parse(
-                                            _exchangeRateController.text
-                                                .replaceAll(',', ''),
-                                          ),
-                                        );
-                                        Preferences.setExchangeRateAdjustment(
-                                            0);
-                                        FocusScope.of(context).unfocus();
-                                        successSnackbar(
-                                            'exchange_rate_saved'.tr);
-                                      } catch (_) {}
-                                    },
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        )
-                      : Container(),
-                ],
-              ),
-            ),
-          ],
+        title: Text(
+          'exchange_rate'.tr,
         ),
       ),
+      body: hasSecondaryCurrency()
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  Container(
+                    decoration: BoxDecoration(
+                      color:
+                          Preferences.getTheme() ? darkGrayColor : whiteColor,
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(
+                        color: Preferences.getExchangeRateType() == 'auto'
+                            ? primaryColor
+                            : Colors.transparent,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          offset: const Offset(0, 4),
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RadioListTile(
+                            enableFeedback: mounted,
+                            activeColor: Preferences.getTheme()
+                                ? primaryLightColor
+                                : primaryColor,
+                            contentPadding: const EdgeInsets.all(0),
+                            title: Text('auto_update'.tr,
+                                style: bodyText(Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .color)),
+                            value: 'auto',
+                            groupValue: Preferences.getExchangeRateType(),
+                            onChanged: (value) {
+                              setState(() {
+                                Preferences.setExchangeRateType('auto');
+                              });
+                            }),
+                        Preferences.getExchangeRateType() == 'auto'
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: Preferences.getExchangeRateDate() !=
+                                        ""
+                                    ? [
+                                        const Divider(),
+                                        const SizedBox(height: 20),
+                                        Text(
+                                          'bank_rate'.tr +
+                                              ': 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), _profileController.user['mainCurrency'])}',
+                                          style: h5(
+                                            Preferences.getExchangeRateAdjustment() !=
+                                                    0
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText2!
+                                                    .color
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1!
+                                                    .color,
+                                          ),
+                                        ),
+                                        Preferences.getExchangeRateAdjustment() !=
+                                                0
+                                            ? Text(
+                                                'new_rate'.tr +
+                                                    ': 1 ${_profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}',
+                                                style: h5(
+                                                  Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1!
+                                                      .color,
+                                                ),
+                                              )
+                                            : Container(),
+                                        const SizedBox(height: 24),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              elevation: 0,
+                                              primary: Preferences.getTheme()
+                                                  ? lightGrayColor
+                                                  : primaryUltraLightColor,
+                                              textStyle: bodyText(whiteColor)),
+                                          onPressed: () {
+                                            showModalBottomSheet(
+                                              context: context,
+                                              isScrollControlled: true,
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(4),
+                                                  topRight: Radius.circular(4),
+                                                ),
+                                              ),
+                                              builder: (_) =>
+                                                  AutoAdjustBottomSheet(
+                                                profileController:
+                                                    _profileController,
+                                                exchangeRateController:
+                                                    _exchangeRateController,
+                                              ),
+                                            ).then((_) {
+                                              setState(() => {});
+                                            });
+                                          },
+                                          child: Text(
+                                            '+/- ' + 'auto_adjust'.tr,
+                                            style: bodyText(
+                                              Preferences.getTheme()
+                                                  ? whiteColor
+                                                  : primaryColor,
+                                            ),
+                                          ),
+                                        ),
+                                      ]
+                                    : [],
+                              )
+                            : Container(),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      color:
+                          Preferences.getTheme() ? darkGrayColor : whiteColor,
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(
+                        color: Preferences.getExchangeRateType() == 'manual'
+                            ? primaryColor
+                            : Colors.transparent,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          offset: const Offset(0, 4),
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RadioListTile(
+                          dense: true,
+                          contentPadding: const EdgeInsets.all(0),
+                          activeColor: Preferences.getTheme()
+                              ? primaryLightColor
+                              : primaryColor,
+                          title: Text(
+                            'manual_input'.tr,
+                            style: bodyText(
+                              Theme.of(context).textTheme.bodyText1!.color,
+                            ),
+                          ),
+                          value: 'manual',
+                          groupValue: Preferences.getExchangeRateType(),
+                          onChanged: (value) {
+                            setState(() {
+                              Preferences.setExchangeRateType('manual');
+                            });
+                          },
+                        ),
+                        Preferences.getExchangeRateType() == 'manual'
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Divider(),
+                                  const SizedBox(height: 24),
+                                  SizedBox(
+                                    height: 44,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.all(12),
+                                          decoration: BoxDecoration(
+                                            color: Preferences.getTheme()
+                                                ? mediumGrayColor
+                                                : const Color(0xFFF5F5F5),
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                          child: Text(
+                                              '1 ${_profileController.user['secondaryCurrency']} = ',
+                                              style: bodyText(Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1!
+                                                  .color)),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Expanded(
+                                          child: TextField(
+                                            controller: _exchangeRateController,
+                                            autofocus: true,
+                                            keyboardType: TextInputType.number,
+                                            style: bodyText(Theme.of(context)
+                                                .textTheme
+                                                .bodyText1!
+                                                .color),
+                                            decoration: InputDecoration(
+                                              contentPadding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 10,
+                                              ),
+                                              border:
+                                                  const OutlineInputBorder(),
+                                              hintText: 'enter_amount'.tr,
+                                              hintStyle: bodyText(
+                                                  Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1!
+                                                      .color),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        PrimaryButton(
+                                          text: "save".tr,
+                                          onPressed: () {
+                                            try {
+                                              Preferences.setExchangeRate(
+                                                double.parse(
+                                                  _exchangeRateController.text
+                                                      .replaceAll(',', ''),
+                                                ),
+                                              );
+                                              Preferences
+                                                  .setExchangeRateAdjustment(0);
+                                              FocusScope.of(context).unfocus();
+                                              successSnackbar(
+                                                  'exchange_rate_saved'.tr);
+                                            } catch (_) {}
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
+                            : Container(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : Center(
+              child: Text('no_secondary_currency'.tr),
+            ),
     );
   }
 }

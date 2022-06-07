@@ -51,47 +51,50 @@ class _CartScreenState extends State<CartScreen> {
           title: Text('new_sale'.tr),
           elevation: 0,
           actions: [
-            PopupMenuButton(
-              child: Row(
-                children: [
-                  Text(
-                    chosenCurrency,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+            hasSecondaryCurrency()
+                ? PopupMenuButton(
+                    child: Row(
+                      children: [
+                        Text(
+                          chosenCurrency,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const Icon(
+                          Icons.arrow_drop_down,
+                          size: 24,
+                        ),
+                        const SizedBox(width: 8),
+                      ],
                     ),
-                  ),
-                  const Icon(
-                    Icons.arrow_drop_down,
-                    size: 24,
-                  ),
-                  const SizedBox(width: 8),
-                ],
-              ),
-              onSelected: (String value) {
-                setState(() {
-                  chosenCurrency = value;
-                });
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                PopupMenuItem<String>(
-                  value: _profileController.user['mainCurrency'],
-                  child: Text(
-                    _profileController.user['mainCurrency'],
-                    style:
-                        bodyText(Theme.of(context).textTheme.bodyText1!.color),
-                  ),
-                ),
-                PopupMenuItem<String>(
-                  value: _profileController.user['secondaryCurrency'],
-                  child: Text(
-                    _profileController.user['secondaryCurrency'],
-                    style:
-                        bodyText(Theme.of(context).textTheme.bodyText1!.color),
-                  ),
-                ),
-              ],
-            ),
+                    onSelected: (String value) {
+                      setState(() {
+                        chosenCurrency = value;
+                      });
+                    },
+                    itemBuilder: (BuildContext context) =>
+                        <PopupMenuEntry<String>>[
+                      PopupMenuItem<String>(
+                        value: _profileController.user['mainCurrency'],
+                        child: Text(
+                          _profileController.user['mainCurrency'],
+                          style: bodyText(
+                              Theme.of(context).textTheme.bodyText1!.color),
+                        ),
+                      ),
+                      PopupMenuItem<String>(
+                        value: _profileController.user['secondaryCurrency'],
+                        child: Text(
+                          _profileController.user['secondaryCurrency'],
+                          style: bodyText(
+                              Theme.of(context).textTheme.bodyText1!.color),
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(),
           ],
           leading: _isLoading
               ? Container()
@@ -111,17 +114,19 @@ class _CartScreenState extends State<CartScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 7),
-                        alignment: Alignment.centerLeft,
-                        color: const Color(0xFFFFF2CC),
-                        child: Text(
-                          "1 ${_profileController.user['secondaryCurrency']}  = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}",
-                          style: bodyText(warningColor),
-                        ),
-                      ),
+                      hasSecondaryCurrency()
+                          ? Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 7),
+                              alignment: Alignment.centerLeft,
+                              color: const Color(0xFFFFF2CC),
+                              child: Text(
+                                "1 ${_profileController.user['secondaryCurrency']}  = ${formatCurrency(Preferences.getExchangeRateResult(), _profileController.user['mainCurrency'])}",
+                                style: bodyText(warningColor),
+                              ),
+                            )
+                          : Container(),
                       Padding(
                         padding: const EdgeInsets.all(20),
                         child: SizedBox(
@@ -195,12 +200,15 @@ class _CartScreenState extends State<CartScreen> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(product.name,
-                                                style: bodyText(
-                                                    Theme.of(context)
-                                                        .textTheme
-                                                        .bodyText1!
-                                                        .color)),
+                                            Text(
+                                              product.name,
+                                              style: bodyText(
+                                                Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1!
+                                                    .color,
+                                              ),
+                                            ),
                                             const SizedBox(height: 2),
                                             Text(
                                               formatCurrency(
@@ -214,19 +222,23 @@ class _CartScreenState extends State<CartScreen> {
                                               ),
                                             ),
                                             const SizedBox(height: 2),
-                                            Text(
-                                              formatCurrency(
-                                                  _cartController.getPrice(
-                                                          product.id) /
-                                                      Preferences
-                                                          .getExchangeRateResult(),
-                                                  _profileController.user[
-                                                      'secondaryCurrency']),
-                                              style: const TextStyle(
-                                                color: Color(0xFF999999),
-                                                fontSize: 14,
-                                              ),
-                                            ),
+                                            hasSecondaryCurrency()
+                                                ? Text(
+                                                    formatCurrency(
+                                                        _cartController
+                                                                .getPrice(
+                                                                    product
+                                                                        .id) /
+                                                            Preferences
+                                                                .getExchangeRateResult(),
+                                                        _profileController.user[
+                                                            'secondaryCurrency']),
+                                                    style: const TextStyle(
+                                                      color: Color(0xFF999999),
+                                                      fontSize: 14,
+                                                    ),
+                                                  )
+                                                : Container(),
                                           ],
                                         ),
                                       ),

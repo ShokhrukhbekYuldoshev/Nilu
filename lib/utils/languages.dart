@@ -51,6 +51,7 @@ class Languages extends Translations {
           'payment': 'Payment',
           'all': 'All',
           // ! login
+          'login': 'Login',
           'restore_account': 'Restore account',
           'app_description': 'Easily manage your sales, income, and products',
           'not_phone_number': 'Please enter a valid phone number',
@@ -74,6 +75,7 @@ class Languages extends Translations {
           'categories': 'Categories',
           'settings': 'Settings',
           'support': 'Support',
+          'no_secondary_currency': 'No secondary currency',
           // ! sales
           'all_clients': 'All clients',
           'client': 'Client',
@@ -240,6 +242,7 @@ class Languages extends Translations {
           'payment': 'Pago',
           'all': 'Todo',
           // ! login
+          'login': 'Iniciar sesión',
           'restore_account': 'Restaurar cuenta',
           'app_description':
               'Gestiona fácilmente tus ventas, ingresos y productos',
@@ -265,6 +268,7 @@ class Languages extends Translations {
           'categories': 'Categorías',
           'settings': 'Configuración',
           'support': 'Soporte',
+          'no_secondary_currency': 'No hay moneda secundaria',
           // ! sales
           'all_clients': 'Todos los clientes',
           'client': 'Cliente',
@@ -432,6 +436,7 @@ class Languages extends Translations {
           'payment': 'Оплата',
           'all': 'Все',
           // ! login
+          'login': 'Вход',
           'restore_account': 'Восстановить аккаунт',
           'app_description':
               'Удобно управлять вашими продажами, доходами и товарами на складе',
@@ -456,6 +461,7 @@ class Languages extends Translations {
           'categories': 'Категории',
           'settings': 'Настройки',
           'support': 'Поддержка',
+          'no_secondary_currency': 'Нет вторичной валюты',
           // ! sales
           'all_clients': 'Все клиенты',
           'client': 'Клиент',
@@ -623,6 +629,7 @@ class Languages extends Translations {
           'payment': 'To\'lov',
           'all': 'Hamma',
           // ! login
+          'login': 'Kirish',
           'restore_account': 'Akkauntni qayta tiklash',
           'app_description':
               'Sotuvlar, foyda va tovarlaringizni oson boshqarish',
@@ -646,6 +653,7 @@ class Languages extends Translations {
           'statistics': 'Statistika',
           'categories': 'Kategoriyalar',
           'settings': 'Sozlamalar',
+          'no_secondary_currency': 'Ikkinchi valyuta yo\'q',
           // ! sales
           'all_clients': 'Barcha mijozlar',
           'client': 'Mijoz',

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nilu/controllers/profile_controller.dart';
 
 //* Colors
 const Color primaryColor = Color(0xFF0057DA);
@@ -93,6 +94,11 @@ SnackbarController errorSnackbar(String message) {
     duration: const Duration(seconds: 2),
     isDismissible: false,
   );
+}
+
+ProfileController _profileController = Get.find();
+bool hasSecondaryCurrency() {
+  return _profileController.user['secondaryCurrency'] != '';
 }
 
 SnackbarController successSnackbar(String message) {

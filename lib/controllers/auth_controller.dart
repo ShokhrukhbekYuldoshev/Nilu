@@ -192,11 +192,7 @@ class AuthController extends GetxController {
         'image': '',
         'categories': [],
         'mainCurrency': mainCurrency,
-        'secondaryCurrency': secondaryCurrency != ''
-            ? secondaryCurrency
-            : mainCurrency == 'USD'
-                ? 'EUR'
-                : 'USD',
+        'secondaryCurrency': secondaryCurrency,
         'date': DateTime.now(),
       });
       await Preferences.setPhone(phoneNumber.value);

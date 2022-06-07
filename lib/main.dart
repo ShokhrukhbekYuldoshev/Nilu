@@ -8,6 +8,7 @@ import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/controllers/theme_controller.dart';
 import 'package:nilu/models/themes_model.dart';
 import 'package:nilu/utils/languages.dart';
+import 'package:nilu/views/screens/loading_screen.dart';
 import 'package:nilu/views/screens/support_screen.dart';
 import 'utils/preferences.dart';
 import 'views/screens/auth/login_screen.dart';
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
           case '/login':
             return MaterialPageRoute(builder: (_) => const LoginScreen());
           case '/register':
-            return CupertinoPageRoute(builder: (_) => const RegisterScreen());
+            return CupertinoPageRoute(builder: (_) => RegisterScreen());
           case '/home':
             return MaterialPageRoute(
               builder: (_) => const HomeScreen(),
@@ -107,11 +108,7 @@ class MyApp extends StatelessWidget {
             return CupertinoPageRoute(builder: (_) => const SupportScreen());
           default:
             return MaterialPageRoute(
-              builder: (_) => const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+              builder: (_) => const LoadingScreen(),
             );
         }
       },

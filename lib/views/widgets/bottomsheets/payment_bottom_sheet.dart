@@ -209,23 +209,28 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                                             },
                                             title: Text(_profileController
                                                 .user['mainCurrency'])),
-                                        RadioListTile(
-                                          activeColor: Preferences.getTheme()
-                                              ? primaryLightColor
-                                              : primaryColor,
-                                          value: _profileController
-                                              .user['secondaryCurrency']
-                                              .toString(),
-                                          groupValue: _payments[i]['currency'],
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _payments[i]['currency'] = value;
-                                            });
-                                            Navigator.pop(context);
-                                          },
-                                          title: Text(_profileController
-                                              .user['secondaryCurrency']),
-                                        ),
+                                        hasSecondaryCurrency()
+                                            ? RadioListTile(
+                                                activeColor:
+                                                    Preferences.getTheme()
+                                                        ? primaryLightColor
+                                                        : primaryColor,
+                                                value: _profileController
+                                                    .user['secondaryCurrency']
+                                                    .toString(),
+                                                groupValue: _payments[i]
+                                                    ['currency'],
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    _payments[i]['currency'] =
+                                                        value;
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                title: Text(_profileController
+                                                    .user['secondaryCurrency']),
+                                              )
+                                            : Container(),
                                       ],
                                     ),
                                   ],

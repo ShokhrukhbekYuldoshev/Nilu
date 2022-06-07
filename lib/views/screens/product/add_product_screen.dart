@@ -355,24 +355,29 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                                   },
                                                   title: Text(_profileController
                                                       .user['mainCurrency'])),
-                                              RadioListTile(
-                                                activeColor:
-                                                    Preferences.getTheme()
-                                                        ? primaryLightColor
-                                                        : primaryColor,
-                                                value: _profileController
-                                                    .user['secondaryCurrency']
-                                                    .toString(),
-                                                groupValue: _payment,
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    _payment = value.toString();
-                                                  });
-                                                  Navigator.pop(context);
-                                                },
-                                                title: Text(_profileController
-                                                    .user['secondaryCurrency']),
-                                              ),
+                                              hasSecondaryCurrency()
+                                                  ? RadioListTile(
+                                                      activeColor: Preferences
+                                                              .getTheme()
+                                                          ? primaryLightColor
+                                                          : primaryColor,
+                                                      value: _profileController
+                                                          .user[
+                                                              'secondaryCurrency']
+                                                          .toString(),
+                                                      groupValue: _payment,
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          _payment =
+                                                              value.toString();
+                                                        });
+                                                        Navigator.pop(context);
+                                                      },
+                                                      title: Text(_profileController
+                                                              .user[
+                                                          'secondaryCurrency']),
+                                                    )
+                                                  : Container(),
                                             ],
                                           ),
                                         ],

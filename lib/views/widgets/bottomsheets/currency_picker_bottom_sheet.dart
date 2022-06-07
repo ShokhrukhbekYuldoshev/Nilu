@@ -39,6 +39,7 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
 
   final TextEditingController _searchController = TextEditingController();
   final AuthController _authController = Get.find();
+  final ProfileController _profileController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -48,29 +49,68 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              controller: _searchController,
-              onChanged: (value) {
-                setState(() {
-                  searchCurrencies = currencies
-                      .where((currency) =>
-                          currency.toLowerCase().contains(value.toLowerCase()))
-                      .toList();
-                });
-              },
-              decoration: InputDecoration(
-                hintText: 'search'.tr,
-                contentPadding: const EdgeInsets.all(0),
-                hintStyle: bodyText(iconGrayColor),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: iconGrayColor,
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        searchCurrencies = currencies
+                            .where((currency) => currency
+                                .toLowerCase()
+                                .contains(value.toLowerCase()))
+                            .toList();
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'search'.tr,
+                      contentPadding: const EdgeInsets.all(0),
+                      hintStyle: bodyText(iconGrayColor),
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: iconGrayColor,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4),
-                  borderSide: BorderSide.none,
-                ),
-              ),
+                widget.isMainCurrency
+                    ? Container()
+                    : IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () async {
+                          if (widget.isAuth) {
+                            _authController.secondaryCurrency.value = '';
+                          } else {
+                            showDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                });
+                            await firestore
+                                .collection('users')
+                                .doc(_profileController.user['id'])
+                                .update(
+                              {
+                                'secondaryCurrency': '',
+                              },
+                            );
+                            await _profileController.updateUserData();
+                            Navigator.pop(context);
+                          }
+                          try {
+                            Navigator.pop(context);
+                          } catch (_) {}
+                        },
+                      ),
+              ],
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
@@ -135,8 +175,7 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
                                     child: CircularProgressIndicator(),
                                   );
                                 });
-                            final ProfileController _profileController =
-                                Get.find();
+
                             await firestore
                                 .collection('users')
                                 .doc(_profileController.user['id'])

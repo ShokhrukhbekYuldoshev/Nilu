@@ -113,14 +113,17 @@ class ProductTile extends StatelessWidget {
                           Theme.of(context).textTheme.bodyText2!.color,
                         ),
                       ),
-                      Text(
-                        formatCurrency(
-                            product.price / Preferences.getExchangeRateResult(),
-                            _profileController.user['secondaryCurrency']),
-                        style: bodyText(
-                          Theme.of(context).textTheme.bodyText2!.color,
-                        ),
-                      ),
+                      hasSecondaryCurrency()
+                          ? Text(
+                              formatCurrency(
+                                  product.price /
+                                      Preferences.getExchangeRateResult(),
+                                  _profileController.user['secondaryCurrency']),
+                              style: bodyText(
+                                Theme.of(context).textTheme.bodyText2!.color,
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
                 ),

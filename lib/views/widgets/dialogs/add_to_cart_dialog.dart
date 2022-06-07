@@ -195,10 +195,12 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
             ),
           ),
           const SizedBox(height: 10),
-          Text(
-            '= ${formatCurrency(secondaryCurrencyValue, _profileController.user['secondaryCurrency'])}',
-            style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
-          )
+          hasSecondaryCurrency()
+              ? Text(
+                  '= ${formatCurrency(secondaryCurrencyValue, _profileController.user['secondaryCurrency'])}',
+                  style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
+                )
+              : Container(),
         ],
       ),
       actions: [

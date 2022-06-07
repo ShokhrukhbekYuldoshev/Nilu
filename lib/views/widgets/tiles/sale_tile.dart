@@ -85,15 +85,18 @@ class SaleTile extends StatelessWidget {
                       color: Color(0xFF999999),
                     ),
                   ),
-                  Text(
-                    formatCurrency(
-                        product.price / Preferences.getExchangeRateResult(),
-                        _profileController.user['secondaryCurrency']),
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Color(0xFF999999),
-                    ),
-                  ),
+                  hasSecondaryCurrency()
+                      ? Text(
+                          formatCurrency(
+                              product.price /
+                                  Preferences.getExchangeRateResult(),
+                              _profileController.user['secondaryCurrency']),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF999999),
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
             ),
