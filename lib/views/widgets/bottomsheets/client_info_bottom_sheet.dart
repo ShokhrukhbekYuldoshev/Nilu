@@ -72,13 +72,13 @@ class ClientInfoBottomSheet extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 client.name,
-                style: h5(Theme.of(context).textTheme.bodyText1!.color),
+                style: h5(Theme.of(context).textTheme.bodyLarge!.color),
               ),
               const SizedBox(height: 12),
               Text(
                 client.phone != "" ? client.phone : "no_phone".tr,
                 style: bodyText(
-                  Theme.of(context).textTheme.bodyText2!.color,
+                  Theme.of(context).textTheme.bodyMedium!.color,
                 ),
               ),
               const SizedBox(height: 12),
@@ -87,7 +87,7 @@ class ClientInfoBottomSheet extends StatelessWidget {
                       ? client.note!
                       : 'no_note'.tr,
                   style: bodyText(
-                    Theme.of(context).textTheme.bodyText2!.color,
+                    Theme.of(context).textTheme.bodyMedium!.color,
                   )),
               const SizedBox(height: 12),
               Text(
@@ -99,7 +99,7 @@ class ClientInfoBottomSheet extends StatelessWidget {
                   fontSize: 14,
                   color: client.debt > 0
                       ? redColor
-                      : Theme.of(context).textTheme.bodyText2!.color,
+                      : Theme.of(context).textTheme.bodyMedium!.color,
                 ),
               ),
               const SizedBox(height: 44),

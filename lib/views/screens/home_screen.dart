@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             'login'.tr,
                             style: h5(
-                              Theme.of(context).textTheme.bodyText1!.color,
+                              Theme.of(context).textTheme.bodyLarge!.color,
                             ),
                           ),
                           onPressed: () {
@@ -110,8 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
         final CartController _cartController = Get.put(CartController());
         _profileController.user['categories'].sort();
         return Scaffold(
-          backgroundColor:
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
           appBar: AppBar(
             elevation: 0,
           ),

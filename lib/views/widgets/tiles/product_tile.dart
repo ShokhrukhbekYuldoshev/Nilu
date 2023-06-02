@@ -110,7 +110,7 @@ class ProductTile extends StatelessWidget {
                         formatCurrency(product.price,
                             _profileController.user['mainCurrency']),
                         style: bodyText(
-                          Theme.of(context).textTheme.bodyText2!.color,
+                          Theme.of(context).textTheme.bodyMedium!.color,
                         ),
                       ),
                       hasSecondaryCurrency()
@@ -120,7 +120,7 @@ class ProductTile extends StatelessWidget {
                                       Preferences.getExchangeRateResult(),
                                   _profileController.user['secondaryCurrency']),
                               style: bodyText(
-                                Theme.of(context).textTheme.bodyText2!.color,
+                                Theme.of(context).textTheme.bodyMedium!.color,
                               ),
                             )
                           : Container(),

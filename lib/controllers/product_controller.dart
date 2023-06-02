@@ -58,7 +58,7 @@ class ProductController extends GetxController {
     );
   }
 
-  Product getProudctByCode(String code) {
+  Product getProductByCode(String code) {
     return products.firstWhere(
       (product) => product.code == code,
       orElse: () => Product(

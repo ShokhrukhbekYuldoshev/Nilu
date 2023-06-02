@@ -165,7 +165,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                     : '${_saleController.filterClients.length} ' +
                                         'clients'.tr.toLowerCase(),
                             style: bodyText(
-                              Theme.of(context).textTheme.bodyText2!.color,
+                              Theme.of(context).textTheme.bodyMedium!.color,
                             ),
                           ),
                           const Icon(
@@ -222,7 +222,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                 ? '${DateFormat('dd/MM/yyyy').format(_saleController.selectedDateRange!.start)} - ${DateFormat('dd/MM/yyyy').format(_saleController.selectedDateRange!.end)}'
                                 : 'any_date'.tr,
                             style: bodyText(
-                              Theme.of(context).textTheme.bodyText2!.color,
+                              Theme.of(context).textTheme.bodyMedium!.color,
                             ),
                           ),
                           const Icon(
@@ -296,7 +296,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                 ? 'all_sales'.tr
                                 : 'debt'.tr,
                             style: bodyText(
-                              Theme.of(context).textTheme.bodyText2!.color,
+                              Theme.of(context).textTheme.bodyMedium!.color,
                             ),
                           ),
                           const Icon(
@@ -403,7 +403,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                 style: h6(
                                                   Theme.of(context)
                                                       .textTheme
-                                                      .bodyText1!
+                                                      .bodyLarge!
                                                       .color,
                                                 ),
                                               ),
@@ -463,7 +463,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                       style: bodyText(
                                                         Theme.of(context)
                                                             .textTheme
-                                                            .bodyText1!
+                                                            .bodyLarge!
                                                             .color,
                                                       ),
                                                     ),
@@ -501,7 +501,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                 style: bodyText(
                                                     Theme.of(context)
                                                         .textTheme
-                                                        .bodyText2!
+                                                        .bodyMedium!
                                                         .color),
                                               ),
                                             ],
@@ -531,7 +531,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                           style: bodyText(
                                                             Theme.of(context)
                                                                 .textTheme
-                                                                .bodyText1!
+                                                                .bodyLarge!
                                                                 .color,
                                                           ),
                                                         ),
@@ -563,7 +563,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                                   color: Theme.of(
                                                                           context)
                                                                       .textTheme
-                                                                      .bodyText2!
+                                                                      .bodyMedium!
                                                                       .color,
                                                                 ),
                                                               ),
@@ -588,7 +588,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                                 color: Theme.of(
                                                                         context)
                                                                     .textTheme
-                                                                    .bodyText2!
+                                                                    .bodyMedium!
                                                                     .color,
                                                               ),
                                                             ),
@@ -613,7 +613,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                       ': ${formatCurrency(_sale.price, _profileController.user['mainCurrency'])}',
                                                   style: h6(Theme.of(context)
                                                       .textTheme
-                                                      .bodyText1!
+                                                      .bodyLarge!
                                                       .color),
                                                 ),
                                                 _sale.discount > 0
@@ -623,7 +623,7 @@ class _SalesScreenState extends State<SalesScreen> {
                                                         style: bodyText(
                                                           Theme.of(context)
                                                               .textTheme
-                                                              .bodyText2!
+                                                              .bodyMedium!
                                                               .color,
                                                         ),
                                                       )
@@ -755,7 +755,7 @@ class _SelectClientsBottomSheetState extends State<SelectClientsBottomSheet> {
               children: [
                 Text(
                   'clients'.tr,
-                  style: h5(Theme.of(context).textTheme.bodyText1!.color),
+                  style: h5(Theme.of(context).textTheme.bodyLarge!.color),
                 ),
                 GestureDetector(
                   onTap: () {

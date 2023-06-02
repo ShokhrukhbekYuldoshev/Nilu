@@ -149,13 +149,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                                 isUploading = true;
                                               });
                                               imageFile =
-                                                  await pickImageFromGallery();
-                                              await compressFile(imageFile)
-                                                  .then((value) {
+                                                  await pickImageFromGallery()
+                                                      .then((value) {
                                                 setState(() {
                                                   imageFile = value;
                                                   Navigator.pop(context);
                                                 });
+                                                return null;
                                               });
                                               String? url = '';
                                               if (imageFile != null) {
@@ -186,13 +186,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                                 isUploading = true;
                                               });
                                               imageFile =
-                                                  await pickImageFromCamera();
-                                              await compressFile(imageFile)
-                                                  .then((value) {
+                                                  await pickImageFromCamera()
+                                                      .then((value) {
                                                 setState(() {
                                                   imageFile = value;
                                                   Navigator.pop(context);
                                                 });
+                                                return null;
                                               });
                                               String? url = '';
                                               if (imageFile != null) {
@@ -319,7 +319,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               Text(
                                 'name'.tr,
                                 style: bodyText(
-                                  Theme.of(context).textTheme.bodyText2!.color,
+                                  Theme.of(context).textTheme.bodyMedium!.color,
                                 ),
                               ),
                               Row(
@@ -329,7 +329,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     style: bodyText(
                                       Theme.of(context)
                                           .textTheme
-                                          .bodyText1!
+                                          .bodyLarge!
                                           .color,
                                     ),
                                   ),
@@ -367,7 +367,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 'business_name'.tr,
                                 style: bodyText(Theme.of(context)
                                     .textTheme
-                                    .bodyText2!
+                                    .bodyMedium!
                                     .color),
                               ),
                               Row(
@@ -377,7 +377,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     style: bodyText(
                                       Theme.of(context)
                                           .textTheme
-                                          .bodyText1!
+                                          .bodyLarge!
                                           .color,
                                     ),
                                   ),
@@ -403,15 +403,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           children: [
                             Text(
                               'phone'.tr,
-                              style: bodyText(
-                                  Theme.of(context).textTheme.bodyText2!.color),
+                              style: bodyText(Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .color),
                             ),
                             Text(
                               FlutterLibphonenumber().formatNumberSync(
                                 _profileController.user['phone'],
                               ),
                               style: bodyText(
-                                Theme.of(context).textTheme.bodyText1!.color,
+                                Theme.of(context).textTheme.bodyLarge!.color,
                               ),
                             ),
                           ],
@@ -432,8 +434,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           children: [
                             Text(
                               'main_currency'.tr,
-                              style: bodyText(
-                                  Theme.of(context).textTheme.bodyText2!.color),
+                              style: bodyText(Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .color),
                             ),
                             Row(
                               children: [
@@ -442,7 +446,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   style: bodyText(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),
@@ -487,7 +491,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 'secondary_currency'.tr,
                                 style: bodyText(Theme.of(context)
                                     .textTheme
-                                    .bodyText2!
+                                    .bodyMedium!
                                     .color),
                               ),
                               Row(
@@ -497,7 +501,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                         .user['secondaryCurrency'],
                                     style: bodyText(Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color),
                                   ),
                                   const SizedBox(width: 18),
@@ -527,8 +531,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           children: [
                             Text(
                               'notifications'.tr,
-                              style: bodyText(
-                                  Theme.of(context).textTheme.bodyText2!.color),
+                              style: bodyText(Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .color),
                             ),
                             Switch(
                                 materialTapTargetSize:
@@ -554,7 +560,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             Text(
                               'dark_mode'.tr,
                               style: bodyText(
-                                Theme.of(context).textTheme.bodyText2!.color,
+                                Theme.of(context).textTheme.bodyMedium!.color,
                               ),
                             ),
                             Switch(
@@ -615,7 +621,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       style: bodyText(
                                         Theme.of(context)
                                             .textTheme
-                                            .bodyText1!
+                                            .bodyLarge!
                                             .color,
                                       ),
                                     ),
@@ -637,7 +643,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       style: bodyText(
                                         Theme.of(context)
                                             .textTheme
-                                            .bodyText1!
+                                            .bodyLarge!
                                             .color,
                                       ),
                                     ),
@@ -659,7 +665,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       style: bodyText(
                                         Theme.of(context)
                                             .textTheme
-                                            .bodyText1!
+                                            .bodyLarge!
                                             .color,
                                       ),
                                     ),
@@ -677,11 +683,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       Navigator.pop(context);
                                     },
                                     child: Text(
-                                      'O\'zbek',
+                                      "O'zbek",
                                       style: bodyText(
                                         Theme.of(context)
                                             .textTheme
-                                            .bodyText1!
+                                            .bodyLarge!
                                             .color,
                                       ),
                                     ),
@@ -697,7 +703,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 'language'.tr,
                                 style: bodyText(Theme.of(context)
                                     .textTheme
-                                    .bodyText2!
+                                    .bodyMedium!
                                     .color),
                               ),
                               Row(
@@ -707,7 +713,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     style: bodyText(
                                       Theme.of(context)
                                           .textTheme
-                                          .bodyText1!
+                                          .bodyLarge!
                                           .color,
                                     ),
                                   ),

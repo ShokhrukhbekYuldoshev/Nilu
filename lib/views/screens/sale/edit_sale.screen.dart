@@ -88,7 +88,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                         child: Text(
                           _profileController.user['mainCurrency'],
                           style: bodyText(
-                              Theme.of(context).textTheme.bodyText1!.color),
+                              Theme.of(context).textTheme.bodyLarge!.color),
                         ),
                       ),
                       PopupMenuItem<String>(
@@ -96,7 +96,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                         child: Text(
                           _profileController.user['secondaryCurrency'],
                           style: bodyText(
-                              Theme.of(context).textTheme.bodyText1!.color),
+                              Theme.of(context).textTheme.bodyLarge!.color),
                         ),
                       ),
                     ],
@@ -147,7 +147,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   ? _cartController.client!.name
                                   : 'unnamed_client'.tr,
                               hintStyle: bodyText(
-                                  Theme.of(context).textTheme.bodyText1!.color),
+                                  Theme.of(context).textTheme.bodyLarge!.color),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(4),
                                 borderSide: BorderSide(
@@ -203,7 +203,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                               style: bodyText(
                                                 Theme.of(context)
                                                     .textTheme
-                                                    .bodyText1!
+                                                    .bodyLarge!
                                                     .color,
                                               ),
                                             ),
@@ -329,7 +329,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   style: bodyText(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),
@@ -348,7 +348,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                   style: h6(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),
@@ -371,7 +371,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                             style: bodyText(
                                               Theme.of(context)
                                                   .textTheme
-                                                  .bodyText1!
+                                                  .bodyLarge!
                                                   .color,
                                             ),
                                           ),
@@ -397,7 +397,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                             style: h6(
                                               Theme.of(context)
                                                   .textTheme
-                                                  .bodyText1!
+                                                  .bodyLarge!
                                                   .color,
                                             ),
                                           ),
@@ -625,7 +625,7 @@ class _EditSaleScreenState extends State<EditSaleScreen> {
                                 _cartController.comment != ''
                                     ? Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color
                                     : textPlaceholderColor,
                               ),

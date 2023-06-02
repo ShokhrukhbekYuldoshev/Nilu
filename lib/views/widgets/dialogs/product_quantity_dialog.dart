@@ -36,13 +36,13 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
           Text(
             widget.product.name,
             style: bodyText(
-              Theme.of(context).textTheme.bodyText2!.color,
+              Theme.of(context).textTheme.bodyMedium!.color,
             ),
           ),
           Text(
             'stock_in_out'.tr,
             style: h6(
-              Theme.of(context).textTheme.bodyText1!.color,
+              Theme.of(context).textTheme.bodyLarge!.color,
             ),
           ),
         ],
@@ -88,7 +88,7 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
                   },
                   style: TextStyle(
                     fontSize: 36,
-                    color: Theme.of(context).textTheme.bodyText1!.color,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
                   ),
                   textAlign: TextAlign.center,
                   controller: _quantityController,
@@ -177,7 +177,7 @@ class _ProductQuantityDialog extends State<ProductQuantityDialog> {
                 labelText: 'total_stock'.tr,
                 labelStyle: TextStyle(
                   fontSize: 14,
-                  color: Theme.of(context).textTheme.bodyText2!.color,
+                  color: Theme.of(context).textTheme.bodyMedium!.color,
                 ),
               ),
               keyboardType: TextInputType.number,

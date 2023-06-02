@@ -73,7 +73,7 @@ class SaleTile extends StatelessWidget {
                   Text(
                     product.name,
                     style: h6(
-                      Theme.of(context).textTheme.bodyText1!.color,
+                      Theme.of(context).textTheme.bodyLarge!.color,
                     ),
                   ),
                   const SizedBox(height: 5),

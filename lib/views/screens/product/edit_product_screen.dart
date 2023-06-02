@@ -94,7 +94,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
               ? Container()
               : IconButton(
                   icon: Icon(Icons.close,
-                      color: Theme.of(context).textTheme.bodyText1!.color),
+                      color: Theme.of(context).textTheme.bodyLarge!.color),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -131,14 +131,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                         title: Text('gallery'.tr),
                                         onTap: () async {
                                           imageFile =
-                                              await pickImageFromGallery();
-
-                                          await compressFile(imageFile)
-                                              .then((value) {
+                                              await pickImageFromGallery()
+                                                  .then((value) {
                                             setState(() {
                                               imageFile = value;
                                               Navigator.pop(context);
                                             });
+                                            return null;
                                           });
                                         },
                                       ),
@@ -147,14 +146,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                         title: Text('camera'.tr),
                                         onTap: () async {
                                           imageFile =
-                                              await pickImageFromCamera();
-
-                                          await compressFile(imageFile)
-                                              .then((value) {
+                                              await pickImageFromCamera()
+                                                  .then((value) {
                                             setState(() {
                                               imageFile = value;
                                               Navigator.pop(context);
                                             });
+                                            return null;
                                           });
                                         },
                                       ),
@@ -343,7 +341,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                           Text(
                             'price'.tr + ':',
                             style: bodyText(
-                              Theme.of(context).textTheme.bodyText1!.color,
+                              Theme.of(context).textTheme.bodyLarge!.color,
                             ),
                           ),
                           const Spacer(),

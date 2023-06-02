@@ -177,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   style: bodyText(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),

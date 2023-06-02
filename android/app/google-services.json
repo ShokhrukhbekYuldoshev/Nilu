@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "858373766179",
-    "project_id": "flutter-sy",
-    "storage_bucket": "flutter-sy.appspot.com"
+    "project_number": "881938428215",
+    "project_id": "nilu-e70c4",
+    "storage_bucket": "nilu-e70c4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:858373766179:android:bd3b8a9531eb91f3288596",
+        "mobilesdk_app_id": "1:881938428215:android:b6bad76a3903f728ae2ab2",
         "android_client_info": {
-          "package_name": "com.salesdoctor.nilu"
+          "package_name": "com.shokhrukhbek.nilu"
         }
       },
       "oauth_client": [
         {
-          "client_id": "858373766179-2fd8a2qoopkb4s1mfnlfrnpi2que70hu.apps.googleusercontent.com",
+          "client_id": "881938428215-dpp8jj6ef42r3ean48fphbi5ame8kulb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAc_aZt8aSrigAOXh7HyMVSHp3CUUmeqJ0"
+          "current_key": "AIzaSyBYLl874gG5hYXxKrvGfwjwbSeSCkeoFS0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "858373766179-2fd8a2qoopkb4s1mfnlfrnpi2que70hu.apps.googleusercontent.com",
+              "client_id": "881938428215-dpp8jj6ef42r3ean48fphbi5ame8kulb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

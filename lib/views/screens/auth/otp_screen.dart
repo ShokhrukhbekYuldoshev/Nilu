@@ -83,12 +83,12 @@ class _OtpScreenState extends State<OtpScreen> {
                     Text(
                       'otp_description'.tr,
                       style: bodyText(
-                          Theme.of(context).textTheme.bodyText1!.color),
+                          Theme.of(context).textTheme.bodyLarge!.color),
                     ),
                     Text(
                       FlutterLibphonenumber().formatNumberSync(widget.phone),
                       style: bodyText(
-                          Theme.of(context).textTheme.bodyText2!.color),
+                          Theme.of(context).textTheme.bodyMedium!.color),
                     ),
                     const SizedBox(height: 48),
                     // Implement 4 input fields
@@ -122,10 +122,10 @@ class _OtpScreenState extends State<OtpScreen> {
                     TextButton(
                       onPressed: () {
                         if (time <= 0) {
-                          // print('yes');
                           _authController.resendOTP(
                             context,
                           );
+                          time = 60;
                         }
                       },
                       child: Text(

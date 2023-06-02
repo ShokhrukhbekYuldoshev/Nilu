@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -63,7 +63,7 @@ class _ProductsScreenState extends State<ProductsScreen>
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'cancel'.tr, true, ScanMode.BARCODE);
       if (barcodeScanRes != "-1") {
-        var product = _productController.getProudctByCode(barcodeScanRes);
+        var product = _productController.getProductByCode(barcodeScanRes);
         if (product.id != '') {
           showModalBottomSheet(
             isScrollControlled: true,
@@ -120,7 +120,7 @@ class _ProductsScreenState extends State<ProductsScreen>
                           child: Text(
                             'not_found'.tr,
                             style: bodyText(
-                                Theme.of(context).textTheme.bodyText2!.color),
+                                Theme.of(context).textTheme.bodyMedium!.color),
                           ),
                         )
                       : NotificationListener(
@@ -265,9 +265,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                   },
                 ),
                 const SizedBox(width: 8),
-                Badge(
+                badge.Badge(
                   showBadge: _productController.filterCategories.isNotEmpty,
-                  badgeColor: const Color(0xFFFBBC05),
+                  badgeStyle: const badge.BadgeStyle(
+                    badgeColor: Color(0xFFFBBC05),
+                  ),
                   badgeContent: Text(
                     _productController.filterCategories.length.toString(),
                     style: const TextStyle(
@@ -305,7 +307,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             children: [
               Text(
                 'product_name'.tr,
-                style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
+                style: bodyText(Theme.of(context).textTheme.bodyMedium!.color),
               ),
               Text(
                 'in_stock'.tr,

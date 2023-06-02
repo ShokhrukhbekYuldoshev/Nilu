@@ -10,10 +10,10 @@ class Themes {
       color: primaryColor,
     ),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         color: textDarkColor,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         color: textMutedColor,
       ),
     ),
@@ -36,10 +36,10 @@ class Themes {
       backgroundColor: primaryLightColor,
     ),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         color: whiteColor,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         color: gray400Color,
       ),
     ),

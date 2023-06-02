@@ -36,7 +36,7 @@ class _DiscountBottomSheetState extends State<DiscountBottomSheet> {
                 Text(
                   'discount'.tr,
                   style: h5(
-                    Theme.of(context).textTheme.bodyText1!.color,
+                    Theme.of(context).textTheme.bodyLarge!.color,
                   ),
                 ),
                 const SizedBox(height: 20),

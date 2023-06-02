@@ -37,7 +37,7 @@ class _SortProductsBottomSheetState extends State<SortProductsBottomSheet> {
               children: [
                 Text(
                   'categories'.tr,
-                  style: h5(Theme.of(context).textTheme.bodyText1!.color),
+                  style: h5(Theme.of(context).textTheme.bodyLarge!.color),
                 ),
                 GestureDetector(
                   onTap: () {

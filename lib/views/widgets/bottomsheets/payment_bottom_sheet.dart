@@ -67,7 +67,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                     Text(
                       'payment'.tr,
                       style: h5(
-                        Theme.of(context).textTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
                     IconButton(
@@ -135,7 +135,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                               )
                             ],
                             style: h5(
-                                Theme.of(context).textTheme.bodyText1!.color),
+                                Theme.of(context).textTheme.bodyLarge!.color),
                             onChanged: (value) {
                               try {
                                 setState(() {
@@ -243,7 +243,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                                   vertical: 8, horizontal: 10),
                               hintText: _payments[i]['currency'],
                               hintStyle: bodyText(
-                                Theme.of(context).textTheme.bodyText1!.color,
+                                Theme.of(context).textTheme.bodyLarge!.color,
                               ),
                               suffixIcon: const Icon(
                                 Icons.arrow_drop_down,
@@ -288,7 +288,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                         },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
-                          primary: Preferences.getTheme()
+                          backgroundColor: Preferences.getTheme()
                               ? lightGrayColor
                               : paymentsCounter == 4
                                   ? gray200Color

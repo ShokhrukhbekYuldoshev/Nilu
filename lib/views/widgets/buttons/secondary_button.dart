@@ -21,7 +21,7 @@ class SecondaryButton extends StatelessWidget {
       height: 44,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Preferences.getTheme() ? lightGrayColor : color,
+          backgroundColor: Preferences.getTheme() ? lightGrayColor : color,
           elevation: 0,
         ),
         onPressed: onPressed,

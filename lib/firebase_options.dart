@@ -69,8 +69,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '858373766179',
     projectId: 'flutter-sy',
     storageBucket: 'flutter-sy.appspot.com',
-    androidClientId: '858373766179-tbnvdvklttjo454l652l02qd7hh60ska.apps.googleusercontent.com',
-    iosClientId: '858373766179-tsgkurg7tv2l45g682pktj4cnj6g9mug.apps.googleusercontent.com',
-    iosBundleId: 'com.salesdoctor.nilu',
+    androidClientId:
+        '858373766179-tbnvdvklttjo454l652l02qd7hh60ska.apps.googleusercontent.com',
+    iosClientId:
+        '858373766179-tsgkurg7tv2l45g682pktj4cnj6g9mug.apps.googleusercontent.com',
+    iosBundleId: 'com.shokhrukhbek.nilu',
   );
 }

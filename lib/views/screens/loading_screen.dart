@@ -45,7 +45,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     child: Text(
                       'login'.tr,
                       style: h5(
-                        Theme.of(context).textTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
                     onPressed: () {

@@ -28,6 +28,13 @@ class ScreensCard extends StatelessWidget {
             color: Preferences.getTheme() == false
                 ? whiteColor
                 : const Color.fromARGB(77, 81, 81, 81),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
           ),
           padding: const EdgeInsets.only(top: 26, bottom: 20),
           child: Column(
@@ -44,7 +51,7 @@ class ScreensCard extends StatelessWidget {
               Text(
                 title,
                 style: h6(
-                  Theme.of(context).textTheme.bodyText1!.color,
+                  Theme.of(context).textTheme.bodyLarge!.color,
                 ),
               ),
             ],

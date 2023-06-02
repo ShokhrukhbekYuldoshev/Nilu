@@ -28,7 +28,7 @@ class CategoriesScreen extends StatelessWidget {
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back,
-              color: Theme.of(context).textTheme.bodyText1!.color),
+              color: Theme.of(context).textTheme.bodyLarge!.color),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -53,7 +53,7 @@ class CategoriesScreen extends StatelessWidget {
                           Text(
                             "new_category".tr,
                             style: h5(
-                              Theme.of(context).textTheme.bodyText1!.color,
+                              Theme.of(context).textTheme.bodyLarge!.color,
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -119,7 +119,8 @@ class CategoriesScreen extends StatelessWidget {
             ? Center(
                 child: Text(
                   'not_found'.tr,
-                  style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
+                  style:
+                      bodyText(Theme.of(context).textTheme.bodyMedium!.color),
                 ),
               )
             : ListView.builder(
@@ -166,7 +167,7 @@ class CategoryTile extends StatelessWidget {
           Expanded(
             child: Text(
               category,
-              style: bodyText(Theme.of(context).textTheme.bodyText1!.color),
+              style: bodyText(Theme.of(context).textTheme.bodyLarge!.color),
             ),
           ),
           PopupMenuButton(
@@ -222,7 +223,7 @@ class CategoryTile extends StatelessWidget {
                 value: 'Edit',
                 child: Text(
                   'edit'.tr,
-                  style: bodyText(Theme.of(context).textTheme.bodyText1!.color),
+                  style: bodyText(Theme.of(context).textTheme.bodyLarge!.color),
                 ),
               ),
               PopupMenuItem<String>(
@@ -262,7 +263,7 @@ class CategoryTile extends StatelessWidget {
                     Text(
                       "edit_category".tr,
                       style: h5(
-                        Theme.of(context).textTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
                     const SizedBox(height: 20),

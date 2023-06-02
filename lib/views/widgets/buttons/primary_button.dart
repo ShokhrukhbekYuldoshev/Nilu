@@ -19,7 +19,7 @@ class PrimaryButton extends StatelessWidget {
       height: 44,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: color,
+          backgroundColor: color,
           elevation: 0,
         ),
         onPressed: onPressed,

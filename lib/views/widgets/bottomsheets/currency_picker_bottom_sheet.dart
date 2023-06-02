@@ -143,7 +143,7 @@ class _CurrencyPickerBottomSheetState extends State<CurrencyPickerBottomSheet> {
                       title: Text(
                         searchCurrencies[index],
                         style: bodyText(
-                            Theme.of(context).textTheme.bodyText1!.color),
+                            Theme.of(context).textTheme.bodyLarge!.color),
                       ),
                       onTap: () async {
                         if (widget.isMainCurrency) {

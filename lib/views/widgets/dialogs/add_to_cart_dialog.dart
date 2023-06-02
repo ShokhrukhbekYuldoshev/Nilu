@@ -52,10 +52,10 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
         children: [
           Text('select_quantity'.tr,
               style: h6(
-                Theme.of(context).textTheme.bodyText1!.color,
+                Theme.of(context).textTheme.bodyLarge!.color,
               )),
           Text(widget.product.name,
-              style: bodyText(Theme.of(context).textTheme.bodyText2!.color))
+              style: bodyText(Theme.of(context).textTheme.bodyMedium!.color))
         ],
       ),
       content: Column(
@@ -104,7 +104,7 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
                   },
                   style: TextStyle(
                     fontSize: 36,
-                    color: Theme.of(context).textTheme.bodyText1!.color,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
                   ),
                   textAlign: TextAlign.center,
                   controller: _quantityController,
@@ -159,7 +159,7 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
                     child: Text(
                       '1x = ',
                       style: bodyText(
-                          Theme.of(context).textTheme.bodyText2!.color),
+                          Theme.of(context).textTheme.bodyMedium!.color),
                     ),
                   ),
                 ),
@@ -198,7 +198,8 @@ class _AddToCartDialogState extends State<AddToCartDialog> {
           hasSecondaryCurrency()
               ? Text(
                   '= ${formatCurrency(secondaryCurrencyValue, _profileController.user['secondaryCurrency'])}',
-                  style: bodyText(Theme.of(context).textTheme.bodyText2!.color),
+                  style:
+                      bodyText(Theme.of(context).textTheme.bodyMedium!.color),
                 )
               : Container(),
         ],

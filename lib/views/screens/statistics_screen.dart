@@ -124,7 +124,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               const SizedBox(height: 20),
               Text(
                 'products_sold'.tr,
-                style: h5(Theme.of(context).textTheme.bodyText1!.color),
+                style: h5(Theme.of(context).textTheme.bodyLarge!.color),
               ),
               const SizedBox(height: 20),
               topProducts.isEmpty
@@ -212,7 +212,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                       style: bodyText(
                                         Theme.of(context)
                                             .textTheme
-                                            .bodyText1!
+                                            .bodyLarge!
                                             .color,
                                       ),
                                     ),

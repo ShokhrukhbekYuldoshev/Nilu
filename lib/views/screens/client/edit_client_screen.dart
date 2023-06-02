@@ -62,7 +62,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
               : IconButton(
                   icon: Icon(
                     Icons.close,
-                    color: Theme.of(context).textTheme.bodyText1!.color,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -101,14 +101,13 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                         title: Text('gallery'.tr),
                                         onTap: () async {
                                           imageFile =
-                                              await pickImageFromGallery();
-
-                                          await compressFile(imageFile)
-                                              .then((value) {
+                                              await pickImageFromGallery()
+                                                  .then((value) {
                                             setState(() {
                                               imageFile = value;
                                               Navigator.pop(context);
                                             });
+                                            return null;
                                           });
                                         },
                                       ),
@@ -117,14 +116,13 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                         title: Text('camera'.tr),
                                         onTap: () async {
                                           imageFile =
-                                              await pickImageFromCamera();
-
-                                          await compressFile(imageFile)
-                                              .then((value) {
+                                              await pickImageFromCamera()
+                                                  .then((value) {
                                             setState(() {
                                               imageFile = value;
                                               Navigator.pop(context);
                                             });
+                                            return null;
                                           });
                                         },
                                       ),
@@ -311,7 +309,7 @@ class _EditClientScreenState extends State<EditClientScreen> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: primaryColor,
+                                backgroundColor: primaryColor,
                               ),
                               child: Padding(
                                 padding:

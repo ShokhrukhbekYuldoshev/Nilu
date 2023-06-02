@@ -41,7 +41,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back,
-              color: Theme.of(context).textTheme.bodyText1!.color),
+              color: Theme.of(context).textTheme.bodyLarge!.color),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -143,7 +143,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
                   title: Text(
                     'unnamed_client'.tr,
                     style:
-                        bodyText(Theme.of(context).textTheme.bodyText1!.color),
+                        bodyText(Theme.of(context).textTheme.bodyLarge!.color),
                   ),
                   trailing: _cartController.client == null
                       ? const Icon(Icons.check)
@@ -191,7 +191,7 @@ class _SelectClientScreenState extends State<SelectClientScreen> {
                       title: Text(
                         client.name,
                         style: bodyText(
-                            Theme.of(context).textTheme.bodyText1!.color),
+                            Theme.of(context).textTheme.bodyLarge!.color),
                       ),
                       trailing: _cartController.client == client
                           ? const Icon(Icons.check)

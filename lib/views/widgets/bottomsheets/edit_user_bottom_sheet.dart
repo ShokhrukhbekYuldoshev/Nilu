@@ -24,7 +24,7 @@ class EditUserBottomSheet extends StatelessWidget {
               children: [
                 Text(info[0].toUpperCase() + info.substring(1),
                     style: h5(
-                      Theme.of(context).textTheme.bodyText1!.color,
+                      Theme.of(context).textTheme.bodyLarge!.color,
                     )),
                 const SizedBox(height: 20),
                 TextField(

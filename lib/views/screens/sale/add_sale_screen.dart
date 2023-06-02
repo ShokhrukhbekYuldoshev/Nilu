@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -68,7 +68,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
           '#ff6666', 'cancel'.tr, true, ScanMode.BARCODE);
 
       if (barcodeScanRes != "-1") {
-        Product product = _productController.getProudctByCode(barcodeScanRes);
+        Product product = _productController.getProductByCode(barcodeScanRes);
         if (product.id != "") {
           if (product.quantity! >
               _cartController.singleProductQuantity(product.id)) {
@@ -142,7 +142,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                   width: 124,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: primaryColor,
+                      backgroundColor: primaryColor,
                     ),
                     onPressed: _cartController.products.length <= 0
                         ? null
@@ -210,10 +210,12 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                               },
                             ),
                             const SizedBox(width: 8),
-                            Badge(
+                            badge.Badge(
                               showBadge: _productController
                                   .filterCategories.isNotEmpty,
-                              badgeColor: const Color(0xFFFBBC05),
+                              badgeStyle: const badge.BadgeStyle(
+                                badgeColor: Color(0xFFFBBC05),
+                              ),
                               badgeContent: Text(
                                 _productController.filterCategories.length
                                     .toString(),
@@ -253,7 +255,7 @@ class _AddSaleScreenState extends State<AddSaleScreen>
                       child: Text(
                         'not_found'.tr,
                         style: bodyText(
-                            Theme.of(context).textTheme.bodyText2!.color),
+                            Theme.of(context).textTheme.bodyMedium!.color),
                       ),
                     )
                   : NotificationListener(

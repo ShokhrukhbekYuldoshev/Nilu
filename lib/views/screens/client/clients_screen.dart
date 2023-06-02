@@ -113,7 +113,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                         child: Text(
                           'not_found'.tr,
                           style: bodyText(
-                            Theme.of(context).textTheme.bodyText2!.color,
+                            Theme.of(context).textTheme.bodyMedium!.color,
                           ),
                         ),
                       )
@@ -191,7 +191,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                             title: Text(
                               client.name,
                               style: bodyText(
-                                  Theme.of(context).textTheme.bodyText1!.color),
+                                  Theme.of(context).textTheme.bodyLarge!.color),
                             ),
                             subtitle: client.debt > 0
                                 ? Text(

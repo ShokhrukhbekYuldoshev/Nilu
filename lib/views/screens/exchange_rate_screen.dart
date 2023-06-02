@@ -66,7 +66,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                             title: Text('auto_update'.tr,
                                 style: bodyText(Theme.of(context)
                                     .textTheme
-                                    .bodyText1!
+                                    .bodyLarge!
                                     .color)),
                             value: 'auto',
                             groupValue: Preferences.getExchangeRateType(),
@@ -91,11 +91,11 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                                     0
                                                 ? Theme.of(context)
                                                     .textTheme
-                                                    .bodyText2!
+                                                    .bodyMedium!
                                                     .color
                                                 : Theme.of(context)
                                                     .textTheme
-                                                    .bodyText1!
+                                                    .bodyLarge!
                                                     .color,
                                           ),
                                         ),
@@ -107,7 +107,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                                 style: h5(
                                                   Theme.of(context)
                                                       .textTheme
-                                                      .bodyText1!
+                                                      .bodyLarge!
                                                       .color,
                                                 ),
                                               )
@@ -116,9 +116,10 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                         ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                               elevation: 0,
-                                              primary: Preferences.getTheme()
-                                                  ? lightGrayColor
-                                                  : primaryUltraLightColor,
+                                              backgroundColor:
+                                                  Preferences.getTheme()
+                                                      ? lightGrayColor
+                                                      : primaryUltraLightColor,
                                               textStyle: bodyText(whiteColor)),
                                           onPressed: () {
                                             showModalBottomSheet(
@@ -192,7 +193,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                           title: Text(
                             'manual_input'.tr,
                             style: bodyText(
-                              Theme.of(context).textTheme.bodyText1!.color,
+                              Theme.of(context).textTheme.bodyLarge!.color,
                             ),
                           ),
                           value: 'manual',
@@ -228,7 +229,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                               '1 ${_profileController.user['secondaryCurrency']} = ',
                                               style: bodyText(Theme.of(context)
                                                   .textTheme
-                                                  .bodyText1!
+                                                  .bodyLarge!
                                                   .color)),
                                         ),
                                         const SizedBox(width: 6),
@@ -239,7 +240,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                             keyboardType: TextInputType.number,
                                             style: bodyText(Theme.of(context)
                                                 .textTheme
-                                                .bodyText1!
+                                                .bodyLarge!
                                                 .color),
                                             decoration: InputDecoration(
                                               contentPadding:
@@ -252,7 +253,7 @@ class _ExchangeRateScreenState extends State<ExchangeRateScreen> {
                                               hintStyle: bodyText(
                                                   Theme.of(context)
                                                       .textTheme
-                                                      .bodyText1!
+                                                      .bodyLarge!
                                                       .color),
                                             ),
                                           ),
@@ -337,7 +338,7 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                 Text(
                   'auto_adjust'.tr,
                   style: h5(
-                    Theme.of(context).textTheme.bodyText1!.color,
+                    Theme.of(context).textTheme.bodyLarge!.color,
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -345,7 +346,7 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                   'bank_rate'.tr +
                       ': 1 ${widget._profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate(), widget._profileController.user['mainCurrency'])}',
                   style: bodyText(
-                    Theme.of(context).textTheme.bodyText2!.color,
+                    Theme.of(context).textTheme.bodyMedium!.color,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -383,13 +384,13 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                           controller: _adjustmentController,
                           keyboardType: TextInputType.number,
                           style: bodyText(
-                            Theme.of(context).textTheme.bodyText1!.color,
+                            Theme.of(context).textTheme.bodyLarge!.color,
                           ),
                           decoration: InputDecoration(
                             contentPadding: inputPadding,
                             hintText: 'enter_amount'.tr,
                             hintStyle: bodyText(
-                              Theme.of(context).textTheme.bodyText1!.color,
+                              Theme.of(context).textTheme.bodyLarge!.color,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(4),
@@ -418,7 +419,7 @@ class _AutoAdjustBottomSheetState extends State<AutoAdjustBottomSheet> {
                   'new_rate'.tr +
                       ': 1 ${widget._profileController.user['secondaryCurrency']} = ${formatCurrency(Preferences.getExchangeRate() + (isDouble(_adjustmentController.text) ? double.parse(_adjustmentController.text) : 0), widget._profileController.user['mainCurrency'])}',
                   style: bodyText(
-                    Theme.of(context).textTheme.bodyText2!.color,
+                    Theme.of(context).textTheme.bodyMedium!.color,
                   ),
                 ),
                 const SizedBox(height: 50),

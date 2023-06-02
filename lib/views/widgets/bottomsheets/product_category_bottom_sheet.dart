@@ -43,7 +43,7 @@ class _ProductCategoryBottomSheetState
                     Text(
                       "categories".tr,
                       style: h5(
-                        Theme.of(context).textTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -78,7 +78,7 @@ class _ProductCategoryBottomSheetState
                                   style: bodyText(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),
@@ -111,7 +111,7 @@ class _ProductCategoryBottomSheetState
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.all(0),
                                 elevation: 0,
-                                primary: primaryUltraLightColor,
+                                backgroundColor: primaryUltraLightColor,
                               ),
                               onPressed: () {
                                 addCategory(context, _newCategoryController);
@@ -132,7 +132,7 @@ class _ProductCategoryBottomSheetState
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.all(0),
                                 elevation: 0,
-                                primary: primaryUltraLightColor,
+                                backgroundColor: primaryUltraLightColor,
                               ),
                               onPressed: () {
                                 Navigator.pop(context);
@@ -176,7 +176,7 @@ class _ProductCategoryBottomSheetState
                     Text(
                       "new_category".tr,
                       style: h5(
-                        Theme.of(context).textTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
                     const SizedBox(height: 20),

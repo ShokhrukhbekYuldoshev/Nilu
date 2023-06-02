@@ -41,7 +41,7 @@ class SupportScreen extends StatelessWidget {
                   'support_description'.tr,
                   textAlign: TextAlign.center,
                   style: bodyText(
-                    Theme.of(context).textTheme.bodyText2!.color,
+                    Theme.of(context).textTheme.bodyMedium!.color,
                   ),
                 ),
               ),

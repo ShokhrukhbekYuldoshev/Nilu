@@ -81,14 +81,14 @@ class ProductInfoBottomSheet extends StatelessWidget {
                         Text(
                           product.name,
                           style: h5(
-                            Theme.of(context).textTheme.bodyText1!.color,
+                            Theme.of(context).textTheme.bodyLarge!.color,
                           ),
                         ),
                         const SizedBox(height: 6),
                         Text(
                           'category'.tr + ': ' + product.category!,
                           style: bodyText(
-                              Theme.of(context).textTheme.bodyText2!.color),
+                              Theme.of(context).textTheme.bodyMedium!.color),
                         ),
                         const Divider(),
                         Padding(
@@ -106,7 +106,7 @@ class ProductInfoBottomSheet extends StatelessWidget {
                                   style: h6(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),
@@ -152,7 +152,7 @@ class ProductInfoBottomSheet extends StatelessWidget {
                                   style: h6(
                                     Theme.of(context)
                                         .textTheme
-                                        .bodyText1!
+                                        .bodyLarge!
                                         .color,
                                   ),
                                 ),
