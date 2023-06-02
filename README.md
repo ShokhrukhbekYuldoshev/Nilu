@@ -54,12 +54,6 @@ Nilu is a simple and easy to use application to manage your sales, income and pr
     ```sh
     flutter run
     ```
-    
-
-
-
-
-
 ## Note
 
 Code is not well structure and not well documented. This is my first project with Flutter and I was just learning. Maybe I will try to improve it in the future.
@@ -71,5 +65,3 @@ Code is not well structure and not well documented. This is my first project wit
 <img src="https://user-images.githubusercontent.com/72590392/171840747-2683db9b-ce8b-4639-9cf6-6394fce31404.png" alt="drawing" height="500"/>
 <img src="https://user-images.githubusercontent.com/72590392/171840749-9e9797a1-0bc8-424d-b106-76bbf3648bcc.png" alt="drawing" height="500"/>
 <img src="https://user-images.githubusercontent.com/72590392/171840742-62da59ba-39aa-45bd-aa65-0b2f827d7549.png" alt="drawing" height="500"/>
-
-Please note that this was my first major project and may not have used best practices, resulting in code that is not clean and may contain bugs.
