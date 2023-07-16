@@ -1,5 +1,5 @@
 name: nilu
-description: Mobile POS app
+description: Nilu mobile POS. Easily manage your sales, income and products.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 environment:
@@ -8,31 +8,31 @@ environment:
 dependencies:
   badges: ^3.1.1
   cached_network_image: ^3.2.3
-  cloud_firestore: ^4.8.0
-  firebase_auth: ^4.6.2
-  firebase_core: ^2.13.1
-  firebase_storage: ^11.2.2
-  firebase_storage_web: ^3.6.2
+  cloud_firestore: ^4.8.3
+  firebase_auth: ^4.7.0
+  firebase_core: ^2.15.0
+  firebase_storage: ^11.2.5
+  firebase_storage_web: ^3.6.5
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
   flutter_image_compress: ^2.0.3
-  flutter_libphonenumber: ^1.2.4
-  flutter_native_splash: ^2.3.0
+  flutter_libphonenumber: ^2.1.4
+  flutter_native_splash: ^2.3.1
   get: ^4.6.5
-  http: ^0.13.6
-  image_picker: ^0.8.7+5
+  http: ^1.1.0
+  image_picker: ^1.0.1
   intl: ^0.18.1
   package_info_plus: ^4.0.2
   path_provider: ^2.0.15
   pattern_formatter: ^3.0.0
   pinput: ^2.2.31
-  shared_preferences: ^2.1.1
+  shared_preferences: ^2.2.0
   sticky_headers: ^0.3.0+2
-  url_launcher: ^6.1.11
+  url_launcher: ^6.1.12
 
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.2
   flutter_test:
     sdk: flutter
 

@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:881938428215:android:b6bad76a3903f728ae2ab2",
+        "mobilesdk_app_id": "1:881938428215:android:8a2572943107aa20ae2ab2",
         "android_client_info": {
           "package_name": "com.shokhrukhbek.nilu"
         }
@@ -29,6 +29,13 @@
             {
               "client_id": "881938428215-dpp8jj6ef42r3ean48fphbi5ame8kulb.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "881938428215-4422s4v4vllq49qmjnbkbmkessp87ic2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shokhrukhbek.nilu"
+              }
             }
           ]
         }

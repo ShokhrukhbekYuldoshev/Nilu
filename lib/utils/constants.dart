@@ -61,13 +61,11 @@ TextStyle h6(Color? color) {
 
 //* Format currency
 String formatCurrency(double amount, String value) {
-  return NumberFormat.currency(
-        symbol: '',
-        decimalDigits: 2,
-        name: value,
-      ).format(amount) +
-      ' ' +
-      value;
+  return '${NumberFormat.currency(
+    symbol: '',
+    decimalDigits: 2,
+    name: value,
+  ).format(amount)} $value';
 }
 
 String formatCurrencyWithoutSymbol(double amount) {

@@ -22,7 +22,7 @@ class SaleController extends GetxController {
     try {
       sales.remove(sale);
       firestore.collection('sales').doc(sale.id).delete();
-      successSnackbar('Sale ' + 'deleted'.tr);
+      successSnackbar('Sale ${'deleted'.tr}');
     } catch (e) {
       errorSnackbar(e.toString());
     }

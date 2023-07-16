@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,33 +49,22 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAjP2FONoRbVB3-9qp0f6RVDNYJS_at5Vk',
-    appId: '1:858373766179:web:7ea9759e24887d70288596',
-    messagingSenderId: '858373766179',
-    projectId: 'flutter-sy',
-    authDomain: 'flutter-sy.firebaseapp.com',
-    storageBucket: 'flutter-sy.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAc_aZt8aSrigAOXh7HyMVSHp3CUUmeqJ0',
-    appId: '1:858373766179:android:bd3b8a9531eb91f3288596',
-    messagingSenderId: '858373766179',
-    projectId: 'flutter-sy',
-    storageBucket: 'flutter-sy.appspot.com',
+    apiKey: 'AIzaSyBYLl874gG5hYXxKrvGfwjwbSeSCkeoFS0',
+    appId: '1:881938428215:android:8a2572943107aa20ae2ab2',
+    messagingSenderId: '881938428215',
+    projectId: 'nilu-e70c4',
+    storageBucket: 'nilu-e70c4.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAirOjuFiqimmkYiOL3quNqgKeLhfCaVlI',
-    appId: '1:858373766179:ios:8179722a5175da6d288596',
-    messagingSenderId: '858373766179',
-    projectId: 'flutter-sy',
-    storageBucket: 'flutter-sy.appspot.com',
-    androidClientId:
-        '858373766179-tbnvdvklttjo454l652l02qd7hh60ska.apps.googleusercontent.com',
-    iosClientId:
-        '858373766179-tsgkurg7tv2l45g682pktj4cnj6g9mug.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDVmYDIg40w3c3vIwOfVDKd15l0452l9fg',
+    appId: '1:881938428215:ios:74b28e6686421b0eae2ab2',
+    messagingSenderId: '881938428215',
+    projectId: 'nilu-e70c4',
+    storageBucket: 'nilu-e70c4.appspot.com',
+    androidClientId: '881938428215-k57tdhemqi3lt3quur7o98v1n3kog1lb.apps.googleusercontent.com',
+    iosClientId: '881938428215-4422s4v4vllq49qmjnbkbmkessp87ic2.apps.googleusercontent.com',
     iosBundleId: 'com.shokhrukhbek.nilu',
   );
 }

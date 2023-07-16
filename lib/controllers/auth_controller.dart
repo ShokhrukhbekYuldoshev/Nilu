@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:nilu/controllers/profile_controller.dart';
 import 'package:nilu/controllers/theme_controller.dart';
 
-import '../views/screens/auth/otp_screen.dart';
+import '../ui/screens/auth/otp_screen.dart';
 import 'package:nilu/utils/constants.dart';
 import 'package:nilu/utils/preferences.dart';
 

@@ -32,9 +32,6 @@ migrate_working_dir/
 .pub/
 /build/
 
-# App store related
-/nilu-appstore/
-
 # Web related
 lib/generated_plugin_registrant.dart
 
