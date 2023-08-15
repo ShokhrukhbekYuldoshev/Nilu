@@ -83,7 +83,7 @@ Nilu is a simple and easy to use application to manage your sales, income and pr
 
 ## Note
 
-Code is not well structure and not well documented. This is my first project with Flutter and I was just learning. Maybe I will try to improve it in the future.
+Code is not well structured and not well documented. This is my first project with Flutter and I was just learning. Maybe I will try to improve it in the future.
 
 ## Screenshots
 
